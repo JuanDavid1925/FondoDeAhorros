@@ -1,15 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { conn } from 'src/utils/database/index'
+import { conn } from '/src/utils/database'
 
+/**
+ * @param {NextApiRequest} req
+ * @param {NextApiResponse} res
+*/
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
   const { method, body } = req
-  const { documento, contrasena } = JSON.parse(body)
 
   switch (method) {
     case 'GET':
       try {
+        const { documento, contrasena } = JSON.parse(body)
         const query = `SELECT contrasena FROM usuario WHERE documento = '${documento}'`
         const { rows } = await conn.query(query)
 
@@ -22,8 +26,13 @@ export default async (req, res) => {
         return res.status(400).json({ estado: 400, mensaje: 'Contraseña incorrecta' })
 
 
-      } catch (error) {
-        res.status(409).json(error)
+      } catch ({ message }) {
+        if (message === "Unexpected end of JSON input") {
+          res.status(404).json(`Error 404: Page not found`)
+        }
+        else {
+          res.status(409).json(message)
+        }
 
       } finally {
         break

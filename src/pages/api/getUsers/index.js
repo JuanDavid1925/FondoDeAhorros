@@ -8,7 +8,7 @@ import { conn } from '/src/utils/database'
 */
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-  const { method, body } = req
+  const { method } = req
 
   switch (method) {
     case 'GET':
