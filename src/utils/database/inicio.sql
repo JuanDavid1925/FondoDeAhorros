@@ -1,27 +1,27 @@
 CREATE TABLE IF NOT EXISTS usuarios(
-    documento_usuario VARCHAR(32) NOT NULL,
-    nombres_usuario VARCHAR(32),
-    apellidos_usuario VARCHAR(32),
-    contrasena_usuario VARCHAR(32),
-    telefono_usuario VARCHAR(16),
-    tipo_usuario VARCHAR(32),
-	PRIMARY KEY (documento_usuario),
+  documento_usuario VARCHAR(32) NOT NULL,
+  nombres_usuario VARCHAR(32),
+  apellidos_usuario VARCHAR(32),
+  contrasena_usuario VARCHAR(32),
+  telefono_usuario VARCHAR(16),
+  tipo_usuario VARCHAR(32),
+	PRIMARY KEY (documento_usuario)
 );
 
 INSERT INTO usuarios(
 	documento_usuario, 
 	nombres_usuario,
-    apellidos_usuario,
-    contrasena_usuario,
-    telefono_usuario,
-    tipo_usuario
+  apellidos_usuario,
+  contrasena_usuario,
+  telefono_usuario,
+  tipo_usuario
 ) VALUES (
-	"1234567890",
-	"Admin",
-	"Super usuario",
-	"La super contraseña",
-	"3126459780",
-	"Admin"
+	'1234567890',
+	'Admin',
+	'Super usuario',
+	'La super contraseña',
+	'3126459780',
+	'Admin'
 );
 
 CREATE TABLE IF NOT EXISTS asociados(
@@ -45,6 +45,6 @@ CREATE TABLE IF NOT EXISTS clientes(
   activo_cliente VARCHAR(32),
   documento_asociado_cliente VARCHAR(32),
   PRIMARY KEY(documento_cliente),
-  FOREIGN KEY(documento_cliente) REFERENCES usuarios(documento_usuario)
+  FOREIGN KEY(documento_cliente) REFERENCES usuarios(documento_usuario),
   FOREIGN KEY(documento_asociado_cliente) REFERENCES asociados(documento_asociado)
 );
