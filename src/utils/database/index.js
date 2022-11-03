@@ -4,11 +4,11 @@ let conn
 
 if (!conn) {
   conn = new Pool({
-    user: 'btjdzrigxksxak',
-    password: '9f9126610f76c25f08509b0ca3310080bfde22f56ce8c73b9477c29f698b9b46',
-    host: 'ec2-54-173-237-110.compute-1.amazonaws.com',
+    user: 'cuatroymedia',
+    password: 'uDbiyne8rGMP7Fi1pBp9c2a4qTnweHpz',
+    host: 'dpg-cdi19sirrk06v9t4omkg-a.ohio-postgres.render.com',
     port: 5432,
-    database: 'd89po3vila55fs',
+    database: 'fap',
     ssl: {
       rejectUnauthorized: false
     }
