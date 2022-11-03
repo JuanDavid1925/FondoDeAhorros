@@ -11,10 +11,11 @@ export default async (req, res) => {
   const { method, body } = req
   const {
     documento,
-    nombre,
+    nombres,
+    apellidos,
     telefono,
     contrasena,
-    asociado
+    documento_asociado
 
   } = body
 
@@ -23,13 +24,15 @@ export default async (req, res) => {
       try {
         const query1 = `INSERT INTO usuario (
           documento,
-          nombre,
+          nombres,
+          apellidos,
           telefono,
           contrasena
         )
         VALUES (
           ${documento},
-          ${nombre},
+          ${nombres},
+          ${apellidos},
           ${telefono},
           ${contrasena}
         )
@@ -41,7 +44,7 @@ export default async (req, res) => {
         )
         VALUES (
           ${documento},
-          ${asociado}
+          ${documento_asociado}
         )
         RETURNING *;`
 
@@ -55,8 +58,8 @@ export default async (req, res) => {
         if (res2.rowcount === 0)
           return res.status(400).json({ estado: 400, mensaje: 'Error al crear al cliente' })
 
-        return res.status(200).json({
-          estado: 200,
+        return res.status(201).json({
+          estado: 201,
           mensaje: 'Usuario creado con éxito',
           usuario: res1.rows[0].usuario
         })

@@ -52,13 +52,13 @@ export default function useUser() {
     fetch(
       URL,
       {
-        method: 'PUT',
+        method: 'POST',
         body: JSON.stringify(data)
       }
     )
       .then(response => response.json())
       .then(data => {
-        if (data.estado === 200)
+        if (data.estado === 201)
           return console.log('SUCCESS')
 
       })
@@ -66,12 +66,8 @@ export default function useUser() {
 
   }, [])
 
-  const registroCliente = useCallback((documento, contrasena) => {
+  const registroCliente = useCallback(data => {
     const URL = '/api/login'
-    const data = {
-      documento: documento,
-      contrasena: contrasena
-    }
 
     fetch(
       URL,
@@ -82,13 +78,13 @@ export default function useUser() {
     )
       .then(response => response.json())
       .then(data => {
-        if (data.estado === 200)
-          setJWT('Prueba.')
+        if (data.estado === 201)
+          return console.log('SUCCESS')
 
       })
       .catch(error => console.error(`Error: ${error}`))
 
-  }, [setJWT])
+  }, [])
 
   return {
     isLogged: Boolean(jwt),

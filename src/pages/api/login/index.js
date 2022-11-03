@@ -8,7 +8,7 @@ export default async (req, res) => {
   const { documento, contrasena } = JSON.parse(body)
 
   switch (method) {
-    case 'POST':
+    case 'GET':
       try {
         const query = `SELECT contrasena FROM usuario WHERE documento = '${documento}'`
         const { rows } = await conn.query(query)
