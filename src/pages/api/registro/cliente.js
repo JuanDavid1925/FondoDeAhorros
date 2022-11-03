@@ -36,9 +36,11 @@ export default async (req, res) => {
         RETURNING *;`
 
         const query2 = `INSERT INTO cliente (
-          asociado
+          documento,
+          documento_asociado
         )
         VALUES (
+          ${documento},
           ${asociado}
         )
         RETURNING *;`

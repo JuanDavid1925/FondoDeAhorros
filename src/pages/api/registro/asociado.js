@@ -12,6 +12,7 @@ export default async (req, res) => {
   const {
     documento,
     nombre,
+    apellido,
     telefono,
     contrasena,
     correo,
@@ -29,28 +30,34 @@ export default async (req, res) => {
       try {
         const query1 = `INSERT INTO usuario (
           documento,
-          nombre,
+          nombres,
+          apellidos,
+          contrasena,
           telefono,
-          contrasena
+          tipo
         )
         VALUES (
           ${documento},
           ${nombre},
+          ${apellido},
+          ${contrasena},
           ${telefono},
-          ${contrasena}
+          'Asociado'
         )
         RETURNING *;`
 
         const query2 = `INSERT INTO asociado (
+          documento,
           correo,
-          fechaNacimiento,
+          fecha_nacimiento,
           ocupacion,
           ciudad,
           direccion,
-          cuotaMensual,
-          cuotaManejoPendiente
+          cuota_fija_mensual,
+          cuota_manejo_pendiente
         )
         VALUES (
+          ${documento},
           ${correo},
           ${fechaNacimiento},
           ${ocupacion},
