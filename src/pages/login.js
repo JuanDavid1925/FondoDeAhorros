@@ -17,7 +17,7 @@ export default function Registro() {
                     <div className="flex-1">
                         <div className="text-center">
                             <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-white">FAP</h2>
-                            <p className="mt-3 text-gray-500 dark:text-gray-300">Ingrese a su cuenta</p>
+                            <p className="mt-3 text-gray-600 dark:text-gray-300">Ingrese a su cuenta</p>
                         </div>
                         <div className="mt-8">
                             <form>

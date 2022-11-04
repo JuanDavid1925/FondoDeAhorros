@@ -14,7 +14,7 @@ export default function Registro() {
                         <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-white">
                             Sé parte de nuestros asociados.
                         </h2>
-                        <p className="mt-3 text-gray-500 dark:text-gray-300">
+                        <p className="mt-3 text-gray-600 dark:text-gray-300">
                             Completa el formulario de registro y empieza a gozar de los beneficios de nuestro fondo de ahorros.
                         </p>
 
@@ -63,7 +63,7 @@ export default function Registro() {
                                 <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Confirmar contraseña</label>
                                 <input type="password" placeholder="Ingrese nuevamente su contraseña" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
-                            <button type="button" onClick={() => router.push('/login')} className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide bg-blue-200 capitalize rounded-md border-blue-400 border-2 text-blue-600 hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-400 duration-[400ms,800ms] transition-[color,box-shadow]">
+                            <button type="button" onClick={() => router.push('/login')} className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
                                 <span><label className="mt-4 text-white-500 white:text-white-400">Registrarse</label></span>
                             </button>
                         </form>

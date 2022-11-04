@@ -14,8 +14,8 @@ export default function Registro_cliente() {
                         <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-white">
                             Forma parte de nuestros clientes
                         </h2>
-                        <p className="mt-3 text-gray-500 dark:text-gray-300">
-                            Registrate como cliente y contacta a un asociado para empezar a disfrutar de nuestros servicios.
+                        <p className="mt-3 text-gray-600 dark:text-gray-300">
+                            Regístrate como cliente y contacta a un asociado para empezar a disfrutar de nuestros servicios.
                         </p>
 
                         <form className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
