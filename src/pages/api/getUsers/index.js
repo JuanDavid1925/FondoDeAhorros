@@ -13,21 +13,29 @@ export default async (req, res) => {
   switch (method) {
     case 'GET':
       try {
-        const query1 = `SELECT * FROM usuario, asociado WHERE usuario.documento = cliente.documento;`
-        const query2 = `SELECT * FROM usuario, cliente WHERE usuario.documento = cliente.documento;`
+        const query1 = `SELECT * FROM usuarios, asociados WHERE usuarios.documento_usuario = asociados.documento_asociado;`
 
-        const { rows1 } = await conn.query(query1)
-        const { rows2 } = await conn.query(query2)
+        const res1 = await conn.query(query1)
 
-        if (rows1.length + rows2.length === 0) {
+        const query2 = `SELECT * FROM usuarios, clientes WHERE usuarios.documento_usuario = clientes.documento_cliente;`
+
+        const res2 = await conn.query(query2)
+
+        if (res1.rows.length + res2.rows.length === 0) {
           res.status(404).json(`Sin usuarios.`)
         }
+        else if (res1.rows.length === 0) {
+          res.status(200).json(res2.rows)
+        }
+        else if (res2.rows.length === 0) {
+          res.status(200).json(res1.rows)
+        }
         else {
-          res.status(200).json(`${rows1}/n${rows2}`)
+          res.status(200).json([res1.rows, res2.rows])
         }
 
       } catch (error) {
-        console.error(error)
+        console.error(error.message)
         res.status(504).json(`La base de datos no responde.`)
 
       } finally {

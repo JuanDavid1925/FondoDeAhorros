@@ -34,8 +34,7 @@ CREATE TABLE IF NOT EXISTS asociados(
   correo_asociado VARCHAR(32),
   fecha_nacimiento_asociado VARCHAR(32),
   activo_asociado VARCHAR(32),
-  monto_total_asociado VARCHAR(32),
-  tipo_asociado VARCHAR(32),
+  monto_total_asociado VARCHAR(32)
   PRIMARY KEY(documento_asociado),
   FOREIGN KEY(documento_asociado) REFERENCES usuarios (documento_usuario)
 );

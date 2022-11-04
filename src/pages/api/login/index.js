@@ -14,7 +14,7 @@ export default async (req, res) => {
     case 'GET':
       try {
         const { documento, contrasena } = JSON.parse(body)
-        const query = `SELECT contrasena FROM usuario WHERE documento = '${documento}'`
+        const query = `SELECT contrasena_usuario FROM usuarios WHERE documento_usuario = '${documento}';`
         const { rows } = await conn.query(query)
 
         if (rows.length === 0)

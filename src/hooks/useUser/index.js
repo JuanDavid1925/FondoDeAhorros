@@ -11,11 +11,12 @@ export default function useUser() {
       documento: documento,
       contrasena: contrasena
     }
+    console.log("Entra al login.");
 
     fetch(
       URL,
       {
-        method: 'POST',
+        method: 'GET',
         body: JSON.stringify(data)
       }
     )
@@ -23,6 +24,7 @@ export default function useUser() {
       .then(({ estado, mensaje }) => {
         switch (estado) {
           case 200:
+            console.log("logueado.");
             setJWT('Logueado.')
             break
           case 404:
@@ -47,7 +49,8 @@ export default function useUser() {
   }, [setJWT])
 
   const registroAsociado = useCallback(data => {
-    const URL = '/api/userRegister'
+    const URL = '/api/registro/asociado'
+    console.log("Entra al asociado.");
 
     fetch(
       URL,
@@ -58,6 +61,7 @@ export default function useUser() {
     )
       .then(response => response.json())
       .then(data => {
+        console.log("respondió bien");
         if (data.estado === 201)
           return console.log('SUCCESS')
 
@@ -67,7 +71,8 @@ export default function useUser() {
   }, [])
 
   const registroCliente = useCallback(data => {
-    const URL = '/api/login'
+    const URL = '/api/registro/cliente'
+    console.log("Entra al cliente.");
 
     fetch(
       URL,

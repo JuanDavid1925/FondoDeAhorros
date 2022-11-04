@@ -17,34 +17,36 @@ export default async (req, res) => {
     contrasena,
     documento_asociado
 
-  } = body
+  } = JSON.parse(body)
 
   switch (method) {
     case 'POST':
       try {
-        const query1 = `INSERT INTO usuario (
-          documento,
-          nombres,
-          apellidos,
-          telefono,
-          contrasena
+        const query1 = `INSERT INTO usuarios (
+          documento_usuario, 
+          nombres_usuario,
+          apellidos_usuario,
+          contrasena_usuario,
+          telefono_usuario,
+          tipo_usuario
         )
         VALUES (
-          ${documento},
-          ${nombres},
-          ${apellidos},
-          ${telefono},
-          ${contrasena}
+          '${documento}',
+          '${nombres}',
+          '${apellidos}',
+          '${contrasena}',
+          '${telefono}',
+          'Cliente'
         )
         RETURNING *;`
 
-        const query2 = `INSERT INTO cliente (
-          documento,
-          documento_asociado
+        const query2 = `INSERT INTO clientes (
+          documento_cliente,
+          documento_asociado_cliente
         )
         VALUES (
-          ${documento},
-          ${documento_asociado}
+          '${documento}',
+          '${documento_asociado}'
         )
         RETURNING *;`
 
