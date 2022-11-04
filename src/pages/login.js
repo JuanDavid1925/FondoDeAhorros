@@ -1,7 +1,4 @@
-import { useRouter } from 'next/router'
-
 export default function Registro() {
-    const router = useRouter()
 
     return (
 
