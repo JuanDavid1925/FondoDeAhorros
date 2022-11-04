@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import { useRouter } from 'next/router'
 import { Popover, Transition, Menu } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
@@ -15,6 +16,8 @@ function classNames(...classes) {
 }
 
 export default function Home() {
+  const router = useRouter()
+
   return (
     <div className="static overflow-hidden bg-white">
       <div className="mx-auto max-w-7xl">
@@ -212,7 +215,7 @@ export default function Home() {
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
                   <a
-                    href="#"
+                    onClick={() => router.push('/login')}
                     className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
                   >
                     Iniciar sesión
@@ -220,7 +223,7 @@ export default function Home() {
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
                   <a
-                    href="#"
+                    onClick={() => router.push('/aviso')}
                     className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"
                   >
                     Registrarse
@@ -284,7 +287,7 @@ export default function Home() {
                 </div>
 
                 <a
-                  href="#"
+                  onClick={() => router.push('/registro_asociado')}
                   className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700"
                 >
                   Registrarse
@@ -342,7 +345,7 @@ export default function Home() {
                 </div>
 
                 <a
-                  href="#"
+                  onClick={() => router.push('/registro_cliente')}
                   className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700"
                 >
                   Registrarse
@@ -460,7 +463,7 @@ export default function Home() {
       <footer class="text-center text-white">
         <div class="container pt-9">
           <div class="flex justify-center mb-9">
-            <a href="#!" class="mr-9 text-gray-800">
+            <a href="https://es-la.facebook.com/" class="mr-9 text-gray-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -477,7 +480,7 @@ export default function Home() {
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="mr-9 text-gray-800">
+            <a href="https://twitter.com/?lang=es" class="mr-9 text-gray-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -494,7 +497,7 @@ export default function Home() {
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="mr-9 text-gray-800">
+            <a href="https://www.google.com/?hl=es" class="mr-9 text-gray-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -511,7 +514,7 @@ export default function Home() {
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="mr-9 text-gray-800">
+            <a href="https://www.instagram.com/" class="mr-9 text-gray-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -528,7 +531,7 @@ export default function Home() {
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="mr-9 text-gray-800">
+            <a href="https://co.linkedin.com/" class="mr-9 text-gray-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -545,7 +548,7 @@ export default function Home() {
                 ></path>
               </svg>
             </a>
-            <a href="#!" class="text-gray-800">
+            <a href="https://github.com/" class="text-gray-800">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -574,3 +577,8 @@ export default function Home() {
 
   )
 }
+
+
+
+
+
