@@ -7,7 +7,7 @@ export default function Registro() {
 
         <section className="bg-white dark:bg-gray-900">
             <div className="flex justify-center min-h-screen">
-                <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("https://revistavive.com/wp-content/uploads/2020/12/FONDO-DE-AHORRO-2.png")' }}>
+                <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("./asociados3.jpg")' }}>
                 </div>
                 <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
                     <div className="w-full">
