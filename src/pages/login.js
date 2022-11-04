@@ -1,9 +1,13 @@
+import { useRouter } from 'next/router'
+
 export default function Registro() {
+    const router = useRouter()
+
     return (
 
         <div className="bg-white dark:bg-gray-900" >
             <div className="flex justify-center h-screen">
-                <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url(https://www.hoydinero.com/__export/1638494441194/sites/elimparcial/img/2021/12/02/fondo_de_ahorro_y_caja_de_ahorro_que_es_y_las_fiferencias_1.jpg_1345759582.jpg' }}>
+                <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("https://www.semana.com/resizer/KBqsa1apFXMpiYrzLIKHestVJkk=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/IMMOPWHLBBGGLDWBUB4VAZZHIE.jpg")' }}>
                     <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
                         <div>
                             <h2 className="text-4xl font-bold text-white">Fondo de Ahorros y Préstamos</h2>
@@ -37,7 +41,7 @@ export default function Registro() {
                                     </button>
                                 </div>
                             </form>
-                            <p className="mt-6 text-sm text-center text-gray-400">¿No tiene una cuenta? <a href="#" className="text-blue-500 focus:outline-none focus:underline hover:underline">Regístrese</a>.</p>
+                            <p className="mt-6 text-sm text-center text-gray-400">¿No tiene una cuenta? <a href="./registro_asociado" className="text-blue-500 focus:outline-none focus:underline hover:underline">Regístrese</a>.</p>
                         </div>
                     </div>
                 </div>
