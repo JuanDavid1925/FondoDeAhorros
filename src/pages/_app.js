@@ -1,5 +1,4 @@
-import '../styles/globals.css'
-import { UserContextProvider } from '/src/context/userContext'
+import "tailwindcss/tailwind.css"
 
 function MyApp({ Component, pageProps }) {
   return <> <UserContextProvider> <Component {...pageProps} /> </UserContextProvider> </>
