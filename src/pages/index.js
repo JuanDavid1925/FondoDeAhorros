@@ -57,7 +57,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
-                  <a className="font-medium text-gray-500 hover:text-gray-900"> Inicio
+                  <a className="font-medium text-gray-500 hover:text-gray-900 cursor-pointer"> Inicio
                   </a>
                   <Menu as="div" className="relative inline-block text-left">
                     <div>
@@ -146,7 +146,7 @@ export default function Home() {
                       </Menu.Items>
                     </Transition>
                   </Menu>
-                  <a className="font-medium text-gray-500 hover:text-gray-900"> contáctanos
+                  <a className="font-medium text-gray-500 hover:text-gray-900 cursor-pointer"> contáctanos
                   </a>
 
                 </div>
@@ -223,7 +223,7 @@ export default function Home() {
                         router.push('/login')
                       }
                     }}
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
+                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg cursor-pointer"
                   >
                     Iniciar sesión
                   </a>
@@ -231,7 +231,7 @@ export default function Home() {
                 <div className="mt-3 sm:mt-0 sm:ml-3">
                   <a
                     onClick={() => router.push('/aviso_registro')}
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"
+                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg cursor-pointer"
                   >
                     Registrarse
                   </a>
