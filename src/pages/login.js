@@ -6,16 +6,16 @@ import useUser from "/src/hooks/useUser"
 
 export default function Login() {
   const router = useRouter()
-  const { login, isLogged } = useUser()
+  const { login, logStatus } = useUser()
 
   useEffect(() => {
-    if (isLogged) {
+    if (logStatus == 1) {
       router.push("/")
     }
-  }, [isLogged, router])
+  }, [logStatus, router])
 
   const handleSubmit = useCallback(({ documento, contrasena }) => {
-    return console.log(login(documento, contrasena))
+    return login(documento, contrasena)
   }, [login])
 
   return (

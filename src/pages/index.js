@@ -19,7 +19,7 @@ function classNames(...classes) {
 
 export default function Home() {
   const router = useRouter()
-  const { isLogged } = useUser()
+  const { logStatus } = useUser()
 
   return (
     <div className="static overflow-hidden bg-white">
@@ -219,7 +219,7 @@ export default function Home() {
                 <div className="rounded-md shadow">
                   <a
                     onClick={() => {
-                      if (!isLogged) {
+                      if (logStatus != 1) {
                         router.push('/login')
                       }
                     }}

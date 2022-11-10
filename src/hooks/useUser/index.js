@@ -25,15 +25,18 @@ export default function useUser() {
         switch (estado) {
           case 200:
             console.log("logueado.");
-            setJWT('Logueado.')
+            setJWT(1)
             break
           case 404:
             console.log('Documento incorrecto.')
+            setJWT(-1)
             break
           case 400:
             console.log('Contraseña incorrecta.')
+            setJWT(-2)
             break
           default:
+            setJWT(-408)
             console.log(mensaje)
             console.log('No se ha podido conectar con la base de datos.')
             break
@@ -45,7 +48,7 @@ export default function useUser() {
   }, [setJWT])
 
   const logout = useCallback(() => {
-    setJWT(null)
+    setJWT(0)
   }, [setJWT])
 
   const registroAsociado = useCallback(data => {
@@ -92,7 +95,7 @@ export default function useUser() {
   }, [])
 
   return {
-    isLogged: Boolean(jwt),
+    logStatus: jwt,
     login,
     logout,
     registroAsociado,
