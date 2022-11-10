@@ -11,12 +11,12 @@ export default function useUser() {
       documento: documento,
       contrasena: contrasena
     }
-    console.log("Entra al login.");
+    console.log(`Entra al login.`);
 
     fetch(
       URL,
       {
-        method: 'GET',
+        method: 'POST',
         body: JSON.stringify(data)
       }
     )

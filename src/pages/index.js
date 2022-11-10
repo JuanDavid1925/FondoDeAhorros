@@ -4,6 +4,8 @@ import { Popover, Transition, Menu } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
+import useUser from "/src/hooks/useUser"
+
 const navigation = [
   { name: 'Product', href: '#' },
   { name: 'Features', href: '#' },
@@ -17,6 +19,7 @@ function classNames(...classes) {
 
 export default function Home() {
   const router = useRouter()
+  const { isLogged } = useUser()
 
   return (
     <div className="static overflow-hidden bg-white">
@@ -215,7 +218,11 @@ export default function Home() {
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
                   <a
-                    onClick={() => router.push('/login')}
+                    onClick={() => {
+                      if (!isLogged) {
+                        router.push('/login')
+                      }
+                    }}
                     className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
                   >
                     Iniciar sesión

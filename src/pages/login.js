@@ -1,5 +1,7 @@
+import { Formik } from "formik"
 import { useRouter } from "next/Router"
 import { useCallback, useEffect } from "react"
+
 import useUser from "/src/hooks/useUser"
 
 export default function Login() {
@@ -8,12 +10,12 @@ export default function Login() {
 
   useEffect(() => {
     if (isLogged) {
-      router.push("/login")
+      router.push("/")
     }
   }, [isLogged, router])
 
-  const handleSubmit = useCallback((usuario, contrasena) => {
-    return login(usuario, contrasena)
+  const handleSubmit = useCallback(({ documento, contrasena }) => {
+    return console.log(login(documento, contrasena))
   }, [login])
 
   return (
@@ -36,24 +38,54 @@ export default function Login() {
               <p className="mt-3 text-gray-600 dark:text-gray-300">Ingrese a su cuenta</p>
             </div>
             <div className="mt-8">
-              <form>
-                <div>
-                  <label htmlFor="email" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Documento de identificación</label>
-                  <input type="email" name="email" id="email" placeholder="Ingrese su documento" className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                </div>
-                <div className="mt-6">
-                  <div className="flex justify-between mb-2">
-                    <label htmlFor="password" className="text-sm text-gray-600 dark:text-gray-200">Contraseña</label>
-                    <a href="./olvido_contra" className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline">¿Olvidó su contraseña?</a>
-                  </div>
-                  <input type="password" name="password" id="password" placeholder="Ingrese su contraseña" className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                </div>
-                <div className="mt-6">
-                  <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                    Ingresar
-                  </button>
-                </div>
-              </form>
+              <Formik
+                initialValues=
+                {{
+                  documento: "",
+                  contrasena: ""
+                }}
+                onSubmit={handleSubmit}
+              >
+                {
+                  ({ handleChange, handleSubmit }) => (
+                    <form onSubmit={handleSubmit}>
+                      <div>
+                        <label htmlFor="documento" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Documento de identificación</label>
+                        <input
+                          onChange={handleChange}
+                          type="number"
+                          name="documento"
+                          id="documento"
+                          placeholder="Ingrese su documento"
+                          className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                        />
+                      </div>
+                      <div className="mt-6">
+                        <div className="flex justify-between mb-2">
+                          <label htmlFor="contrasena" className="text-sm text-gray-600 dark:text-gray-200">Contraseña</label>
+                          <a href="./olvido_contra" className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline">¿Olvidó su contraseña?</a>
+                        </div>
+                        <input
+                          onChange={handleChange}
+                          type="password"
+                          name="contrasena"
+                          id="contrasena"
+                          placeholder="Ingrese su contraseña"
+                          className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                        />
+                      </div>
+                      <div className="mt-6">
+                        <button
+                          type="submit"
+                          className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                        >
+                          Ingresar
+                        </button>
+                      </div>
+                    </form>
+                  )
+                }
+              </Formik>
               <p className="mt-6 text-sm text-center text-gray-400">¿No tiene una cuenta? <a href="./registro_asociado" className="text-blue-500 focus:outline-none focus:underline hover:underline">Regístrese</a>.</p>
             </div>
           </div>
