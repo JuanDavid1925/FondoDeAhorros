@@ -1,4 +1,20 @@
-export default function Registro() {
+import { useRouter } from "next/Router"
+import { useCallback, useEffect } from "react"
+import useUser from "/src/hooks/useUser"
+
+export default function Login() {
+    const router = useRouter()
+    const { login, isLogged } = useUser()
+
+    useEffect(() => {
+        if (isLogged) {
+            router.push("/login")
+        }
+    }, [isLogged, router])
+
+    const handleSubmit = useCallback((usuario, contrasena) => {
+        return login(usuario, contrasena)
+    }, [login])
 
     return (
 
