@@ -230,7 +230,7 @@ export default function Home() {
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
                   <a
-                    onClick={() => router.push('/aviso')}
+                    onClick={() => router.push('/aviso_registro')}
                     className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"
                   >
                     Registrarse
