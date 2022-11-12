@@ -50,9 +50,6 @@ function validarDatosLogin({ documento, contrasena }) {
   if (validarNumeroDocumento(documento)) {
     return -101
   }
-  if (validarContrasena(contrasena)) {
-    return -102
-  }
   return 0
 }
 
