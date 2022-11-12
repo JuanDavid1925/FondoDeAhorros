@@ -1,5 +1,7 @@
+import { useRouter } from 'next/router'
 
 export default function Seccion_asociados() {
+    const router = useRouter()
     return (
         <div className="top-25 relative overflow-hidden bg-white">
             <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
@@ -49,6 +51,7 @@ export default function Seccion_asociados() {
                             >
                                 Registrarse
                             </a>
+
                         </div>
                     </div>
                 </div>
