@@ -1,6 +1,7 @@
 import { useCallback, useContext } from 'react'
 
 import Context from '/src/context/userContext'
+import { validarDatosLogin } from '/src/utils/validations'
 
 export default function useUser() {
   const { jwt, setJWT } = useContext(Context)
@@ -12,6 +13,13 @@ export default function useUser() {
       contrasena: contrasena
     }
     console.log(`Entra al login.`);
+
+    let validacion = validarDatosLogin(data)
+
+    if (validacion !== 0) {
+      setJWT(validacion)
+      return
+    }
 
     fetch(
       URL,
