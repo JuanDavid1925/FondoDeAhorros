@@ -32,24 +32,24 @@ export default function useUser() {
       .then(({ estado, mensaje }) => {
         switch (estado) {
           case 200:
-            console.log("Logueado.");
             setJWT("Logueado.")
             setEstado(1)
             break
           case 404:
-            console.log('Documento incorrecto.')
             setEstado(-1)
             break
           case 400:
-            console.log('Contraseña incorrecta.')
             setEstado(-2)
             break
+          case 409:
+            setEstado(-408)
           default:
             setEstado(-408)
-            console.log(mensaje)
             console.log('No se ha podido conectar con la base de datos.')
             break
         }
+
+        console.log(mensaje);
 
       })
       .catch(error => console.error(`Error: ${error}`))

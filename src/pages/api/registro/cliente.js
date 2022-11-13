@@ -22,6 +22,8 @@ export default async (req, res) => {
   switch (method) {
     case 'POST':
       try {
+        let contra = await bcryptjs.hash(contrasena, 8)
+
         const query1 = `INSERT INTO usuarios (
           documento_usuario, 
           nombres_usuario,
@@ -34,7 +36,7 @@ export default async (req, res) => {
           '${documento}',
           '${nombres}',
           '${apellidos}',
-          '${contrasena}',
+          '${contra}',
           '${telefono}',
           'Cliente'
         )

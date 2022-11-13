@@ -27,7 +27,7 @@ function validarNumeroDocumento(numero) {
 function validarContrasena(contrasena) {
   try {
     let tamanoMin = contrasena.toString().length >= 6
-    let tamanoMax = contrasena.toString().length <= 64
+    let tamanoMax = contrasena.toString().length <= 100
     let tieneNum = /\d/.test(contrasena)
     let tieneMinus = /[a-z]/.test(contrasena)
     let tieneMayus = /[A-Z]/.test(contrasena)
