@@ -6,7 +6,7 @@ import { validarDatosLogin } from '/src/utils/validations'
 export default function useUser() {
   const { jwt, setJWT } = useContext(Context)
 
-  const login = useCallback((documento, contrasena) => {
+  const login = useCallback((documento, contrasena, setEstado) => {
     const URL = '/api/login'
     const data = {
       documento: documento,
@@ -17,7 +17,7 @@ export default function useUser() {
     let validacion = validarDatosLogin(data)
 
     if (validacion !== 0) {
-      setJWT(validacion)
+      setEstado(validacion)
       return
     }
 
@@ -32,19 +32,20 @@ export default function useUser() {
       .then(({ estado, mensaje }) => {
         switch (estado) {
           case 200:
-            console.log("logueado.");
-            setJWT(1)
+            console.log("Logueado.");
+            setJWT("Logueado.")
+            setEstado(1)
             break
           case 404:
             console.log('Documento incorrecto.')
-            setJWT(-1)
+            setEstado(-1)
             break
           case 400:
             console.log('Contraseña incorrecta.')
-            setJWT(-2)
+            setEstado(-2)
             break
           default:
-            setJWT(-408)
+            setEstado(-408)
             console.log(mensaje)
             console.log('No se ha podido conectar con la base de datos.')
             break
@@ -56,7 +57,7 @@ export default function useUser() {
   }, [setJWT])
 
   const logout = useCallback(() => {
-    setJWT(0)
+    setJWT(null)
   }, [setJWT])
 
   const registroAsociado = useCallback(data => {
@@ -103,7 +104,7 @@ export default function useUser() {
   }, [])
 
   return {
-    logStatus: jwt,
+    isLogged: Boolean(jwt),
     login,
     logout,
     registroAsociado,

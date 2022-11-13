@@ -12,7 +12,7 @@ function classNames(...classes) {
 
 export default function Header() {
     const router = useRouter()
-    const { logStatus } = useUser()
+    const { isLogged } = useUser()
     return (
         <div className="static overflow-hidden bg-white">
             <div className="mx-auto max-w-7xl">
@@ -196,7 +196,7 @@ export default function Header() {
                                 <div className="rounded-md shadow">
                                     <a
                                         onClick={() => {
-                                            if (logStatus != 1) {
+                                            if (!isLogged) {
                                                 router.push('/login')
                                             }
                                         }}

@@ -47,7 +47,7 @@ function validarContrasena(contrasena) {
  * @param { String } contrasena Contraseña a evaluar.
  */
 function validarDatosLogin({ documento, contrasena }) {
-  if (validarNumeroDocumento(documento)) {
+  if (!validarNumeroDocumento(documento)) {
     return -101
   }
   return 0

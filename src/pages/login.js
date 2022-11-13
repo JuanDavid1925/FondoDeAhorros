@@ -1,22 +1,27 @@
 import { Formik } from "formik"
 import { useRouter } from "next/Router"
-import { useCallback, useEffect } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 import useUser from "/src/hooks/useUser"
 
 export default function Login() {
   const router = useRouter()
-  const { login, logStatus } = useUser()
+  const { login } = useUser()
+  const [ estado, setEstado ] = useState(0)
 
   useEffect(() => {
-    if (logStatus == 1) {
+    if (estado == 1) {
       router.push("/")
     }
-  }, [logStatus, router])
+  }, [estado, router])
+
+  useEffect(() => {
+    console.log(`Estado: ${estado}`);
+  }, [estado])
 
   const handleSubmit = useCallback(({ documento, contrasena }) => {
-    return login(documento, contrasena)
-  }, [login])
+    return login(documento, contrasena, setEstado)
+  }, [login, setEstado])
 
   return (
 
