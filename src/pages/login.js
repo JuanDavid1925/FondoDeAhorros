@@ -17,10 +17,6 @@ export default function Login() {
     }
   }, [estado, router])
 
-  useEffect(() => {
-    console.log(`Estado: ${estado}`);
-  }, [estado])
-
   const handleSubmit = useCallback(({ documento, contrasena }) => {
     return login(documento, contrasena, setEstado)
   }, [login, setEstado])
