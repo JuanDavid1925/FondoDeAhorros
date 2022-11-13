@@ -92,7 +92,7 @@ export default function Header() {
                                                                     'block px-4 py-2 text-sm'
                                                                 )}
                                                             >
-                                                                préstamos
+                                                                Préstamos
                                                             </a>
                                                         )}
                                                     </Menu.Item>
@@ -138,7 +138,7 @@ export default function Header() {
                                             </Menu.Items>
                                         </Transition>
                                     </Menu>
-                                    <a className="font-medium text-gray-500 hover:text-gray-900 cursor-pointer"> contáctanos
+                                    <a className="font-medium text-gray-500 hover:text-gray-900 cursor-pointer"> Contáctanos
                                     </a>
 
                                 </div>
