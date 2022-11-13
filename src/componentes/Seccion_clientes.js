@@ -11,7 +11,7 @@ export default function Seccion_clientes() {
                             Forma parte de nuestros clientes
                         </h1>
                         <p className="mt-4 text-xl text-gray-500">
-                            Registrate como cliente y contacta a un asociado para empezar a disfrutar de nuestros servicios.
+                            Regístrate como cliente y contacta a un asociado para empezar a disfrutar de nuestros servicios.
                         </p>
                     </div>
                     <div>

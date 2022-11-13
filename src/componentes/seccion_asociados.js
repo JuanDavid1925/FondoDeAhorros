@@ -11,7 +11,7 @@ export default function Seccion_asociados() {
                             Sé parte de nuestros asociados
                         </h1>
                         <p className="mt-4 text-xl text-gray-500">
-                            Registrate y conoce los beneficios que tenemos para nuestros afiliados y su grupo familiar, a través de nuestro completo portafolio de servicios.
+                            Regístrate y conoce los beneficios que tenemos para nuestros afiliados y su grupo familiar, a través de nuestro completo portafolio de servicios.
                         </p>
                     </div>
                     <div>
