@@ -1,13 +1,15 @@
 import { Formik } from "formik"
 import { useRouter } from "next/Router"
 import { useCallback, useEffect, useState } from "react"
-
+import Aviso_registro from "../componentes/aviso_registro"
 import useUser from "/src/hooks/useUser"
 
 export default function Login() {
   const router = useRouter()
   const { login } = useUser()
   const [ estado, setEstado ] = useState(0)
+  const [showModal, setShowModal] = useState(false)
+  const handleClose = () => { setShowModal(false) }
 
   useEffect(() => {
     if (estado == 1) {
@@ -91,8 +93,14 @@ export default function Login() {
                   )
                 }
               </Formik>
-              <p className="mt-6 text-sm text-center text-gray-400">¿No tiene una cuenta? <a href="./registro_asociado" className="text-blue-500 focus:outline-none focus:underline hover:underline">Regístrese</a>.</p>
+              <p className="mt-6 text-sm text-center text-gray-400">¿No tiene una cuenta?
+                <a
+                  onClick={() => setShowModal(true)}
+                  className="text-blue-500 focus:outline-none focus:underline hover:underline cursor-pointer"> Regístrese
+                </a>.
+              </p>
             </div>
+            {showModal && <Aviso_registro onClose={() => handleClose()}></Aviso_registro>}
           </div>
         </div>
       </div>
