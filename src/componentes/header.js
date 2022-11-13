@@ -5,6 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useRef, useState } from 'react'
 import useUser from "/src/hooks/useUser"
+import Aviso_registro from './aviso_registro'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -13,8 +14,11 @@ function classNames(...classes) {
 export default function Header() {
     const router = useRouter()
     const { isLogged } = useUser()
+    const [showModal, setShowModal] = useState(false)
+    const handleClose = () => { setShowModal(false) }
+    
     return (
-        <div className="static overflow-hidden bg-white">
+        <div className="relative overflow-hidden bg-white">
             <div className="mx-auto max-w-7xl">
                 <div className="relative z-10 bg-white pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
                     <svg
@@ -207,12 +211,13 @@ export default function Header() {
                                 </div>
                                 <div className="mt-3 sm:mt-0 sm:ml-3">
                                     <a
-                                        onClick={() => router.push('/aviso_registro')}
+                                        onClick={() => setShowModal(true)}
                                         className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg cursor-pointer"
                                     >
                                         Registrarse
                                     </a>
                                 </div>
+                                {showModal && <Aviso_registro onClose={() => handleClose()}></Aviso_registro>}
                             </div>
                         </div>
                     </main>
