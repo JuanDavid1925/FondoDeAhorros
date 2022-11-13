@@ -10,7 +10,7 @@ export default function Seccion_ahorros() {
                             Empieza a ahorrar y asegura tu futuro
                         </h1>
                         <p className="mt-4 text-xl text-gray-500">
-                            Realiza tus ahorros de forma segura a través de nuestra página web o acercandote a nuestros puntos autorizados.
+                            Realiza tus ahorros de forma segura a través de nuestra página web o acercándote a nuestros puntos autorizados.
                         </p>
                     </div>
                     <div>
