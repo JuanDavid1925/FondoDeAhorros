@@ -42,7 +42,7 @@ function validarContrasena(contrasena) {
 
 
 /**
- * Función para validar si el dato entregado es una decha de nacimiento
+ * Función para validar si el dato entregado es una fecha de nacimiento
  * válida y si la persona es mayor de edad.
  * @param { String } fecha Dato a evaluar.
  */

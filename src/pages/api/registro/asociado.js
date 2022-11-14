@@ -21,7 +21,7 @@ export default async (req, res) => {
     ciudad,
     direccion,
     cuota_fija_mensual,
-    cuota_manejo_pendiente
+    cuota_manejo
 
   } = JSON.parse(body)
 
@@ -64,7 +64,7 @@ export default async (req, res) => {
           '${ciudad}',
           '${ocupacion}',
           '${direccion}',
-          '${cuota_manejo_pendiente}',
+          '${cuota_manejo}',
           '${cuota_fija_mensual}',
           '${correo}',
           '${fecha_nacimiento}',
