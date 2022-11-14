@@ -28,7 +28,7 @@ export default function Login() {
         <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("https://www.semana.com/resizer/KBqsa1apFXMpiYrzLIKHestVJkk=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/IMMOPWHLBBGGLDWBUB4VAZZHIE.jpg")' }}>
           <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
             <div>
-              <h2 className="text-4xl font-bold text-white">Fondo de Ahorros y Préstamos</h2>
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">Fondo de Ahorros y Préstamos</h2>
               <p className="max-w-x1 mt-3 text-gray-300">Gracias por formar parte de nuestro fondo. </p>
               <p className="max-w-xl mt-3 text-gray-300">Es un placer poder brindarle lo mejor de nosotros.</p>
             </div>
