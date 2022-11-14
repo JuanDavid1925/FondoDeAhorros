@@ -41,17 +41,17 @@ export default function Login() {
               <p className="mt-3 text-gray-600 dark:text-gray-300">Ingrese a su cuenta</p>
             </div>
             <div className="mt-8">
-              <Formik
-                initialValues=
-                {{
-                  documento: "",
-                  contrasena: ""
-                }}
-                onSubmit={handleSubmit}
-              >
-                {
-                  ({ handleChange, handleSubmit }) => (
-                    <form onSubmit={handleSubmit}>
+                <Formik
+                  initialValues=
+                  {{
+                    documento: "",
+                    contrasena: ""
+                  }}
+                  onSubmit={handleSubmit}
+                >
+                  {
+                    ({ handleChange, handleSubmit }) => (
+                      <form onSubmit={handleSubmit}>
                       <div>
                         <label htmlFor="documento" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Documento de identificación</label>
                         <input
@@ -89,6 +89,7 @@ export default function Login() {
                   )
                 }
               </Formik>
+              
               <p className="mt-6 text-sm text-center text-gray-400">¿No tiene una cuenta?
                 <a
                   onClick={() => setShowModal(true)}
