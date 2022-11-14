@@ -42,11 +42,27 @@ function validarContrasena(contrasena) {
 
 
 /**
+ * Función para validar si el dato entregado es una decha de nacimiento
+ * válida y si la persona es mayor de edad.
+ * @param { String } fecha Dato a evaluar.
+ */
+function validarNacimiento(fecha) {
+  try {
+    let [anho, mes, dia] = (fecha.split('-').length === 3) ? fecha.split('-') : ['0', '0', '0']
+
+
+  } catch (error) {
+    return false
+  }
+}
+
+
+/**
  * Función para validar si los dato entregados son parte de un logueo válido.
  * @param { String } documento Número de documento a evaluar.
  * @param { String } contrasena Contraseña a evaluar.
  */
-function validarDatosLogin({ documento, contrasena }) {
+function validarDatosLogin({ documento }) {
   if (!validarNumeroDocumento(documento)) {
     return -101
   }
