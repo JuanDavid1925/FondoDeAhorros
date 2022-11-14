@@ -45,7 +45,6 @@ export default function Registro() {
                   ciudad: "",
                   direccion: "",
                   cuota_fija_mensual: "",
-                  cuota_manejo_pendiente: ""
                 }}
                 onSubmit={handleSubmit}
               >
