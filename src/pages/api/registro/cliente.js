@@ -16,7 +16,6 @@ export default async (req, res) => {
     telefono,
     contrasena,
     documento_asociado
-
   } = JSON.parse(body)
 
   switch (method) {
@@ -44,11 +43,13 @@ export default async (req, res) => {
 
         const query2 = `INSERT INTO clientes (
           documento_cliente,
-          documento_asociado_cliente
+          documento_asociado_cliente,
+          activo_cliente
         )
         VALUES (
           '${documento}',
-          '${documento_asociado}'
+          '${documento_asociado}',
+          true
         )
         RETURNING *;`
 
