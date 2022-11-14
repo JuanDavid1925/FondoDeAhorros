@@ -5,14 +5,18 @@ import useUser from "/src/hooks/useUser"
 
 
 export default function Registro() {
-
   const router = useRouter()
-
   const { registroAsociado } = useUser()
+  const [estado, setEstado] = useState()
+
+  useEffect(() => {
+    if (estado == 1) {
+      router.push("/")
+    }
+  }, [estado, router])
 
   const handleSubmit = useCallback(data => {
-    console.log(data)
-    //registroAsociado(data)
+    registroAsociado(data, setEstado)
   }, [registroAsociado])
 
   return (
@@ -44,8 +48,7 @@ export default function Registro() {
                   ocupacion: "",
                   ciudad: "",
                   direccion: "",
-                  cuota_fija_mensual: "",
-                  cuota_manejo_pendiente: ""
+                  cuota_fija_mensual: ""
                 }}
                 onSubmit={handleSubmit}
               >

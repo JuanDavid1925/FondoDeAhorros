@@ -5,12 +5,17 @@ import useUser from "/src/hooks/useUser"
 
 export default function Registro_cliente() {
   const router = useRouter()
-
   const { registroCliente } = useUser()
+  const [estado, setEstado] = useState()
+
+  useEffect(() => {
+    if (estado == 1) {
+      router.push("/")
+    }
+  }, [estado, router])
 
   const handleSubmit = useCallback(data => {
-    console.log(data)
-    //registroCliente(data)
+    registroCliente(data, setEstado)
   }, [registroCliente])
 
   return (

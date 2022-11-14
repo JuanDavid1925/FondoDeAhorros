@@ -70,4 +70,36 @@ function validarDatosLogin({ documento }) {
 }
 
 
-export { validarNumeroDocumento, validarContrasena, validarDatosLogin }
+/**
+ * Función para validar si los dato entregados son parte de un logueo válido.
+ * @param { String } documento Número de documento a evaluar.
+ * @param { String } contrasena Contraseña a evaluar.
+ */
+function validarDatosRegistroAsociado({ documento, contrasena }) {
+  if (!validarNumeroDocumento(documento)) {
+    return -101
+  }
+  else if (!validarContrasena(contrasena)) {
+    return -102
+  }
+  return 0
+}
+
+
+/**
+ * Función para validar si los dato entregados son parte de un logueo válido.
+ * @param { String } documento Número de documento a evaluar.
+ * @param { String } contrasena Contraseña a evaluar.
+ */
+function validarDatosRegistroCliente({ documento, contrasena }) {
+  if (!validarNumeroDocumento(documento)) {
+    return -101
+  }
+  else if (!validarContrasena(contrasena)) {
+    return -102
+  }
+  return 0
+}
+
+
+export { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente }

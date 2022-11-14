@@ -1,7 +1,7 @@
 import { useCallback, useContext } from 'react'
 
 import Context from '/src/context/userContext'
-import { validarDatosLogin } from '/src/utils/validations'
+import { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente } from '/src/utils/validations'
 
 export default function useUser() {
   const { jwt, setJWT } = useContext(Context)
@@ -12,12 +12,12 @@ export default function useUser() {
       documento: documento,
       contrasena: contrasena
     }
-    console.log(`Entra al login.`);
+    console.log(`Entra al login.`)
 
     let validacion = validarDatosLogin(data)
 
     if (validacion !== 0) {
-      setEstado(validacion)
+      console.log(validacion);
       return
     }
 
@@ -60,9 +60,19 @@ export default function useUser() {
     setJWT(null)
   }, [setJWT])
 
-  const registroAsociado = useCallback(data => {
+  const registroAsociado = useCallback((data, setEstado) => {
     const URL = '/api/registro/asociado'
-    console.log("Entra al asociado.");
+    console.log("Entra al asociado.")
+
+    let validacion = validarDatosLogin(data)
+
+    if (validacion !== 0) {
+      setEstado(validacion)
+      console.log(validacion);
+      return
+    }
+
+    console.log(validacion);
 
     fetch(
       URL,
@@ -82,9 +92,19 @@ export default function useUser() {
 
   }, [])
 
-  const registroCliente = useCallback(data => {
+  const registroCliente = useCallback((data, setEstado) => {
     const URL = '/api/registro/cliente'
-    console.log("Entra al cliente.");
+    console.log("Entra al cliente.")
+
+    let validacion = validarDatosLogin(data)
+
+    if (validacion !== 0) {
+      setEstado(validacion)
+      console.log(validacion);
+      return
+    }
+
+    console.log(validacion);
 
     fetch(
       URL,

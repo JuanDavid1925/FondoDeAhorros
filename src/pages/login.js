@@ -18,7 +18,7 @@ export default function Login() {
   }, [estado, router])
 
   const handleSubmit = useCallback(({ documento, contrasena }) => {
-    return login(documento, contrasena, setEstado)
+    login(documento, contrasena, setEstado)
   }, [login, setEstado])
 
   return (
