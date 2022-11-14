@@ -168,7 +168,7 @@ export default function Registro() {
                       <br></br>
                       <div>
                         <input type="checkbox" id="terminos" name="terminos" />
-                        <label for="scales" className="mb-2 text-sm text-gray-600 dark:text-gray-200"> Acepto los términos y condiciones</label>
+                        <label className="mb-2 text-sm text-gray-600 dark:text-gray-200"> Acepto los términos y condiciones</label>
                       </div>
                       <br></br>
                       <div className="flex justify-center">
