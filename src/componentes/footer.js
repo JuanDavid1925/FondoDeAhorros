@@ -3,6 +3,7 @@
 export default function Footer() {
     return (
         <footer className="text-center lg:text-left bg-gray-100 text-gray-600">
+            <a name="footer"></a>
             <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
                 <div className="mr-12 hidden lg:block">
                     <span>Conéctate con nosotros en nuestras redes sociales:</span>

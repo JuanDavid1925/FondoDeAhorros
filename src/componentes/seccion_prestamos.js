@@ -39,7 +39,7 @@ export default function Seccion_prestamos() {
                             </div>
 
                             <a
-                                href="#"
+                                href="../info_prestamos_clientes"
                                 className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700"
                             >
                                 Consulta más información sobre préstamos

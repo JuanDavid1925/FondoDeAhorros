@@ -40,7 +40,7 @@ export default function Seccion_ahorros() {
                             </div>
 
                             <a
-                                href="#"
+                                href="../info_ahorros_asociados"
                                 className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700"
                             >
                                 Consulta más información sobre ahorros.

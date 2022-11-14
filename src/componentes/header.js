@@ -77,7 +77,7 @@ export default function Header() {
                                                     <Menu.Item>
                                                         {({ active }) => (
                                                             <a
-                                                                href="#"
+                                                                href="../info_ahorros_asociados"
                                                                 className={classNames(
                                                                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                     'block px-4 py-2 text-sm'
@@ -90,7 +90,7 @@ export default function Header() {
                                                     <Menu.Item>
                                                         {({ active }) => (
                                                             <a
-                                                                href="#"
+                                                                href="../info_prestamos_asociados"
                                                                 className={classNames(
                                                                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                     'block px-4 py-2 text-sm'
@@ -128,7 +128,7 @@ export default function Header() {
                                                     <Menu.Item>
                                                         {({ active }) => (
                                                             <a
-                                                                href="#"
+                                                                href="../info_prestamos_clientes"
                                                                 className={classNames(
                                                                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                                                     'block px-4 py-2 text-sm'
@@ -142,8 +142,7 @@ export default function Header() {
                                             </Menu.Items>
                                         </Transition>
                                     </Menu>
-                                    <a className="font-medium text-gray-500 hover:text-gray-900 cursor-pointer"> Contáctanos
-                                    </a>
+                                    <a onClick={() => { router.push('/#footer') }} className="font-medium text-gray-500 hover:text-gray-900 cursor-pointer"> Contáctanos </a>
 
                                 </div>
                             </nav>
