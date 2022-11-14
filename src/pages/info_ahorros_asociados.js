@@ -1,6 +1,10 @@
-
+import Aviso_registro from "../componentes/aviso_registro"
+import { useRef, useState } from 'react'
 
 export default function Info_ahorros_asociados() {
+    const [showModal, setShowModal] = useState(false)
+    const handleClose = () => { setShowModal(false) }
+
     return (
         <section className="bg-white">
             <div className="container flex flex-col items-center px-4 py-20 mx-auto xl:flex-row">
@@ -31,15 +35,17 @@ export default function Info_ahorros_asociados() {
                             </a>
                         </div>
                         <div className="inline-flex w-full mt-4 overflow-hidden rounded-lg shadow sm:w-auto sm:mx-2 sm:mt-0">
-                            <a href="./login" className="inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium text-white transition-colors duration-150 transform sm:w-auto bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-600 hover:to-blue-600">
+                            <a onClick={() => setShowModal(true)}
+                                className="inline-flex items-center justify-center w-full px-5 py-3 text-base font-medium text-white transition-colors duration-150 transform sm:w-auto bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-600 hover:to-blue-600 cursor-pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
                                 </svg>
                                 <span className="mx-2">
-                                    Iniciar sesión
+                                    Registrarse
                                 </span>
                             </a>
                         </div>
+                        {showModal && <Aviso_registro onClose={() => handleClose()}></Aviso_registro>}
                     </div>
                 </div>
             </div>
