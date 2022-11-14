@@ -16,12 +16,13 @@ export default async (req, res) => {
     telefono,
     contrasena,
     documento_asociado
-
   } = JSON.parse(body)
 
   switch (method) {
     case 'POST':
       try {
+        let contra = await bcryptjs.hash(contrasena, 8)
+
         const query1 = `INSERT INTO usuarios (
           documento_usuario, 
           nombres_usuario,
@@ -34,7 +35,7 @@ export default async (req, res) => {
           '${documento}',
           '${nombres}',
           '${apellidos}',
-          '${contrasena}',
+          '${contra}',
           '${telefono}',
           'Cliente'
         )
@@ -42,11 +43,13 @@ export default async (req, res) => {
 
         const query2 = `INSERT INTO clientes (
           documento_cliente,
-          documento_asociado_cliente
+          documento_asociado_cliente,
+          activo_cliente
         )
         VALUES (
           '${documento}',
-          '${documento_asociado}'
+          '${documento_asociado}',
+          true
         )
         RETURNING *;`
 

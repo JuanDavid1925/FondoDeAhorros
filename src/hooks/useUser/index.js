@@ -1,22 +1,30 @@
 import { useCallback, useContext } from 'react'
 
 import Context from '/src/context/userContext'
+import { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente } from '/src/utils/validations'
 
 export default function useUser() {
   const { jwt, setJWT } = useContext(Context)
 
-  const login = useCallback((documento, contrasena) => {
+  const login = useCallback((documento, contrasena, setEstado) => {
     const URL = '/api/login'
     const data = {
       documento: documento,
       contrasena: contrasena
     }
-    console.log("Entra al login.");
+    console.log(`Entra al login.`)
+
+    let validacion = validarDatosLogin(data)
+
+    if (validacion !== 0) {
+      console.log(validacion);
+      return
+    }
 
     fetch(
       URL,
       {
-        method: 'GET',
+        method: 'POST',
         body: JSON.stringify(data)
       }
     )
@@ -24,20 +32,24 @@ export default function useUser() {
       .then(({ estado, mensaje }) => {
         switch (estado) {
           case 200:
-            console.log("logueado.");
-            setJWT('Logueado.')
+            setJWT("Logueado.")
+            setEstado(1)
             break
           case 404:
-            console.log('Documento incorrecto.')
+            setEstado(-1)
             break
           case 400:
-            console.log('Contraseña incorrecta.')
+            setEstado(-2)
             break
+          case 409:
+            setEstado(-408)
           default:
-            console.log(mensaje)
+            setEstado(-408)
             console.log('No se ha podido conectar con la base de datos.')
             break
         }
+
+        console.log(mensaje);
 
       })
       .catch(error => console.error(`Error: ${error}`))
@@ -48,9 +60,19 @@ export default function useUser() {
     setJWT(null)
   }, [setJWT])
 
-  const registroAsociado = useCallback(data => {
+  const registroAsociado = useCallback((data, setEstado) => {
     const URL = '/api/registro/asociado'
-    console.log("Entra al asociado.");
+    console.log("Entra al asociado.")
+
+    let validacion = validarDatosLogin(data)
+
+    if (validacion !== 0) {
+      setEstado(validacion)
+      console.log(validacion);
+      return
+    }
+
+    console.log(validacion);
 
     fetch(
       URL,
@@ -70,9 +92,19 @@ export default function useUser() {
 
   }, [])
 
-  const registroCliente = useCallback(data => {
+  const registroCliente = useCallback((data, setEstado) => {
     const URL = '/api/registro/cliente'
-    console.log("Entra al cliente.");
+    console.log("Entra al cliente.")
+
+    let validacion = validarDatosLogin(data)
+
+    if (validacion !== 0) {
+      setEstado(validacion)
+      console.log(validacion);
+      return
+    }
+
+    console.log(validacion);
 
     fetch(
       URL,

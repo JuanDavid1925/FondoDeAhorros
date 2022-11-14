@@ -20,14 +20,14 @@ export default async (req, res) => {
     ocupacion,
     ciudad,
     direccion,
-    cuota_fija_mensual,
-    cuota_manejo_pendiente
-
+    cuota_fija_mensual
   } = JSON.parse(body)
 
   switch (method) {
     case 'POST':
       try {
+        let contra = await bcryptjs.hash(contrasena, 8)
+
         const query1 = `INSERT INTO usuarios (
           documento_usuario,
           nombres_usuario,
@@ -40,7 +40,7 @@ export default async (req, res) => {
           '${documento}',
           '${nombres}',
           '${apellidos}',
-          '${contrasena}',
+          '${contra}',
           '${telefono}',
           'Asociado'
         )
@@ -51,22 +51,24 @@ export default async (req, res) => {
           ciudad_asociado,
           ocupacion_asociado,
           direccion_asociado,
-          cuota_manejo_pendiente_asociado,
           cuota_fija_mensual_asociado,
           correo_asociado,
           fecha_nacimiento_asociado,
-          monto_total_asociado
+          cuota_manejo_pendiente_asociado,
+          monto_total_asociado,
+          activo_asociado
         )
         VALUES (
           '${documento}',
           '${ciudad}',
           '${ocupacion}',
           '${direccion}',
-          '${cuota_manejo_pendiente}',
           '${cuota_fija_mensual}',
           '${correo}',
           '${fecha_nacimiento}',
-          0
+          5000,
+          0,
+          true
         )
         RETURNING *;`
 
