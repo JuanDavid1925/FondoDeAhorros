@@ -208,7 +208,7 @@ export default function Header() {
                                         }}
                                         className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg cursor-pointer"
                                     >
-                                        Iniciar sesión
+                                        {(!isLogged) ? 'Iniciar sesión' : 'Cerrar sesión'}
                                     </a>
                                 </div>
                                 <div className="mt-3 sm:mt-0 sm:ml-3">
