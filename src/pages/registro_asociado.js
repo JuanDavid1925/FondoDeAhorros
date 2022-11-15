@@ -3,13 +3,14 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
-
-
+import Terminos from '../componentes/terminos_condiciones';
 
 export default function Registro() {
   const router = useRouter()
   const { registroAsociado } = useUser()
   const [estado, setEstado] = useState()
+  const [showModal, setShowModal] = useState(false)
+  const handleClose = () => { setShowModal(false) }
 
   useEffect(() => {
     if (estado == 1) {
@@ -189,7 +190,12 @@ export default function Registro() {
                       </div>
                       <div className="form-group form-check">
                         <Field type="checkbox" name="aceptarTerminos" className={'form-check-input ' + (errors.aceptarTerminos && touched.aceptarTerminos ? ' Inválido' : '')} />
-                        <label htmlFor="aceptarTerminos" className="form-check-label mb-2 text-sm text-gray-600 dark:text-gray-200"> Aceptar términos y condiciones</label>
+                        <label htmlFor="aceptarTerminos" className="form-check-label mb-2 text-sm text-gray-600 dark:text-gray-200"> Aceptar</label>
+                        <a
+                          onClick={() => setShowModal(true)}
+                          className="text-blue-500 focus:outline-none focus:underline hover:underline cursor-pointer"> términos y condiciones
+                        </a>.
+                        {showModal && <Terminos onClose={() => handleClose()}></Terminos>}
                         <ErrorMessage name="aceptarTerminos" component="div" className="t-2 text-sm text-red-600 dark:text-red-500" />
                       </div>
                       <br></br>
