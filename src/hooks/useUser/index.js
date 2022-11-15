@@ -64,7 +64,7 @@ export default function useUser() {
     const URL = '/api/registro/asociado'
     console.log("Entra al asociado.")
 
-    let validacion = validarDatosLogin(data)
+    let validacion = validarDatosRegistroAsociado(data)
 
     if (validacion !== 0) {
       setEstado(validacion)
@@ -96,7 +96,7 @@ export default function useUser() {
     const URL = '/api/registro/cliente'
     console.log("Entra al cliente.")
 
-    let validacion = validarDatosLogin(data)
+    let validacion = validarDatosRegistroCliente(data)
 
     if (validacion !== 0) {
       setEstado(validacion)
