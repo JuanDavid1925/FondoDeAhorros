@@ -40,6 +40,7 @@ export default async (req, res) => {
           })
 
           res.setHeader('Set-Cookie', jwtCookie)
+
           return res.status(200).json({ estado: 200, mensaje: 'Logueado.' })
         }
 

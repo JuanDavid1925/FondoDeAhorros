@@ -13,7 +13,7 @@ function classNames(...classes) {
 
 export default function Header() {
     const router = useRouter()
-    const { isLogged } = useUser()
+    const { isLogged, logout } = useUser()
     const [showModal, setShowModal] = useState(false)
     const handleClose = () => { setShowModal(false) }
     
@@ -199,7 +199,10 @@ export default function Header() {
                                 <div className="rounded-md shadow">
                                     <a
                                         onClick={() => {
-                                            if (!isLogged) {
+                                            if (isLogged) {
+                                                logout()
+                                            }
+                                            else {
                                                 router.push('/login')
                                             }
                                         }}

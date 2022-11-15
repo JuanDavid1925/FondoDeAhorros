@@ -59,6 +59,20 @@ export default function useUser() {
 
   const logout = useCallback(() => {
     setJWT(null)
+
+    const URL = '/api/users/logout'
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+      }
+    )
+      .then(response => response.json())
+      .then(({ mensaje }) => {
+        console.log(mensaje);
+      })
+      .catch(error => console.error(`Error: ${error}`))
   }, [setJWT])
 
   const registroAsociado = useCallback((data, setEstado) => {
