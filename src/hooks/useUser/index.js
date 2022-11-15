@@ -7,7 +7,7 @@ export default function useUser() {
   const { jwt, setJWT } = useContext(Context)
 
   const login = useCallback((documento, contrasena, setEstado) => {
-    const URL = '/api/login'
+    const URL = '/api/users/login'
     const data = {
       documento: documento,
       contrasena: contrasena
@@ -32,7 +32,7 @@ export default function useUser() {
       .then(({ estado, mensaje }) => {
         switch (estado) {
           case 200:
-            setJWT("Logueado.")
+            setJWT("t")
             setEstado(1)
             break
           case 404:
@@ -43,6 +43,7 @@ export default function useUser() {
             break
           case 409:
             setEstado(-408)
+            break
           default:
             setEstado(-408)
             console.log('No se ha podido conectar con la base de datos.')
@@ -61,7 +62,7 @@ export default function useUser() {
   }, [setJWT])
 
   const registroAsociado = useCallback((data, setEstado) => {
-    const URL = '/api/registro/asociado'
+    const URL = '/api/users/registro/asociado'
     console.log("Entra al asociado.")
 
     let validacion = validarDatosRegistroAsociado(data)
@@ -105,6 +106,7 @@ export default function useUser() {
             break
           case 409:
             setEstado(-408)
+            break
           default:
             setEstado(-408)
             console.log('No se ha podido conectar con la base de datos.')
@@ -119,7 +121,7 @@ export default function useUser() {
   }, [])
 
   const registroCliente = useCallback((data, setEstado) => {
-    const URL = '/api/registro/cliente'
+    const URL = '/api/users/registro/cliente'
     console.log("Entra al cliente.")
 
     let validacion = validarDatosRegistroCliente(data)
@@ -163,6 +165,7 @@ export default function useUser() {
             break
           case 409:
             setEstado(-408)
+            break
           default:
             setEstado(-408)
             console.log('No se ha podido conectar con la base de datos.')
