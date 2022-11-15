@@ -26,7 +26,10 @@ export default async (req, res) => {
   switch (method) {
     case 'POST':
       try {
+        const bcryptjs = require('bcryptjs')
         let contra = await bcryptjs.hash(contrasena, 8)
+
+        console.log("Termina el encriptado");
 
         const query1 = `INSERT INTO usuarios (
           documento_usuario,
@@ -91,7 +94,7 @@ export default async (req, res) => {
         })
 
       } catch ({ message }) {
-        res.status(400).json(message)
+        res.status(400).json({ mensaje: message })
 
       } finally {
         break

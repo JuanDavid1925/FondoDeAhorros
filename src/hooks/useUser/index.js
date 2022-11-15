@@ -72,7 +72,13 @@ export default function useUser() {
       return
     }
 
-    console.log(validacion);
+    {
+      const { contrasena, confirContrasena } = data
+      if (contrasena === confirContrasena) {
+        delete data.confirContrasena
+        delete data.aceptarTerminos
+      }
+    }
 
     fetch(
       URL,
@@ -82,10 +88,11 @@ export default function useUser() {
       }
     )
       .then(response => response.json())
-      .then(data => {
-        console.log("respondió bien");
-        if (data.estado === 201)
+      .then(({ estado, mensaje }) => {
+        if (estado === 201)
           return console.log('SUCCESS')
+
+        console.log(mensaje);
 
       })
       .catch(error => console.error(`Error: ${error}`))
@@ -104,7 +111,13 @@ export default function useUser() {
       return
     }
 
-    console.log(validacion);
+    {
+      const { contrasena, confirContrasena } = data
+      if (contrasena === confirContrasena) {
+        delete data.confirContrasena
+        delete data.aceptarTerminos
+      }
+    }
 
     fetch(
       URL,
@@ -114,9 +127,11 @@ export default function useUser() {
       }
     )
       .then(response => response.json())
-      .then(data => {
-        if (data.estado === 201)
+      .then(({ estado, mensaje }) => {
+        if (estado === 201)
           return console.log('SUCCESS')
+
+        console.log(mensaje);
 
       })
       .catch(error => console.error(`Error: ${error}`))

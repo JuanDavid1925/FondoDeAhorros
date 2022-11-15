@@ -21,6 +21,7 @@ export default async (req, res) => {
   switch (method) {
     case 'POST':
       try {
+        const bcryptjs = require('bcryptjs')
         let contra = await bcryptjs.hash(contrasena, 8)
 
         const query1 = `INSERT INTO usuarios (
@@ -69,8 +70,8 @@ export default async (req, res) => {
           usuario: res1.rows[0].usuario
         })
 
-      } catch (error) {
-        res.status(400).json(error)
+      } catch ({ message }) {
+        res.status(400).json({ mensaje: message })
 
       } finally {
         break

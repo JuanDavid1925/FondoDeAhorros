@@ -66,9 +66,9 @@ function validarContrasena(contrasena) {
  */
 function validarNacimiento(fecha) {
   try {
-    let [anho, mes, dia] = (fecha.split('-').length === 3) ? fecha.split('-') : ['0', '0', '0']
+    let [anho, mes, dia] = (fecha.split('/').length === 3) ? fecha.split('/') : ['0', '0', '0']
 
-
+    return true
   } catch (error) {
     return false
   }
