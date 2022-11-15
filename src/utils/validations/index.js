@@ -26,8 +26,8 @@ function validarEntero(numero) {
  */
 function validarNumeroDocumento(documento) {
   try {
-    let tamanoMin = documento.length >= 5
-    let tamanoMax = documento.length <= 15
+    let tamanoMin = documento.toString().length >= 5
+    let tamanoMax = documento.toString().length <= 15
     let esNum = /^\d+$/.test(documento)
 
     return tamanoMin && tamanoMax && esNum
