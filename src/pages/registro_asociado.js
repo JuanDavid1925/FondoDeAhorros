@@ -1,7 +1,9 @@
-import { Formik } from "formik"
+import { Formik, Form, ErrorMessage, Field } from 'formik';
+import * as Yup from 'yup';
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
+
 
 
 export default function Registro() {
@@ -48,12 +50,22 @@ export default function Registro() {
                   ocupacion: "",
                   ciudad: "",
                   direccion: "",
-                  cuota_fija_mensual: ""
+                  cuota_fija_mensual: "",
+                  aceptarTerminos: false
                 }}
-                onSubmit={handleSubmit}
+
+                validationSchema={Yup.object().shape({
+                  aceptarTerminos: Yup.bool()
+                    .oneOf([true], 'Debe aceptar términos y condiciones')
+                })}
+
+                onSubmit={fields => {
+                  handleSubmit(fields)//agregar modal de que se logró todo con éxito
+                }}
+
               >
                 {
-                  ({ handleChange, handleSubmit }) => (
+                  ({ handleChange, handleSubmit, errors, touched }) => (
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
                       <div>
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Nombre(s) </label>
@@ -166,13 +178,14 @@ export default function Registro() {
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                       </div>
                       <br></br>
-                      <div>
-                        <input type="checkbox" id="terminos" name="terminos" />
-                        <label for="scales" className="mb-2 text-sm text-gray-600 dark:text-gray-200"> Acepto los términos y condiciones</label>
+                      <div className="form-group form-check">
+                        <Field type="checkbox" name="aceptarTerminos" className={'form-check-input ' + (errors.aceptarTerminos && touched.aceptarTerminos ? ' Inválido' : '')} />
+                        <label htmlFor="aceptarTerminos" className="form-check-label mb-2 text-sm text-gray-600 dark:text-gray-200"> Aceptar términos y condiciones</label>
+                        <ErrorMessage name="aceptarTerminos" component="div" className="t-2 text-sm text-red-600 dark:text-red-500" />
                       </div>
                       <br></br>
-                      <div className="flex justify-center">
-                        <button type="submit" className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
+                      <div className="form-group flex justify-center">
+                        <button type="submit" className="btn-primary flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
                           <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Registrarse</label></span>
                         </button>
                       </div>
