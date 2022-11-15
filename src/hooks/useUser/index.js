@@ -16,7 +16,7 @@ export default function useUser() {
 
     let validacion = validarDatosLogin(data)
 
-    if (validacion !== 0) {
+    if (validacion !== 1) {
       console.log(validacion);
       return
     }
@@ -66,7 +66,7 @@ export default function useUser() {
 
     let validacion = validarDatosRegistroAsociado(data)
 
-    if (validacion !== 0) {
+    if (validacion !== 1) {
       setEstado(validacion)
       console.log(validacion);
       return
@@ -77,6 +77,10 @@ export default function useUser() {
       if (contrasena === confirContrasena) {
         delete data.confirContrasena
         delete data.aceptarTerminos
+      }
+      else {
+        setEstado(-10)
+        console.log(-10)
       }
     }
 
@@ -89,8 +93,23 @@ export default function useUser() {
     )
       .then(response => response.json())
       .then(({ estado, mensaje }) => {
-        if (estado === 201)
-          return console.log('SUCCESS')
+        switch (estado) {
+          case 200:
+            setEstado(1)
+            break
+          case 400:
+            setEstado(-1)
+            break
+          case 401:
+            setEstado(-2)
+            break
+          case 409:
+            setEstado(-408)
+          default:
+            setEstado(-408)
+            console.log('No se ha podido conectar con la base de datos.')
+            break
+        }
 
         console.log(mensaje);
 
@@ -105,7 +124,7 @@ export default function useUser() {
 
     let validacion = validarDatosRegistroCliente(data)
 
-    if (validacion !== 0) {
+    if (validacion !== 1) {
       setEstado(validacion)
       console.log(validacion);
       return
@@ -116,6 +135,10 @@ export default function useUser() {
       if (contrasena === confirContrasena) {
         delete data.confirContrasena
         delete data.aceptarTerminos
+      }
+      else {
+        setEstado(-10)
+        console.log(-10)
       }
     }
 
@@ -128,8 +151,23 @@ export default function useUser() {
     )
       .then(response => response.json())
       .then(({ estado, mensaje }) => {
-        if (estado === 201)
-          return console.log('SUCCESS')
+        switch (estado) {
+          case 200:
+            setEstado(1)
+            break
+          case 400:
+            setEstado(-1)
+            break
+          case 401:
+            setEstado(-2)
+            break
+          case 409:
+            setEstado(-408)
+          default:
+            setEstado(-408)
+            console.log('No se ha podido conectar con la base de datos.')
+            break
+        }
 
         console.log(mensaje);
 

@@ -169,7 +169,7 @@ function validarDatosLogin({ documento }) {
   if (!validarNumeroDocumento(documento)) {
     return -101
   }
-  return 0
+  return 1
 }
 
 
@@ -209,7 +209,7 @@ function validarDatosRegistroAsociado({ nombres, apellidos, documento, contrasen
   if (!validarEntero(cuota_fija_mensual)) {
     return -110
   }
-  return 0
+  return 1
 }
 
 
@@ -237,7 +237,7 @@ function validarDatosRegistroCliente({ nombres, apellidos, documento, contrasena
   if (!validarNumeroDocumento(documento_asociado)) {
     return -106
   }
-  return 0
+  return 1
 }
 
 export { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente }

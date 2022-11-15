@@ -81,7 +81,7 @@ export default async (req, res) => {
           return res.status(400).json({ estado: 400, mensaje: 'Error al crear al usuario' })
 
         if (res2.rowcount === 0)
-          return res.status(400).json({ estado: 400, mensaje: 'Error al crear al asociado' })
+          return res.status(400).json({ estado: 401, mensaje: 'Error al crear al asociado' })
 
         console.log(res2.rows);
 
@@ -92,7 +92,7 @@ export default async (req, res) => {
         })
 
       } catch ({ message }) {
-        res.status(400).json({ mensaje: message })
+        res.status(40).json({ estado: 408, mensaje: message })
 
       } finally {
         break
