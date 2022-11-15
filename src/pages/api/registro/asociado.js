@@ -28,6 +28,8 @@ export default async (req, res) => {
       try {
         let contra = await bcryptjs.hash(contrasena, 8)
 
+        console.log(body)
+
         const query1 = `INSERT INTO usuarios (
           documento_usuario,
           nombres_usuario,

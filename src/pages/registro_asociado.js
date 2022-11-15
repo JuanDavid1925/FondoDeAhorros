@@ -18,13 +18,13 @@ export default function Registro() {
   }, [estado, router])
 
   const handleSubmit = useCallback(data => {
-    registroAsociado(data, setEstado)
+    //registroAsociado(data, setEstado)
   }, [registroAsociado])
 
   return (
 
     <section className="bg-white dark:bg-gray-900">
-      <div className="flex justify-center">
+      <div className="flex justify-center position:fixed">
         <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("./asociados3.jpg")' }}>
         </div>
         <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
@@ -144,7 +144,7 @@ export default function Registro() {
                           id="ciudad"
                           name="ciudad"
                           type="text"
-                          placeholder="Ingrese la ciudad en la que se encuentra"
+                          placeholder="Ingrese su ciudad"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                       </div>
                       <div>
@@ -174,16 +174,26 @@ export default function Registro() {
                           id="confirContrasena"
                           name="confirContrasena"
                           type="password"
-                          placeholder="Ingrese nuevamente su contraseña"
+                          placeholder="Ingrese otra vez su contraseña "
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                       </div>
-                      <br></br>
+                      <div>
+                        <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Cuota mensual</label>
+                        <input
+                          onChange={handleChange}
+                          id="cuota_fija_mensual"
+                          name="cuota_fija_mensual"
+                          type="text"
+                          placeholder="Ingrese la cuota que va a pagar"
+                          className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      </div>
                       <div className="form-group form-check">
                         <Field type="checkbox" name="aceptarTerminos" className={'form-check-input ' + (errors.aceptarTerminos && touched.aceptarTerminos ? ' Inválido' : '')} />
                         <label htmlFor="aceptarTerminos" className="form-check-label mb-2 text-sm text-gray-600 dark:text-gray-200"> Aceptar términos y condiciones</label>
                         <ErrorMessage name="aceptarTerminos" component="div" className="t-2 text-sm text-red-600 dark:text-red-500" />
                       </div>
                       <br></br>
+                      <div></div>
                       <div className="form-group flex justify-center">
                         <button type="submit" className="btn-primary flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
                           <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Registrarse</label></span>
