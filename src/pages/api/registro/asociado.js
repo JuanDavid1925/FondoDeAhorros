@@ -29,8 +29,6 @@ export default async (req, res) => {
         const bcryptjs = require('bcryptjs')
         let contra = await bcryptjs.hash(contrasena, 8)
 
-        console.log("Termina el encriptado");
-
         const query1 = `INSERT INTO usuarios (
           documento_usuario,
           nombres_usuario,
