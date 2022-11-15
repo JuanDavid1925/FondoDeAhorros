@@ -66,13 +66,7 @@ function validarContrasena(contrasena) {
  */
 function validarNacimiento(fecha) {
   try {
-<<<<<<< HEAD
-    let [anho, mes, dia] = (fecha.split('/').length === 3) ? fecha.split('/') : ['0', '0', '0']
-=======
     //let [anho, mes, dia] = (fecha.split('/').length === 3) ? fecha.split('/') : ['0', '0', '0']
-    return true
->>>>>>> 21501c8c264b202474528f39eb72a99ac01bc5e4
-
     return true
   } catch (error) {
     return false
