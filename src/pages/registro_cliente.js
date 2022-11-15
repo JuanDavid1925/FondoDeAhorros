@@ -10,7 +10,7 @@ export default function Registro_cliente() {
 
   useEffect(() => {
     if (estado == 1) {
-      router.push("/")
+      router.push("/login")
     }
   }, [estado, router])
 

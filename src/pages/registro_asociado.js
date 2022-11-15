@@ -13,7 +13,7 @@ export default function Registro() {
 
   useEffect(() => {
     if (estado == 1) {
-      router.push("/")
+      router.push("/login")
     }
   }, [estado, router])
 
