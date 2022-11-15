@@ -18,7 +18,7 @@ export default function Registro() {
   }, [estado, router])
 
   const handleSubmit = useCallback(data => {
-    //registroAsociado(data, setEstado)
+    registroAsociado(data, setEstado)
   }, [registroAsociado])
 
   return (
