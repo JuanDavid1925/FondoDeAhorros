@@ -1,10 +1,9 @@
 import { useCallback, useContext } from 'react'
-
 import Context from '/src/context/userContext'
 import { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente } from '/src/utils/validations'
 
 export default function useUser() {
-  const { jwt, setJWT } = useContext(Context)
+  const { userData, setUserData } = useContext(Context)
 
   const login = useCallback((documento, contrasena, setEstado) => {
     const URL = '/api/users/login'
@@ -29,10 +28,10 @@ export default function useUser() {
       }
     )
       .then(response => response.json())
-      .then(({ estado, mensaje }) => {
+      .then(({ estado, mensaje, user }) => {
         switch (estado) {
           case 200:
-            setJWT("Logueado.")
+            setUserData(user)
             setEstado(1)
             break
           case 404:
@@ -55,7 +54,7 @@ export default function useUser() {
       })
       .catch(error => console.error(`Error: ${error}`))
 
-  }, [setJWT])
+  }, [setUserData])
 
   const logout = useCallback(setEstado => {
 
@@ -69,14 +68,14 @@ export default function useUser() {
     )
       .then(response => response.json())
       .then(({ estado, mensaje }) => {
-        if (estado === 200) {
-          setJWT(null)
+        if (estado === 200 || estado === 404) {
           setEstado(1)
+          setUserData(null)
         }
         console.log(mensaje);
       })
       .catch(error => console.error(`Error: ${error}`))
-  }, [setJWT])
+  }, [setUserData])
 
   const registroAsociado = useCallback((data, setEstado) => {
     const URL = '/api/users/registro/asociado'
@@ -197,11 +196,32 @@ export default function useUser() {
 
   }, [])
 
+  const getProfile = useCallback(() => {
+
+    const URL = '/api/users/getProfile'
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, user }) => {
+        if (estado === 200) {
+          setUserData(user)
+        }
+        console.log(mensaje);
+      })
+      .catch(error => console.error(`Error: ${error}`))
+  }, [setUserData])
+
   return {
-    isLogged: Boolean(jwt),
+    isLogged: Boolean(userData),
     login,
     logout,
     registroAsociado,
-    registroCliente
+    registroCliente,
+    getProfile
   }
 }
