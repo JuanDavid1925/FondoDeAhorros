@@ -1,6 +1,8 @@
 import { useContext, useEffect } from "react"
+import Dashboard_Asociado from "../componentes/Dashboard_Asociado"
+import Dashboard_Admin from "../componentes/dashboard_admin"
 import useUser from "../hooks/useUser"
-import Context from '/src/context/userContext'
+import Context from "/src/context/userContext"
 
 export default function Dashboard() {
   const { userData } = useContext(Context)
@@ -17,9 +19,9 @@ export default function Dashboard() {
     (!userData) ?
       <></> :
       (userData.tipo === 'Asociado') ?
-        <h1>Página Asociado</h1> :
+        <Dashboard_Asociado /> :
         (userData.tipo === 'Admin') ?
-          <h1>Página Admin</h1> :
+          <Dashboard_Admin /> :
           <h1>Página Cliente</h1>
   )
 }

@@ -1,7 +1,10 @@
 import { useRouter } from "next/Router"
 import { useCallback, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
-export default function Dashboard() {
+import Context from "/src/context/userContext"
+
+export default function Dashboard_Asociado() {
+    const { userData } = useContext(Context)
     const router = useRouter()
     const { logout } = useUser()
     const [estado, setEstado] = useState()
@@ -14,7 +17,8 @@ export default function Dashboard() {
 
     const handleClick = useCallback(() => {
         logout(setEstado)
-    }, [logout])
+        router.push('/')
+    }, [logout, router])
 
     return (
         <div>
@@ -24,7 +28,7 @@ export default function Dashboard() {
                     <br></br>
                     <div className="mt-8 text-center">
                         <img src="./asociado_john.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
-                        <h4 className="text-2xl font-bold text-center text-gray-700 dark:text-white">John M. Snow</h4>
+                        <h4 className="text-2xl font-bold text-center text-gray-700 dark:text-white">{`${userData.nombres} ${userData.apellidos}`}</h4>
                         <span className="mt-3 text-gray-600 dark:text-gray-300">Asociado</span>
                     </div>
                     <ul className="space-y-2 tracking-wide mt-8">

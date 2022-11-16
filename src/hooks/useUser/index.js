@@ -54,7 +54,7 @@ export default function useUser() {
       })
       .catch(error => console.error(`Error: ${error}`))
 
-  }, [userData, setUserData])
+  }, [setUserData])
 
   const logout = useCallback(setEstado => {
 
@@ -68,7 +68,7 @@ export default function useUser() {
     )
       .then(response => response.json())
       .then(({ estado, mensaje }) => {
-        if (estado === 200) {
+        if (estado === 200 || estado === 404) {
           setUserData(null)
           setEstado(1)
         }
