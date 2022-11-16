@@ -69,8 +69,8 @@ export default function useUser() {
       .then(response => response.json())
       .then(({ estado, mensaje }) => {
         if (estado === 200 || estado === 404) {
-          setUserData(null)
           setEstado(1)
+          setUserData(null)
         }
         console.log(mensaje);
       })

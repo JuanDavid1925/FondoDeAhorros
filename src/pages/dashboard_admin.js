@@ -3,7 +3,7 @@ import { useCallback, useContext, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
 import Context from "/src/context/userContext"
 
-export default function Dashboard() {
+export default function Dashboard_Admin() {
     const router = useRouter()
     const { logout } = useUser()
     const [estado, setEstado] = useState()
@@ -26,9 +26,9 @@ export default function Dashboard() {
                     <br></br>
                     <br></br>
                     <div className="mt-8 text-center">
-                        <img src="./cliente_ana.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
-                        <h4 className="text-2xl font-bold text-center text-gray-700 dark:text-white">{(!userData) ? 'John Snow' : `${userData.nombres} ${userData.apellidos}`}</h4>
-                        <span className="mt-3 text-gray-600 dark:text-gray-300">Cliente</span>
+                        <img src="./ivana.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
+                        <h4 className="text-2xl font-bold text-center text-gray-700 dark:text-white">{(!userData) ? 'Ivana Watts' : `${userData.nombres} ${userData.apellidos}`}</h4>
+                        <span className="mt-3 text-gray-600 dark:text-gray-300">Administrador</span>
                     </div>
                     <ul className="space-y-2 tracking-wide mt-8">
                         <li>
@@ -43,10 +43,19 @@ export default function Dashboard() {
                         </li>
                         <li>
                             <a href="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                                    <path className=" group-hover:text-cyan-600" strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                                 </svg>
-                                <span className="group-hover:text-cyan-600">Pagos</span>
+                                <span className="group-hover:text-cyan-600">Usuarios</span>
+                            </a>
+                        </li>
+                        <li></li>
+                        <li>
+                            <a href="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                                    <path className=" group-hover:text-cyan-600" strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                                </svg>
+                                <span className="group-hover:text-cyan-600">Reuniones</span>
                             </a>
                         </li>
                         <li>
@@ -277,17 +286,7 @@ export default function Dashboard() {
                         </div>
                         <div>
                             <div className="lg:h-full py-8 px-6 text-gray-600 rounded-xl border border-gray-200 bg-white">
-                                <svg className="w-40 m-auto" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="27.5" cy="28.5" r={15} fill="#e4e4f2" stroke="#e4e4f2" />
-                                    <path d="M27.9985 2.84071C31.2849 2.84071 34.539 3.488 37.5752 4.74562C40.6113 6.00324 43.3701 7.84657 45.6938 10.1703C48.0176 12.4941 49.861 15.2529 51.1186 18.289C52.3762 21.3252 53.0235 24.5793 53.0235 27.8657C53.0235 31.152 52.3762 34.4061 51.1186 37.4423C49.861 40.4785 48.0176 43.2372 45.6938 45.561C43.3701 47.8848 40.6113 49.7281 37.5752 50.9857C34.539 52.2433 31.2849 52.8906 27.9985 52.8906C24.7122 52.8906 21.4581 52.2433 18.4219 50.9857C15.3857 49.7281 12.627 47.8848 10.3032 45.561C7.97943 43.2372 6.1361 40.4785 4.87848 37.4423C3.62086 34.4061 2.97357 31.152 2.97357 27.8657C2.97357 24.5793 3.62086 21.3252 4.87848 18.289C6.13611 15.2529 7.97943 12.4941 10.3032 10.1703C12.627 7.84656 15.3857 6.00324 18.4219 4.74562C21.4581 3.488 24.7122 2.84071 27.9985 2.84071L27.9985 2.84071Z" stroke="#e4e4f2" strokeWidth={3} />
-                                    <path d="M27.301 2.50958C33.0386 2.35225 38.6614 4.13522 43.26 7.57004C47.8585 11.0049 51.1637 15.8907 52.641 21.437C54.1182 26.9834 53.6811 32.8659 51.4002 38.133C49.1194 43.4001 45.1283 47.7437 40.0726 50.4611C35.0169 53.1785 29.1923 54.1108 23.541 53.1071C17.8897 52.1034 12.7423 49.2225 8.93145 44.9305C5.12062 40.6384 2.86926 35.1861 2.54159 29.4558C2.21391 23.7254 3.82909 18.0521 7.12582 13.3536" stroke="url(#paint0_linear_622:13696)" strokeWidth={5} strokeLinecap="round" />
-                                    <defs>
-                                        <linearGradient id="paint0_linear_622:13696" x1="5.54791e-07" y1="42.0001" x2="54.6039" y2="41.9535" gradientUnits="userSpaceOnUse">
-                                            <stop stopColor="#C8C8DD" />
-                                            <stop offset={1} stopColor="#2D30A5" />
-                                        </linearGradient>
-                                    </defs>
-                                </svg>
+                                <img src="./reunion2.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-40 lg:h-40" />
                                 <div className="mt-6">
                                     <h5 className="text-xl text-gray-700 text-center">Reuniones planeadas para esta semana</h5>
                                     <div className="mt-2 flex justify-center gap-4">

@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react"
-import Dashboard_Asociado from "../componentes/Dashboard_Asociado"
-import Dashboard_Admin from "../componentes/dashboard_admin"
 import useUser from "../hooks/useUser"
 import Context from "/src/context/userContext"
+import { useRouter } from "next/Router"
 
 export default function Dashboard() {
+  const router = useRouter()
   const { userData } = useContext(Context)
   const { getProfile } = useUser()
 
@@ -13,15 +13,14 @@ export default function Dashboard() {
     if (!userData) {
       getProfile()
     }
-  }, [userData, getProfile])
-
-  return (
-    (!userData) ?
-      <></> :
+    else {
       (userData.tipo === 'Asociado') ?
-        <Dashboard_Asociado /> :
+        router.push('/dashboard_asociado') :
         (userData.tipo === 'Admin') ?
-          <Dashboard_Admin /> :
-          <h1>Página Cliente</h1>
-  )
+          router.push('/dashboard_admin') :
+          router.push('/dashboard_cliente')
+    }
+  }, [userData, router, getProfile])
+
+  return (<></>)
 }
