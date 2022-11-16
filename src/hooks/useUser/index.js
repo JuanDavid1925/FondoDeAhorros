@@ -42,7 +42,7 @@ export default function useUser() {
             setEstado(-2)
             break
           case 409:
-            setEstado(-408)
+            setEstado(-409)
             break
           default:
             setEstado(-408)
@@ -96,6 +96,7 @@ export default function useUser() {
       else {
         setEstado(-10)
         console.log(-10)
+        return
       }
     }
 
@@ -109,7 +110,7 @@ export default function useUser() {
       .then(response => response.json())
       .then(({ estado, mensaje }) => {
         switch (estado) {
-          case 200:
+          case 201:
             setEstado(1)
             break
           case 400:
@@ -119,7 +120,7 @@ export default function useUser() {
             setEstado(-2)
             break
           case 409:
-            setEstado(-408)
+            setEstado(-409)
             break
           default:
             setEstado(-408)
@@ -168,7 +169,7 @@ export default function useUser() {
       .then(response => response.json())
       .then(({ estado, mensaje }) => {
         switch (estado) {
-          case 200:
+          case 201:
             setEstado(1)
             break
           case 400:
@@ -178,7 +179,7 @@ export default function useUser() {
             setEstado(-2)
             break
           case 409:
-            setEstado(-408)
+            setEstado(-409)
             break
           default:
             setEstado(-408)

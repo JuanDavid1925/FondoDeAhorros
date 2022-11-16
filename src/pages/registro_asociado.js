@@ -3,17 +3,22 @@ import * as Yup from 'yup';
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
-
-
+import Terminos from '../componentes/terminos_condiciones';
+import Registro_exitoso from '../componentes/registro_exitoso';
 
 export default function Registro() {
   const router = useRouter()
   const { registroAsociado } = useUser()
   const [estado, setEstado] = useState()
+  const [showModal, setShowModal] = useState(false)
+  const handleClose = () => { setShowModal(false) }
+  const [showModal1, setShowModal1] = useState(false)
+  const handleClose1 = () => { setShowModal1(false) }
 
   useEffect(() => {
+    console.log(showModal1)
     if (estado == 1) {
-      router.push("/login")
+      setShowModal1(true)
     }
   }, [estado, router])
 
@@ -189,13 +194,21 @@ export default function Registro() {
                       </div>
                       <div className="form-group form-check">
                         <Field type="checkbox" name="aceptarTerminos" className={'form-check-input ' + (errors.aceptarTerminos && touched.aceptarTerminos ? ' Inválido' : '')} />
-                        <label htmlFor="aceptarTerminos" className="form-check-label mb-2 text-sm text-gray-600 dark:text-gray-200"> Aceptar términos y condiciones</label>
+                        <label htmlFor="aceptarTerminos" className="form-check-label mb-2 text-sm text-gray-600 dark:text-gray-200"> Aceptar </label>
+                        <a
+                          onClick={() => setShowModal(true)}
+                          className="text-blue-500 mb-2 text-sm focus:outline-none focus:underline hover:underline cursor-pointer">términos y condiciones
+                        </a>.
+                        {showModal && <Terminos onClose={() => handleClose()}></Terminos>}
+                        {showModal1 && <Registro_exitoso onClose={() => handleClose1()}></Registro_exitoso>}
                         <ErrorMessage name="aceptarTerminos" component="div" className="t-2 text-sm text-red-600 dark:text-red-500" />
                       </div>
                       <br></br>
                       <div></div>
                       <div className="form-group flex justify-center">
-                        <button type="submit" className="btn-primary flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
+                        <button type="submit"
+                          onClick={() => useEffect}
+                          className="btn-primary flex items-center justify-between w-full px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
                           <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Registrarse</label></span>
                         </button>
                       </div>
@@ -204,7 +217,6 @@ export default function Registro() {
                 }
               </Formik>
             </div>
-
           </div>
         </div>
       </div >

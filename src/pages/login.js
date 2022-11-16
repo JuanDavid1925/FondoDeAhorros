@@ -12,8 +12,8 @@ export default function Login() {
   const handleClose = () => { setShowModal(false) }
 
   useEffect(() => {
-    if (estado == 1) {
-      router.push("/")
+    if (estado === 1) {
+      router.push("/dashboard")
     }
   }, [estado, router])
 
