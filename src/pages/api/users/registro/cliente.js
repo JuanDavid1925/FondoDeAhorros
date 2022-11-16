@@ -62,7 +62,7 @@ export default async (req, res) => {
           return res.status(400).json({ estado: 400, mensaje: 'Error al crear al usuario' })
 
         if (res2.rowcount === 0)
-          return res.status(400).json({ estado: 401, mensaje: 'Error al crear al cliente' })
+          return res.status(401).json({ estado: 401, mensaje: 'Error al crear al cliente' })
 
         return res.status(201).json({
           estado: 201,
