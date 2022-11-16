@@ -24,7 +24,7 @@ export default function Dashboard() {
                     <br></br>
                     <div className="mt-8 text-center">
                         <img src="./asociado_john.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
-                        <h4 className="text-2xl font-bold text-center text-gray-700 dark:text-white">John Snow</h4>
+                        <h4 className="text-2xl font-bold text-center text-gray-700 dark:text-white">John M. Snow</h4>
                         <span className="mt-3 text-gray-600 dark:text-gray-300">Asociado</span>
                     </div>
                     <ul className="space-y-2 tracking-wide mt-8">
@@ -117,6 +117,20 @@ export default function Dashboard() {
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         <div className="md:col-span-2 lg:col-span-1">
                             <div className="h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white">
+
+                                <img src="./disponible.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-40 lg:h-40" />
+                                <div>
+                                    <h5 className="text-gray-600 dark:text-gray-300 text-center text-xl">Saldo disponible</h5>
+                                    <div className="mt-2 flex justify-center gap-4">
+                                        <h3 className="text-3xl font-bold text-gray-700">$25'735.901</h3>
+                                    </div>
+                                    <span className="block text-center text-gray-500">Comparado al mes pasado $24'210.289</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="md:col-span-2 lg:col-span-1">
+                            <div className="h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white">
                                 <svg className="w-40 m-auto opacity-75" viewBox="0 0 146 146" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M73.1866 5.7129C81.999 5.7129 90.725 7.44863 98.8666 10.821C107.008 14.1933 114.406 19.1363 120.637 25.3675C126.868 31.5988 131.811 38.9964 135.184 47.138C138.556 55.2796 140.292 64.0057 140.292 72.818C140.292 81.6304 138.556 90.3565 135.184 98.4981C131.811 106.64 126.868 114.037 120.637 120.269C114.406 126.5 107.008 131.443 98.8666 134.815C90.725 138.187 81.999 139.923 73.1866 139.923C64.3742 139.923 55.6481 138.187 47.5066 134.815C39.365 131.443 31.9674 126.5 25.7361 120.269C19.5048 114.037 14.5619 106.64 11.1895 98.4981C7.81717 90.3565 6.08144 81.6304 6.08144 72.818C6.08144 64.0057 7.81717 55.2796 11.1895 47.138C14.5619 38.9964 19.5048 31.5988 25.7361 25.3675C31.9674 19.1363 39.365 14.1933 47.5066 10.821C55.6481 7.44863 64.3742 5.7129 73.1866 5.7129L73.1866 5.7129Z" stroke="#e4e4f2" strokeWidth="4.89873" />
                                     <path d="M73.5 23.4494C79.9414 23.4494 86.3198 24.7181 92.2709 27.1831C98.222 29.6482 103.629 33.2612 108.184 37.816C112.739 42.3707 116.352 47.778 118.817 53.7291C121.282 59.6802 122.551 66.0586 122.551 72.5C122.551 78.9414 121.282 85.3198 118.817 91.2709C116.352 97.222 112.739 102.629 108.184 107.184C103.629 111.739 98.222 115.352 92.2709 117.817C86.3198 120.282 79.9414 121.551 73.5 121.551C67.0586 121.551 60.6802 120.282 54.7291 117.817C48.778 115.352 43.3707 111.739 38.816 107.184C34.2612 102.629 30.6481 97.222 28.1831 91.2709C25.7181 85.3198 24.4494 78.9414 24.4494 72.5C24.4494 66.0586 25.7181 59.6802 28.1831 53.7291C30.6481 47.778 34.2612 42.3707 38.816 37.816C43.3707 33.2612 48.778 29.6481 54.7291 27.1831C60.6802 24.7181 67.0586 23.4494 73.5 23.4494L73.5 23.4494Z" stroke="#e4e4f2" strokeWidth="4.89873" />
@@ -147,14 +161,14 @@ export default function Dashboard() {
                                 <div>
                                     <h5 className="text-gray-600 dark:text-gray-300 text-center text-xl">Ingresos mensuales</h5>
                                     <div className="mt-2 flex justify-center gap-4">
-                                        <h3 className="text-3xl font-bold text-gray-700">$10'325.612</h3>
+                                        <h3 className="text-3xl font-bold text-gray-700">$1'525.612</h3>
                                     </div>
-                                    <span className="block text-center text-gray-500">Comparado al mes pasado $9'542.813</span>
+                                    <span className="block text-center text-gray-500">Comparado al mes pasado $1'412.702</span>
                                 </div>
                                 <table className="w-full text-gray-600">
                                     <tbody>
                                         <tr>
-                                            <td className="py-2">Ganancia por Ahorro</td>
+                                            <td className="py-2">Ingreso Ahorro</td>
                                             <td>
                                                 <svg className="w-16 ml-auto" viewBox="0 0 68 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <rect opacity="0.4" width={17} height={21} rx={1} fill="#e4e4f2" />
