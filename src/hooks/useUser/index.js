@@ -7,7 +7,7 @@ export default function useUser() {
   const { jwt, setJWT } = useContext(Context)
 
   const login = useCallback((documento, contrasena, setEstado) => {
-    const URL = '/api/login'
+    const URL = '/api/users/login'
     const data = {
       documento: documento,
       contrasena: contrasena
@@ -57,12 +57,29 @@ export default function useUser() {
 
   }, [setJWT])
 
-  const logout = useCallback(() => {
-    setJWT(null)
+  const logout = useCallback(setEstado => {
+
+    const URL = '/api/users/logout'
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje }) => {
+        if (estado === 200) {
+          setJWT(null)
+          setEstado(1)
+        }
+        console.log(mensaje);
+      })
+      .catch(error => console.error(`Error: ${error}`))
   }, [setJWT])
 
   const registroAsociado = useCallback((data, setEstado) => {
-    const URL = '/api/registro/asociado'
+    const URL = '/api/users/registro/asociado'
     console.log("Entra al asociado.")
 
     let validacion = validarDatosRegistroAsociado(data)
@@ -122,7 +139,7 @@ export default function useUser() {
   }, [])
 
   const registroCliente = useCallback((data, setEstado) => {
-    const URL = '/api/registro/cliente'
+    const URL = '/api/users/registro/cliente'
     console.log("Entra al cliente.")
 
     let validacion = validarDatosRegistroCliente(data)

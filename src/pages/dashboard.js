@@ -1,4 +1,21 @@
+import { useRouter } from "next/Router"
+import { useCallback, useEffect, useState } from "react"
+import useUser from "/src/hooks/useUser"
 export default function Dashboard() {
+    const router = useRouter()
+    const { logout } = useUser()
+    const [estado, setEstado] = useState()
+
+    useEffect(() => {
+        if (estado === 1) {
+            router.push("/")
+        }
+    }, [estado, router])
+
+    const handleClick = useCallback(() => {
+        logout(setEstado)
+    }, [logout])
+
     return (
         <div>
             <aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
@@ -57,7 +74,10 @@ export default function Dashboard() {
                     </ul>
                 </div>
                 <div className="px-6 -mx-6 pt-4 flex justify-between items-center border-t">
-                    <button className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                    <button
+                        onClick={handleClick}
+                        className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group"
+                    >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path className="group-hover:text-cyan-600" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                         </svg>
