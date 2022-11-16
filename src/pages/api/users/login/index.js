@@ -35,7 +35,7 @@ export default async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
-            maxAge: 1000 * 60 * 60,
+            maxAge: 60 * 60,
             path: '/'
           })
 
