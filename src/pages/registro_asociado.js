@@ -61,7 +61,7 @@ export default function Registro() {
                 })}
 
                 onSubmit={fields => {
-                  handleSubmit(fields)//agregar modal de que se logró todo con éxito
+                  handleSubmit(fields)
                 }}
 
               >
