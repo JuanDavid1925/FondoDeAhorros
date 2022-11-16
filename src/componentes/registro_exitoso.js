@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { useRouter } from 'next/router'
 
-export default function Registro_exitoso() {
+export default function Registro_exitoso({ children, onClose }) {
     const [open, setOpen] = useState(true)
     const cancelButtonRef = useRef(null)
     const router = useRouter()
