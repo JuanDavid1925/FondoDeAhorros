@@ -190,10 +190,10 @@ export default function Registro() {
                       </div>
                       <div className="form-group form-check">
                         <Field type="checkbox" name="aceptarTerminos" className={'form-check-input ' + (errors.aceptarTerminos && touched.aceptarTerminos ? ' Inválido' : '')} />
-                        <label htmlFor="aceptarTerminos" className="form-check-label mb-2 text-sm text-gray-600 dark:text-gray-200"> Aceptar</label>
+                        <label htmlFor="aceptarTerminos" className="form-check-label mb-2 text-sm text-gray-600 dark:text-gray-200"> Aceptar </label>
                         <a
                           onClick={() => setShowModal(true)}
-                          className="text-blue-500 focus:outline-none focus:underline hover:underline cursor-pointer"> términos y condiciones
+                          className="text-blue-500 mb-2 text-sm focus:outline-none focus:underline hover:underline cursor-pointer">términos y condiciones
                         </a>.
                         {showModal && <Terminos onClose={() => handleClose()}></Terminos>}
                         <ErrorMessage name="aceptarTerminos" component="div" className="t-2 text-sm text-red-600 dark:text-red-500" />
