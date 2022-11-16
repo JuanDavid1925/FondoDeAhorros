@@ -5,6 +5,9 @@ export async function middleware(req) {
   if (req.nextUrl.pathname.includes('/api') && req.method === 'GET') {
     return NextResponse.redirect(new URL('/', req.url))
   }
+  else if (req.method === 'POST') {
+    return NextResponse.next()
+  }
 
   const jwtCookie = req.cookies.get('jwt')
   if (jwtCookie) {
@@ -40,7 +43,7 @@ export async function middleware(req) {
   else {
     console.log(`Unlogged: ${jwtCookie}`);
     if (req.nextUrl.pathname.includes('/dashboard')) {
-      return NextResponse.redirect(new URL('/login', req.url))
+      return NextResponse.redirect(new URL('/', req.url))
     }
     return NextResponse.next()
   }

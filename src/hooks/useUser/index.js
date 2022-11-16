@@ -57,8 +57,7 @@ export default function useUser() {
 
   }, [setJWT])
 
-  const logout = useCallback(() => {
-    setJWT(null)
+  const logout = useCallback(setEstado => {
 
     const URL = '/api/users/logout'
 
@@ -69,7 +68,11 @@ export default function useUser() {
       }
     )
       .then(response => response.json())
-      .then(({ mensaje }) => {
+      .then(({ estado, mensaje }) => {
+        if (estado === 200) {
+          setJWT(null)
+          setEstado(1)
+        }
         console.log(mensaje);
       })
       .catch(error => console.error(`Error: ${error}`))
