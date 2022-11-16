@@ -1,12 +1,10 @@
-import { useRouter } from "next/Router"
-import { useCallback, useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import useUser from "../hooks/useUser"
 import Context from '/src/context/userContext'
 
 export default function Dashboard() {
   const { userData } = useContext(Context)
   const { getProfile } = useUser()
-  const router = useRouter()
 
   useEffect(() => {
     console.log(userData);
@@ -15,5 +13,13 @@ export default function Dashboard() {
     }
   }, [userData, getProfile])
 
-  return (<></>)
+  return (
+    (!userData) ?
+      <></> :
+      (userData.tipo === 'Asociado') ?
+        <h1>Página Asociado</h1> :
+        (userData.tipo === 'Admin') ?
+          <h1>Página Admin</h1> :
+          <h1>Página Cliente</h1>
+  )
 }

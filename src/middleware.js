@@ -18,7 +18,6 @@ export async function middleware(req) {
         return NextResponse.next()
       }
       if (req.nextUrl.pathname.includes('/login')) {
-        console.log("object");
         return NextResponse.redirect(new URL('/dashboard', req.url))
       }
       if (req.nextUrl.pathname.includes('/registro_asociado')) {
@@ -41,7 +40,6 @@ export async function middleware(req) {
    * Páginas que requieran de estar logueado.
    */
   else {
-    console.log(`Unlogged: ${jwtCookie}`);
     if (req.nextUrl.pathname.includes('/dashboard')) {
       return NextResponse.redirect(new URL('/', req.url))
     }
