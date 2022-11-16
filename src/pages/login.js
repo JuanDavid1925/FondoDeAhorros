@@ -13,7 +13,7 @@ export default function Login() {
 
   useEffect(() => {
     if (estado == 1) {
-      router.push("/")
+      router.push("/dashboard")
     }
   }, [estado, router])
 
