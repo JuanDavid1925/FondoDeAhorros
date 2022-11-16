@@ -54,7 +54,7 @@ export default function useUser() {
       })
       .catch(error => console.error(`Error: ${error}`))
 
-  }, [userData, setUserData])
+  }, [setUserData])
 
   const logout = useCallback(setEstado => {
 
