@@ -13,7 +13,7 @@ export default function Registro() {
   const handleClose = () => { setShowModal(false) }
 
   useEffect(() => {
-    if (estado == 1) {
+    if (estado === 1) {
       router.push("/login")
     }
   }, [estado, router])
