@@ -12,10 +12,13 @@ export default function Registro() {
   const [estado, setEstado] = useState()
   const [showModal, setShowModal] = useState(false)
   const handleClose = () => { setShowModal(false) }
+  const [showModal1, setShowModal1] = useState(false)
+  const handleClose1 = () => { setShowModal1(false) }
 
   useEffect(() => {
-    if (estado === 1) {
-      router.push("/login")
+    console.log(showModal1)
+    if (estado == 1) {
+      setShowModal1(true)
     }
   }, [estado, router])
 
@@ -62,7 +65,7 @@ export default function Registro() {
                 })}
 
                 onSubmit={fields => {
-                  handleSubmit(fields)
+                  handleSubmit(fields)//agregar modal de que se logró todo con éxito
                 }}
 
               >
@@ -197,12 +200,15 @@ export default function Registro() {
                           className="text-blue-500 mb-2 text-sm focus:outline-none focus:underline hover:underline cursor-pointer">términos y condiciones
                         </a>.
                         {showModal && <Terminos onClose={() => handleClose()}></Terminos>}
+                        {showModal1 && <Registro_exitoso onClose={() => handleClose1()}></Registro_exitoso>}
                         <ErrorMessage name="aceptarTerminos" component="div" className="t-2 text-sm text-red-600 dark:text-red-500" />
                       </div>
                       <br></br>
                       <div></div>
                       <div className="form-group flex justify-center">
-                        <button type="submit" className="btn-primary flex items-center justify-between w-full px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
+                        <button type="submit"
+                          onClick={() => useEffect}
+                          className="btn-primary flex items-center justify-between w-full px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
                           <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Registrarse</label></span>
                         </button>
                       </div>
