@@ -42,7 +42,8 @@ export default function useUser() {
             setEstado(-2)
             break
           case 409:
-            setEstado(-408)
+            setEstado(-409)
+            break
           default:
             setEstado(-408)
             console.log('No se ha podido conectar con la base de datos.')
@@ -81,6 +82,7 @@ export default function useUser() {
       else {
         setEstado(-10)
         console.log(-10)
+        return
       }
     }
 
@@ -104,7 +106,8 @@ export default function useUser() {
             setEstado(-2)
             break
           case 409:
-            setEstado(-408)
+            setEstado(-409)
+            break
           default:
             setEstado(-408)
             console.log('No se ha podido conectar con la base de datos.')
@@ -162,7 +165,8 @@ export default function useUser() {
             setEstado(-2)
             break
           case 409:
-            setEstado(-408)
+            setEstado(-409)
+            break
           default:
             setEstado(-408)
             console.log('No se ha podido conectar con la base de datos.')
