@@ -54,10 +54,10 @@ export default function Terminos({ children, onClose }) {
                                                 </p>
                                                 <p className="p-2 text-sm text-gray-500 space-y-1">
                                                     Cuando se registra en el fondo está aceptando ahorrar de manera mensual una cuota fija que es estipulada por el administrador del fondo,
-                                                    aunque si lo deseas puedes ahorrar más del monto fijado pero teniendo en cuenta que las ganancias no aumentarán, además
-                                                    aceptas pagar una cuota de manejo que se utilizará para gastos administrativos, también te comprometes a asistir a las
-                                                    reuniones de asociados que son convocadas por el administrador del fondo teniendo en cuenta que el no asistir a dichas reuniones
-                                                    conlleva a sanciones por parte del administrador.
+                                                    aunque si lo desea puede ahorrar más del monto fijado, pero teniendo en cuenta que las ganancias no aumentarán, además
+                                                    acepta pagar una cuota de manejo anual que se utilizará para gastos administrativos, también se compromete a asistir a las
+                                                    reuniones de asociados que son convocadas por el administrador del fondo, teniendo en cuenta que el no asistir a dichas reuniones
+                                                    conlleva a sanciones por parte del mismo.
 
                                                 </p>
                                                 <p className="p-3 text-sm text-gray-500">

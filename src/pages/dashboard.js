@@ -6,15 +6,12 @@ export default function Dashboard() {
         <div>
             <aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
                 <div>
-                    <div className="-mx-6 px-6 py-4">
-                        <a href="#" title="home">
-                            <img src="https://tailus.io/sources/blocks/stats-cards/preview/images/logo.svg" className="w-32" alt="tailus logo" />
-                        </a>
-                    </div>
+                    <br></br>
+                    <br></br>
                     <div className="mt-8 text-center">
                         <img src="https://tailus.io/sources/blocks/stats-cards/preview/images/second_user.webp" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
-                        <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">Cynthia J. Watts</h5>
-                        <span className="hidden text-gray-400 lg:block">Admin</span>
+                        <h4 className="text-2xl font-bold text-center text-gray-600 dark:text-white">Cynthia J. Watts</h4>
+                        <span className="mt-3 text-gray-600 dark:text-gray-300">Admin</span>
                     </div>
                     <ul className="space-y-2 tracking-wide mt-8">
                         <li>
@@ -77,7 +74,7 @@ export default function Dashboard() {
             <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
                 <div className="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
                     <div className="px-6 flex items-center justify-between space-x-4 2xl:container">
-                        <h5 hidden className="text-2xl text-gray-600 font-medium lg:block">Dashboard</h5>
+                        <h5 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-4xl">Dashboard</h5>
                         <button className="w-12 h-16 -mr-2 border-r lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 my-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
