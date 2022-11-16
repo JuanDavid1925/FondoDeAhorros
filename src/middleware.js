@@ -6,6 +6,9 @@ export async function middleware(req) {
     return NextResponse.redirect(new URL('/', req.url))
   }
 
+  return NextResponse.next()
+
+  /*
   const jwtCookie = req.cookies.get('jwt')
 
   if (!jwtCookie) {

@@ -32,7 +32,7 @@ export default function useUser() {
       .then(({ estado, mensaje }) => {
         switch (estado) {
           case 200:
-            setJWT("t")
+            setJWT("Logueado.")
             setEstado(1)
             break
           case 404:
