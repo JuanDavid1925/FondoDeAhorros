@@ -11,10 +11,11 @@ export async function middleware(req) {
     try {
       const { payload } = await jwtVerify(jwtCookie, new TextEncoder().encode('DSII'))
 
-      if (req.nextUrl.pathname.includes('/')) {
-        return NextResponse.redirect(new URL('/dashboard', req.url))
+      if (req.nextUrl.pathname.includes('/dashboard')) {
+        return NextResponse.next()
       }
       if (req.nextUrl.pathname.includes('/login')) {
+        console.log("object");
         return NextResponse.redirect(new URL('/dashboard', req.url))
       }
       if (req.nextUrl.pathname.includes('/registro_asociado')) {
@@ -23,14 +24,13 @@ export async function middleware(req) {
       if (req.nextUrl.pathname.includes('/registro_cliente')) {
         return NextResponse.redirect(new URL('/dashboard', req.url))
       }
+      if (req.nextUrl.pathname.includes('/')) {
+        return NextResponse.redirect(new URL('/dashboard', req.url))
+      }
       return NextResponse.next()
 
     } catch (error) {
       console.error(error)
-
-      if (req.nextUrl.pathname.includes('/')) {
-        return NextResponse.next()
-      }
       return NextResponse.redirect(new URL('/', req.url))
     }
   }
@@ -40,12 +40,12 @@ export async function middleware(req) {
   else {
     console.log(`Unlogged: ${jwtCookie}`);
     if (req.nextUrl.pathname.includes('/dashboard')) {
-      return NextResponse.redirect(new URL('/', req.url))
+      return NextResponse.redirect(new URL('/login', req.url))
     }
     return NextResponse.next()
   }
 }
 
 export const config = {
-  matcher: ['/login', '/', '/registro_asociado', '/registro_cliente', '/api/:path*']
+  matcher: ['/login', '/', '/registro_asociado', '/dashboard', '/registro_cliente', '/api/:path*']
 }
