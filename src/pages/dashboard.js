@@ -1,6 +1,3 @@
-import { useRouter } from "next/Router"
-import { useCallback, useEffect, useState } from "react"
-
 export default function Dashboard() {
     return (
         <div>
