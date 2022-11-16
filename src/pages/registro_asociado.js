@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
 import Terminos from '../componentes/terminos_condiciones';
+import Registro_exitoso from '../componentes/registro_exitoso';
 
 export default function Registro() {
   const router = useRouter()
@@ -210,7 +211,6 @@ export default function Registro() {
                 }
               </Formik>
             </div>
-
           </div>
         </div>
       </div >
