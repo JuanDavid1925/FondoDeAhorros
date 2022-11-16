@@ -26,7 +26,7 @@ export default function Dashboard() {
                     <br></br>
                     <br></br>
                     <div className="mt-8 text-center">
-                        <img src="./cliente_aliv1.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
+                        <img src="./../cliente_aliv1.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
                         <h4 className="text-2xl font-bold text-center text-gray-700 dark:text-white">{(!userData) ? 'John Snow' : `${userData.nombres} ${userData.apellidos}`}</h4>
                         <span className="mt-3 text-gray-600 dark:text-gray-300">Cliente</span>
                     </div>
@@ -104,7 +104,7 @@ export default function Dashboard() {
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                         <div className="md:col-span-2 lg:col-span-1">
                             <div className="h-full py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white">
-                                <img src="./saldo.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-40 lg:h-40" />
+                                <img src="./../saldo.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-40 lg:h-40" />
                                 <div>
                                     <h5 className="text-gray-600 dark:text-gray-300 text-center text-xl">Saldo pendiente</h5>
                                     <div className="mt-2 flex justify-center gap-4">
