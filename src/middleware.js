@@ -6,29 +6,41 @@ export async function middleware(req) {
     return NextResponse.redirect(new URL('/', req.url))
   }
 
-  return NextResponse.next()
-
-  /*
   const jwtCookie = req.cookies.get('jwt')
+  if (jwtCookie) {
+    if (req.nextUrl.pathname.includes('/login')) {
+      console.log(`Entra: ${jwtCookie}`);
+      return NextResponse.redirect(new URL('/', req.url))
+    }
+    if (req.nextUrl.pathname.includes('/registro_asociado')) {
+      console.log(`Entra: ${jwtCookie}`);
+      return NextResponse.redirect(new URL('/', req.url))
+    }
+    if (req.nextUrl.pathname.includes('/registro_cliente')) {
+      console.log(`Entra: ${jwtCookie}`);
+      return NextResponse.redirect(new URL('/', req.url))
+    }
 
-  if (!jwtCookie) {
     return NextResponse.next()
-  } else {
-    return NextResponse.redirect(new URL('/', req.url))
   }
   /*
    * Páginas que requieran de estar logueado.
-    try {
-      const { payload } = await jwtVerify(jwtCookie, new TextEncoder().encode('DSII'))
-  
-      return NextResponse.next()
-    } catch (error) {
-      console.error(error)
-      return NextResponse.redirect(new URL('/', req.url))
+  else {
+    if (req.nextUrl.pathname.includes('/dashboard')) {
+      try {
+        const { payload } = await jwtVerify(jwtCookie, new TextEncoder().encode('DSII'))
+
+        return NextResponse.next()
+      } catch (error) {
+        console.error(error)
+        return NextResponse.redirect(new URL('/', req.url))
+      }
     }
-  */
+  }
+*/
+  return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/login', '/api/:path*']
+  matcher: ['/login', '/registro_asociado', '/registro_cliente', '/api/:path*']
 }
