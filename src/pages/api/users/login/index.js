@@ -41,7 +41,15 @@ export default async (req, res) => {
 
           res.setHeader('Set-Cookie', jwtCookie)
 
-          return res.status(200).json({ estado: 200, mensaje: 'Logueado.' })
+          return res.status(200).json({
+            estado: 200,
+            mensaje: 'Logueado.',
+            user: {
+              nombres: rows[0].nombres_usuario,
+              apellidos: rows[0].apellidos_usuario,
+              tipo: rows[0].tipo_usuario
+            }
+          })
         }
 
         return res.status(400).json({ estado: 400, mensaje: 'Contraseña incorrecta.' })
