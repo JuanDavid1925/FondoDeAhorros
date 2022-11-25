@@ -27,8 +27,8 @@ export default function Dashboard_Admin() {
           <br></br>
           <div className="mt-8 text-center">
             <img src="./../ivana.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
-            <h4 className="text-2xl font-bold text-center text-gray-700 dark:text-white">{(!userData) ? 'Ivana Watts' : `${userData.nombres} ${userData.apellidos}`}</h4>
-            <span className="mt-3 text-gray-600 dark:text-gray-300">Administrador</span>
+            <h4 className="text-2xl font-bold text-center text-gray-700 dark:text-gray-800">{(!userData) ? 'Ivana Watts' : `${userData.nombres} ${userData.apellidos}`}</h4>
+            <span className="mt-3 text-gray-600 dark:text-gray-400">Administrador</span>
           </div>
           <ul className="space-y-2 tracking-wide mt-8">
             <li>
