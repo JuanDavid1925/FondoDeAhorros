@@ -108,10 +108,8 @@ export default function useUser() {
 
     {
       const { contrasena, confirContrasena } = data
-      if (contrasena === confirContrasena) {
-        delete data.confirContrasena
-      }
-      else {
+      if (!(contrasena === confirContrasena)) {
+        console.log(`Contra: ${contrasena}; confirmación: ${confirContrasena}`)
         setEstado(-10)
         console.log(-10)
         return
@@ -175,11 +173,7 @@ export default function useUser() {
 
     {
       const { contrasena, confirContrasena } = data
-      if (contrasena === confirContrasena) {
-        delete data.confirContrasena
-        delete data.aceptarTerminos
-      }
-      else {
+      if (!(contrasena === confirContrasena)) {
         setEstado(-10)
         console.log(-10)
       }
