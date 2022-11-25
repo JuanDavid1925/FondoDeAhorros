@@ -124,6 +124,14 @@ export default function Registro_cliente() {
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                       </div>
                       {showModal && <Registro_exitoso onClose={() => handleClose()}></Registro_exitoso>}
+                      <div></div>
+                      <div style={{ paddingTop: 10 }} className="flex items-center justify-end">
+                        {
+                          (estado === 2)
+                            ? <div style={{ borderTopColor: "transparent" }} className="w-10 h-10 border-4 border-blue-200 rounded-full animate-spin"></div>
+                            : <></>
+                        }
+                      </div>
                       <button type="submit" className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
                         <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Registrarse</label></span>
                       </button>

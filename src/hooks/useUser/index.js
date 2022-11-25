@@ -20,6 +20,8 @@ export default function useUser() {
       return
     }
 
+    setEstado(2)
+
     fetch(
       URL,
       {
@@ -40,11 +42,14 @@ export default function useUser() {
           case 400:
             setEstado(-2)
             break
+          case 408:
+            setEstado(-408)
+            break
           case 409:
             setEstado(-409)
             break
           default:
-            setEstado(-408)
+            setEstado(-500)
             console.log('No se ha podido conectar con la base de datos.')
             break
         }
@@ -52,7 +57,10 @@ export default function useUser() {
         console.log(mensaje);
 
       })
-      .catch(error => console.error(`Error: ${error}`))
+      .catch(error =>{
+        setEstado(-400)
+        console.error(`Error: ${error}`) 
+      })
 
   }, [setUserData])
 
@@ -102,6 +110,8 @@ export default function useUser() {
       }
     }
 
+    setEstado(2)
+
     fetch(
       URL,
       {
@@ -121,11 +131,14 @@ export default function useUser() {
           case 401:
             setEstado(-2)
             break
+          case 408:
+            setEstado(-408)
+            break
           case 409:
             setEstado(-409)
             break
           default:
-            setEstado(-408)
+            setEstado(-500)
             console.log('No se ha podido conectar con la base de datos.')
             break
         }
@@ -133,7 +146,10 @@ export default function useUser() {
         console.log(mensaje);
 
       })
-      .catch(error => console.error(`Error: ${error}`))
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
 
   }, [])
 
@@ -161,6 +177,8 @@ export default function useUser() {
       }
     }
 
+    setEstado(2)
+
     fetch(
       URL,
       {
@@ -180,11 +198,14 @@ export default function useUser() {
           case 401:
             setEstado(-2)
             break
+          case 408:
+            setEstado(-408)
+            break
           case 409:
             setEstado(-409)
             break
           default:
-            setEstado(-408)
+            setEstado(-500)
             console.log('No se ha podido conectar con la base de datos.')
             break
         }
@@ -192,7 +213,10 @@ export default function useUser() {
         console.log(mensaje);
 
       })
-      .catch(error => console.error(`Error: ${error}`))
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
 
   }, [])
 

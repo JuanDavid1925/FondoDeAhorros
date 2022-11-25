@@ -17,6 +17,9 @@ export async function middleware(req) {
       if (req.nextUrl.pathname.includes('/dashboard')) {
         return NextResponse.next()
       }
+      /*
+       * Páginas a las que no debe acceder una vez logueado.
+       */
       if (req.nextUrl.pathname.includes('/login')) {
         return NextResponse.redirect(new URL('/dashboard', req.url))
       }
