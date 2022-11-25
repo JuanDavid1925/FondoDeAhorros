@@ -16,7 +16,7 @@ export default function useUser() {
     let validacion = validarDatosLogin(data)
 
     if (validacion !== 1) {
-      console.log(validacion);
+      console.log(validacion)
       return
     }
 
@@ -54,7 +54,7 @@ export default function useUser() {
             break
         }
 
-        console.log(mensaje);
+        console.log(mensaje)
 
       })
       .catch(error =>{
@@ -80,7 +80,7 @@ export default function useUser() {
           setEstado(1)
           setUserData(null)
         }
-        console.log(mensaje);
+        console.log(mensaje)
       })
       .catch(error => console.error(`Error: ${error}`))
   }, [setUserData])
@@ -93,15 +93,23 @@ export default function useUser() {
 
     if (validacion !== 1) {
       setEstado(validacion)
-      console.log(validacion);
+      console.log(validacion)
       return
+    }
+
+    if (!data.aceptarTerminos) {
+      setEstado(-9)
+      console.log(-9)
+      return
+    }
+    else {
+      delete data.aceptarTerminos
     }
 
     {
       const { contrasena, confirContrasena } = data
       if (contrasena === confirContrasena) {
         delete data.confirContrasena
-        delete data.aceptarTerminos
       }
       else {
         setEstado(-10)
@@ -143,7 +151,7 @@ export default function useUser() {
             break
         }
 
-        console.log(mensaje);
+        console.log(mensaje)
 
       })
       .catch(error => {
@@ -161,7 +169,7 @@ export default function useUser() {
 
     if (validacion !== 1) {
       setEstado(validacion)
-      console.log(validacion);
+      console.log(validacion)
       return
     }
 
@@ -210,7 +218,7 @@ export default function useUser() {
             break
         }
 
-        console.log(mensaje);
+        console.log(mensaje)
 
       })
       .catch(error => {
@@ -235,7 +243,7 @@ export default function useUser() {
         if (estado === 200) {
           setUserData(user)
         }
-        console.log(mensaje);
+        console.log(mensaje)
       })
       .catch(error => console.error(`Error: ${error}`))
   }, [setUserData])
