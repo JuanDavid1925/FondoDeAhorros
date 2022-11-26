@@ -16,11 +16,10 @@ export default function Registro() {
   const handleClose1 = () => { setShowModal1(false) }
 
   useEffect(() => {
-    console.log(showModal1)
     if (estado == 1) {
       setShowModal1(true)
     }
-  }, [estado, router])
+  }, [estado])
 
   const handleSubmit = useCallback(data => {
     registroAsociado(data, setEstado)
@@ -204,7 +203,13 @@ export default function Registro() {
                         <ErrorMessage name="aceptarTerminos" component="div" className="t-2 text-sm text-red-600 dark:text-red-500" />
                       </div>
                       <br></br>
-                      <div></div>
+                      <div style={{ paddingTop: 10 }} className="flex items-center justify-end">
+                        {
+                          (estado === 2)
+                            ? <div style={{ borderTopColor: "transparent" }} className="w-10 h-10 border-4 border-blue-200 rounded-full animate-spin"></div>
+                            : <></>
+                        }
+                      </div>
                       <div className="form-group flex justify-center">
                         <button type="submit"
                           onClick={() => useEffect}

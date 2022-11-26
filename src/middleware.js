@@ -17,8 +17,10 @@ export async function middleware(req) {
       if (req.nextUrl.pathname.includes('/dashboard')) {
         return NextResponse.next()
       }
+      /*
+       * Páginas a las que no debe acceder una vez logueado.
+       */
       if (req.nextUrl.pathname.includes('/login')) {
-        console.log("object");
         return NextResponse.redirect(new URL('/dashboard', req.url))
       }
       if (req.nextUrl.pathname.includes('/registro_asociado')) {
@@ -41,7 +43,6 @@ export async function middleware(req) {
    * Páginas que requieran de estar logueado.
    */
   else {
-    console.log(`Unlogged: ${jwtCookie}`);
     if (req.nextUrl.pathname.includes('/dashboard')) {
       return NextResponse.redirect(new URL('/', req.url))
     }
@@ -50,5 +51,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-  matcher: ['/login', '/', '/registro_asociado', '/dashboard', '/registro_cliente', '/api/:path*']
+  matcher: ['/login', '/', '/registro_asociado', '/dashboard/:path*', '/registro_cliente', '/api/:path*']
 }

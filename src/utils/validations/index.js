@@ -82,7 +82,7 @@ function validarNombre(nombre) {
   try {
     let tamanoMin = nombre.length >= 1
     let tamanoMax = nombre.length <= 50
-    let soloLetras = /^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/.test(nombre)
+    let soloLetras = /^[a-z A-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/.test(nombre)
 
     return tamanoMin && tamanoMax && soloLetras
 
