@@ -12,7 +12,7 @@ export default function Registro() {
             <br />
             <br />
             <div className="px-8 mb-4 text-center">
-              <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-white">Cambiar contraseña</h2>
+              <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-gray-700">Cambiar contraseña</h2>
               <p className="mt-3  text-gray-700">
                 Lo entendemos, muchas cosas pueden pasar. Ingrese su número de contacto y le enviaremos un mensaje de texto
                 para reestablecer su contraseña.

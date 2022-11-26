@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 const Context = React.createContext()
 
 export function UserContextProvider({ children }) {
-  const [jwt, setJWT] = useState(null)
+  const [userData, setUserData] = useState(null)
 
   return (
-    <Context.Provider value={{ jwt, setJWT }}>
+    <Context.Provider value={{ userData, setUserData }}>
       {children}
     </Context.Provider>
   );
