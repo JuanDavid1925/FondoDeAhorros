@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import useUser from "../hooks/useUser"
+import useUser from "../../hooks/useUser"
 import Context from "/src/context/userContext"
 import { useRouter } from "next/Router"
 
@@ -15,10 +15,10 @@ export default function Dashboard() {
     }
     else {
       (userData.tipo === 'Asociado') ?
-        router.push('/dashboard_asociado') :
+        router.push('/dashboard/asociado') :
         (userData.tipo === 'Admin') ?
-          router.push('/dashboard_admin') :
-          router.push('/dashboard_cliente')
+          router.push('/dashboard/admin') :
+          router.push('/dashboard/cliente')
     }
   }, [userData, router, getProfile])
 

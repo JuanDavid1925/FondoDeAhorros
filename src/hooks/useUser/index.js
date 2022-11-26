@@ -16,9 +16,11 @@ export default function useUser() {
     let validacion = validarDatosLogin(data)
 
     if (validacion !== 1) {
-      console.log(validacion);
+      console.log(validacion)
       return
     }
+
+    setEstado(2)
 
     fetch(
       URL,
@@ -40,19 +42,25 @@ export default function useUser() {
           case 400:
             setEstado(-2)
             break
+          case 408:
+            setEstado(-408)
+            break
           case 409:
             setEstado(-409)
             break
           default:
-            setEstado(-408)
+            setEstado(-500)
             console.log('No se ha podido conectar con la base de datos.')
             break
         }
 
-        console.log(mensaje);
+        console.log(mensaje)
 
       })
-      .catch(error => console.error(`Error: ${error}`))
+      .catch(error =>{
+        setEstado(-400)
+        console.error(`Error: ${error}`) 
+      })
 
   }, [setUserData])
 
@@ -72,7 +80,7 @@ export default function useUser() {
           setEstado(1)
           setUserData(null)
         }
-        console.log(mensaje);
+        console.log(mensaje)
       })
       .catch(error => console.error(`Error: ${error}`))
   }, [setUserData])
@@ -85,22 +93,30 @@ export default function useUser() {
 
     if (validacion !== 1) {
       setEstado(validacion)
-      console.log(validacion);
+      console.log(validacion)
       return
+    }
+
+    if (!data.aceptarTerminos) {
+      setEstado(-9)
+      console.log(-9)
+      return
+    }
+    else {
+      delete data.aceptarTerminos
     }
 
     {
       const { contrasena, confirContrasena } = data
-      if (contrasena === confirContrasena) {
-        delete data.confirContrasena
-        delete data.aceptarTerminos
-      }
-      else {
+      if (!(contrasena === confirContrasena)) {
+        console.log(`Contra: ${contrasena}; confirmación: ${confirContrasena}`)
         setEstado(-10)
         console.log(-10)
         return
       }
     }
+
+    setEstado(2)
 
     fetch(
       URL,
@@ -121,19 +137,25 @@ export default function useUser() {
           case 401:
             setEstado(-2)
             break
+          case 408:
+            setEstado(-408)
+            break
           case 409:
             setEstado(-409)
             break
           default:
-            setEstado(-408)
+            setEstado(-500)
             console.log('No se ha podido conectar con la base de datos.')
             break
         }
 
-        console.log(mensaje);
+        console.log(mensaje)
 
       })
-      .catch(error => console.error(`Error: ${error}`))
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
 
   }, [])
 
@@ -145,21 +167,19 @@ export default function useUser() {
 
     if (validacion !== 1) {
       setEstado(validacion)
-      console.log(validacion);
+      console.log(validacion)
       return
     }
 
     {
       const { contrasena, confirContrasena } = data
-      if (contrasena === confirContrasena) {
-        delete data.confirContrasena
-        delete data.aceptarTerminos
-      }
-      else {
+      if (!(contrasena === confirContrasena)) {
         setEstado(-10)
         console.log(-10)
       }
     }
+
+    setEstado(2)
 
     fetch(
       URL,
@@ -180,19 +200,25 @@ export default function useUser() {
           case 401:
             setEstado(-2)
             break
+          case 408:
+            setEstado(-408)
+            break
           case 409:
             setEstado(-409)
             break
           default:
-            setEstado(-408)
+            setEstado(-500)
             console.log('No se ha podido conectar con la base de datos.')
             break
         }
 
-        console.log(mensaje);
+        console.log(mensaje)
 
       })
-      .catch(error => console.error(`Error: ${error}`))
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
 
   }, [])
 
@@ -211,7 +237,7 @@ export default function useUser() {
         if (estado === 200) {
           setUserData(user)
         }
-        console.log(mensaje);
+        console.log(mensaje)
       })
       .catch(error => console.error(`Error: ${error}`))
   }, [setUserData])
