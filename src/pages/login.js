@@ -12,8 +12,8 @@ export default function Login() {
   const handleClose = () => { setShowModal(false) }
 
   useEffect(() => {
-    if (estado == 1) {
-      router.push("/")
+    if (estado === 1) {
+      router.push("/dashboard")
     }
   }, [estado, router])
 
@@ -96,6 +96,13 @@ export default function Login() {
                   className="text-blue-500 focus:outline-none focus:underline hover:underline cursor-pointer"> Regístrese
                 </a>.
               </p>
+            </div>
+            <div style={{paddingTop: 10}} className="flex items-center justify-center">
+              {
+                (estado === 2) 
+                  ? <div style={{ borderTopColor: "transparent" }} className="w-20 h-20 border-4 border-blue-200 rounded-full animate-spin"></div> 
+                  : <></>
+              }
             </div>
             {showModal && <Aviso_registro onClose={() => handleClose()}></Aviso_registro>}
           </div>

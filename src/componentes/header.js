@@ -13,7 +13,7 @@ function classNames(...classes) {
 
 export default function Header() {
     const router = useRouter()
-    const { isLogged } = useUser()
+    const { isLogged, logout } = useUser()
     const [showModal, setShowModal] = useState(false)
     const handleClose = () => { setShowModal(false) }
     
@@ -199,9 +199,7 @@ export default function Header() {
                                 <div className="rounded-md shadow">
                                     <a
                                         onClick={() => {
-                                            if (!isLogged) {
-                                                router.push('/login')
-                                            }
+                                            router.push('/login')
                                         }}
                                         className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg cursor-pointer"
                                     >

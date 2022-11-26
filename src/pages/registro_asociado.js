@@ -1,19 +1,25 @@
-import { Formik } from "formik"
+import { Formik, Form, ErrorMessage, Field } from 'formik';
+import * as Yup from 'yup';
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
-
+import Terminos from '../componentes/terminos_condiciones';
+import Registro_exitoso from '../componentes/registro_exitoso';
 
 export default function Registro() {
   const router = useRouter()
   const { registroAsociado } = useUser()
   const [estado, setEstado] = useState()
+  const [showModal, setShowModal] = useState(false)
+  const handleClose = () => { setShowModal(false) }
+  const [showModal1, setShowModal1] = useState(false)
+  const handleClose1 = () => { setShowModal1(false) }
 
   useEffect(() => {
     if (estado == 1) {
-      router.push("/")
+      setShowModal1(true)
     }
-  }, [estado, router])
+  }, [estado])
 
   const handleSubmit = useCallback(data => {
     registroAsociado(data, setEstado)
@@ -22,7 +28,7 @@ export default function Registro() {
   return (
 
     <section className="bg-white dark:bg-gray-900">
-      <div className="flex justify-center">
+      <div className="flex justify-center position:fixed">
         <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("./asociados3.jpg")' }}>
         </div>
         <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
@@ -48,12 +54,22 @@ export default function Registro() {
                   ocupacion: "",
                   ciudad: "",
                   direccion: "",
-                  cuota_fija_mensual: ""
+                  cuota_fija_mensual: "",
+                  aceptarTerminos: false
                 }}
-                onSubmit={handleSubmit}
+
+                validationSchema={Yup.object().shape({
+                  aceptarTerminos: Yup.bool()
+                    .oneOf([true], 'Debe aceptar términos y condiciones')
+                })}
+
+                onSubmit={fields => {
+                  handleSubmit(fields)//agregar modal de que se logró todo con éxito
+                }}
+
               >
                 {
-                  ({ handleChange, handleSubmit }) => (
+                  ({ handleChange, handleSubmit, errors, touched }) => (
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
                       <div>
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Nombre(s) </label>
@@ -132,7 +148,7 @@ export default function Registro() {
                           id="ciudad"
                           name="ciudad"
                           type="text"
-                          placeholder="Ingrese la ciudad en la que se encuentra"
+                          placeholder="Ingrese su ciudad"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                       </div>
                       <div>
@@ -162,17 +178,42 @@ export default function Registro() {
                           id="confirContrasena"
                           name="confirContrasena"
                           type="password"
-                          placeholder="Ingrese nuevamente su contraseña"
+                          placeholder="Ingrese otra vez su contraseña "
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                       </div>
-                      <br></br>
                       <div>
-                        <input type="checkbox" id="terminos" name="terminos" />
-                        <label className="mb-2 text-sm text-gray-600 dark:text-gray-200"> Acepto los términos y condiciones</label>
+                        <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Cuota mensual</label>
+                        <input
+                          onChange={handleChange}
+                          id="cuota_fija_mensual"
+                          name="cuota_fija_mensual"
+                          type="text"
+                          placeholder="Ingrese la cuota que va a pagar"
+                          className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      </div>
+                      <div className="form-group form-check">
+                        <Field type="checkbox" name="aceptarTerminos" className={'form-check-input ' + (errors.aceptarTerminos && touched.aceptarTerminos ? ' Inválido' : '')} />
+                        <label htmlFor="aceptarTerminos" className="form-check-label mb-2 text-sm text-gray-600 dark:text-gray-200"> Aceptar </label>
+                        <a
+                          onClick={() => setShowModal(true)}
+                          className="text-blue-500 mb-2 text-sm focus:outline-none focus:underline hover:underline cursor-pointer">términos y condiciones
+                        </a>.
+                        {showModal && <Terminos onClose={() => handleClose()}></Terminos>}
+                        {showModal1 && <Registro_exitoso onClose={() => handleClose1()}></Registro_exitoso>}
+                        <ErrorMessage name="aceptarTerminos" component="div" className="t-2 text-sm text-red-600 dark:text-red-500" />
                       </div>
                       <br></br>
-                      <div className="flex justify-center">
-                        <button type="submit" className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
+                      <div style={{ paddingTop: 10 }} className="flex items-center justify-end">
+                        {
+                          (estado === 2)
+                            ? <div style={{ borderTopColor: "transparent" }} className="w-10 h-10 border-4 border-blue-200 rounded-full animate-spin"></div>
+                            : <></>
+                        }
+                      </div>
+                      <div className="form-group flex justify-center">
+                        <button type="submit"
+                          onClick={() => useEffect}
+                          className="btn-primary flex items-center justify-between w-full px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
                           <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Registrarse</label></span>
                         </button>
                       </div>
@@ -181,7 +222,6 @@ export default function Registro() {
                 }
               </Formik>
             </div>
-
           </div>
         </div>
       </div >
