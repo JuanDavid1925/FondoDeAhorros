@@ -108,6 +108,15 @@
   margin-left: 0.5rem;
 }
 
+.respuestaInvalida {
+  color: #cc0033;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 5px 0 0;
+  width: 100%;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
@@ -116,13 +125,16 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
   .card,
   .footer {
     border-color: #222;
   }
+
   .code {
     background: #111;
   }
+
   .logo img {
     filter: invert(1);
   }

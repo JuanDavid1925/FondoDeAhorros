@@ -1,22 +1,25 @@
 import { Formik } from "formik"
 import { useRouter } from "next/Router"
-import { useCallback, useEffect } from "react"
-
+import { useCallback, useEffect, useState } from "react"
+import Aviso_registro from "../componentes/aviso_registro"
 import useUser from "/src/hooks/useUser"
 
 export default function Login() {
   const router = useRouter()
-  const { login, logStatus } = useUser()
+  const { login } = useUser()
+  const [ estado, setEstado ] = useState(0)
+  const [showModal, setShowModal] = useState(false)
+  const handleClose = () => { setShowModal(false) }
 
   useEffect(() => {
-    if (logStatus == 1) {
-      router.push("/")
+    if (estado === 1) {
+      router.push("/dashboard")
     }
-  }, [logStatus, router])
+  }, [estado, router])
 
   const handleSubmit = useCallback(({ documento, contrasena }) => {
-    return login(documento, contrasena)
-  }, [login])
+    login(documento, contrasena, setEstado)
+  }, [login, setEstado])
 
   return (
 
@@ -25,7 +28,7 @@ export default function Login() {
         <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("https://www.semana.com/resizer/KBqsa1apFXMpiYrzLIKHestVJkk=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/IMMOPWHLBBGGLDWBUB4VAZZHIE.jpg")' }}>
           <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
             <div>
-              <h2 className="text-4xl font-bold text-white">Fondo de Ahorros y Préstamos</h2>
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">Fondo de Ahorros y Préstamos</h2>
               <p className="max-w-x1 mt-3 text-gray-300">Gracias por formar parte de nuestro fondo. </p>
               <p className="max-w-xl mt-3 text-gray-300">Es un placer poder brindarle lo mejor de nosotros.</p>
             </div>
@@ -38,17 +41,17 @@ export default function Login() {
               <p className="mt-3 text-gray-600 dark:text-gray-300">Ingrese a su cuenta</p>
             </div>
             <div className="mt-8">
-              <Formik
-                initialValues=
-                {{
-                  documento: "",
-                  contrasena: ""
-                }}
-                onSubmit={handleSubmit}
-              >
-                {
-                  ({ handleChange, handleSubmit }) => (
-                    <form onSubmit={handleSubmit}>
+                <Formik
+                  initialValues=
+                  {{
+                    documento: "",
+                    contrasena: ""
+                  }}
+                  onSubmit={handleSubmit}
+                >
+                  {
+                    ({ handleChange, handleSubmit }) => (
+                      <form onSubmit={handleSubmit}>
                       <div>
                         <label htmlFor="documento" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Documento de identificación</label>
                         <input
@@ -86,8 +89,22 @@ export default function Login() {
                   )
                 }
               </Formik>
-              <p className="mt-6 text-sm text-center text-gray-400">¿No tiene una cuenta? <a href="./registro_asociado" className="text-blue-500 focus:outline-none focus:underline hover:underline">Regístrese</a>.</p>
+              
+              <p className="mt-6 text-sm text-center text-gray-400">¿No tiene una cuenta?
+                <a
+                  onClick={() => setShowModal(true)}
+                  className="text-blue-500 focus:outline-none focus:underline hover:underline cursor-pointer"> Regístrese
+                </a>.
+              </p>
             </div>
+            <div style={{paddingTop: 10}} className="flex items-center justify-center">
+              {
+                (estado === 2) 
+                  ? <div style={{ borderTopColor: "transparent" }} className="w-20 h-20 border-4 border-blue-200 rounded-full animate-spin"></div> 
+                  : <></>
+              }
+            </div>
+            {showModal && <Aviso_registro onClose={() => handleClose()}></Aviso_registro>}
           </div>
         </div>
       </div>
