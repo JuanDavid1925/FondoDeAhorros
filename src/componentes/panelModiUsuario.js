@@ -15,18 +15,13 @@ export default function PanelModiUsuario() {
       <Formik
         initialValues=
         {{
-          documento: "",
           nombres: "",
           apellidos: "",
           telefono: "",
-          contrasena: "",
           correo: "",
-          fecha_nacimiento: "",
           ocupacion: "",
           ciudad: "",
           direccion: "",
-          cuota_fija_mensual: "",
-          aceptarTerminos: false
         }}
 
 
