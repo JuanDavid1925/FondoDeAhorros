@@ -17,7 +17,7 @@ export default async (req, res) => {
     case 'POST':
       try {
         const { documento, contrasena } = JSON.parse(body)
-        const query = `SELECT nombres_usuario, apellidos_usuario, tipo_usuario, contrasena_usuario FROM usuarios WHERE documento_usuario = '${documento}';`
+        const query = `SELECT nombres_usuario, apellidos_usuario, tipo_usuario, contrasena_usuario, documento_usuario FROM usuarios WHERE documento_usuario = '${documento}';`
         const { rows } = await conn.query(query)
 
         if (rows.length === 0)
@@ -28,7 +28,8 @@ export default async (req, res) => {
             exp: Math.floor(Date.now() / 1000) + 60 * 60,
             nombres: rows[0].nombres_usuario,
             apellidos: rows[0].apellidos_usuario,
-            tipo: rows[0].tipo_usuario
+            tipo: rows[0].tipo_usuario,
+            documento: rows[0].documento_usuario
           }, 'DSII')
 
           const jwtCookie = serialize('jwt', token, {
@@ -47,7 +48,8 @@ export default async (req, res) => {
             user: {
               nombres: rows[0].nombres_usuario,
               apellidos: rows[0].apellidos_usuario,
-              tipo: rows[0].tipo_usuario
+              tipo: rows[0].tipo_usuario,
+              documento: rows[0].documento_usuario
             }
           })
         }
