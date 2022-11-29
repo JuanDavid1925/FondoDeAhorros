@@ -1,5 +1,10 @@
+import { useCallback, useContext, useEffect, useState } from "react"
+import Retiro_exitoso from "./retiro_exitoso"
 
 export default function Formulario_retiro() {
+    const [showModal, setShowModal] = useState(false)
+    const handleClose = () => { setShowModal(false) }
+
     return (
         <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
             <div className="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
@@ -108,8 +113,13 @@ export default function Formulario_retiro() {
                                     </div>
                                 </div>
                             </div>
-                            <button className="mt-4 mb-8 w-full rounded-md bg-indigo-700 px-6 py-3 font-medium text-white">Realizar retiro</button>
+                            <button
+                                onClick={() =>
+                                    setShowModal(true)
+                                }
+                                className="mt-4 mb-8 w-full rounded-md bg-indigo-700 px-6 py-3 font-medium text-white">Realizar retiro</button>
                         </div>
+                        {showModal && <Retiro_exitoso onClose={() => handleClose()}></Retiro_exitoso>}
                     </div>
                 </div>
             </div>

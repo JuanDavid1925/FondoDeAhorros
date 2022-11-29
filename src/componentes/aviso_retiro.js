@@ -1,7 +1,7 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 
-export default function Aviso_retiro({ children, onClose, cambiarEstado }) {
+export default function Aviso_retiro({ children, onClose, cambiarEstadoFormulario, cambiarEstadoSolicitud }) {
     const [open, setOpen] = useState(true)
     const cancelButtonRef = useRef(null)
 
@@ -45,8 +45,8 @@ export default function Aviso_retiro({ children, onClose, cambiarEstado }) {
                                             </Dialog.Title>
                                             <div className="mt-2">
                                                 <p className="text-sm text-gray-600">
-                                                    Para retirar tus ahorros puedes acercarte a nuestras oficinas ubicadas en la Carrera 65 # 11 - 83 en Cali o
-                                                    Contáctanos llamando a nuestras lineas + 01 234 567 88 o + 01 234 567 89 pero si lo desea también puede proceder a
+                                                    Para retirar tus ahorros puedes acercarte a nuestras oficinas ubicadas en la carrera 65 # 11 - 83 en Cali o
+                                                    contáctanos llamando a nuestras lineas + 01 234 567 88 o + 01 234 567 89 pero si lo desea también puede proceder a
                                                     realizar su retiro de manera virtual a través del siguiente formulario.
                                                 </p>
                                                 <p className="text-sm text-gray-600 space-y-1">
@@ -62,11 +62,21 @@ export default function Aviso_retiro({ children, onClose, cambiarEstado }) {
                                         type="button"
                                         className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                                         onClick={() => {
-                                            cambiarEstado();
+                                            cambiarEstadoFormulario();
                                             onClose()
                                         }}
                                     >
-                                        Continuar
+                                        Continuar al formulario
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                                        onClick={() => {
+                                            cambiarEstadoSolicitud();
+                                            onClose()
+                                        }}
+                                    >
+                                        Realizar la solicitud
                                     </button>
                                     <button
                                         type="button"
