@@ -45,7 +45,7 @@ export default function Aviso_retiro({ children, onClose, cambiarEstado }) {
                                             </Dialog.Title>
                                             <div className="mt-2">
                                                 <p className="text-sm text-gray-600">
-                                                    Para retirar tus ahorros puedes acercarte a nustras oficinas ubicadas en la Carrera 65 # 11 - 83 en Cali o
+                                                    Para retirar tus ahorros puedes acercarte a nuestras oficinas ubicadas en la Carrera 65 # 11 - 83 en Cali o
                                                     Contáctanos llamando a nuestras lineas + 01 234 567 88 o + 01 234 567 89 pero si lo desea también puede proceder a
                                                     realizar su retiro de manera virtual a través del siguiente formulario.
                                                 </p>
