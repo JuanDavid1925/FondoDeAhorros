@@ -5,6 +5,7 @@ import Context from "/src/context/userContext"
 import Aviso_retiro from "../../componentes/aviso_retiro"
 import Formulario_retiro from "../../componentes/formulario_retiro"
 import Inicio_asociado from "../../componentes/inicio_asociado"
+import Solicitud_retiro from "../../componentes/solicitud_retiro"
 
 export default function Dashboard_Asociado() {
   const router = useRouter()
@@ -15,6 +16,8 @@ export default function Dashboard_Asociado() {
   const handleClose = () => { setShowModal(false) }
   const [mostrar_formulario_retiro, setEstadoFormulario] = useState(false)
   const cambiarEstadoRetiro = () => { setEstadoFormulario(true) }
+  const [mostrar_solicitud_retiro, setEstadoSolicitud] = useState(false)
+  const cambiarEstadoSolicitudRetiro = () => { setEstadoSolicitud(true) }
 
 
   useEffect(() => {
@@ -48,7 +51,10 @@ export default function Dashboard_Asociado() {
                   <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z" className="fill-current group-hover:text-sky-300" />
                 </svg>
                 <span
-                  onClick={() => setEstadoFormulario(false)}
+                  onClick={() => {
+                    setEstadoFormulario(false);
+                    setEstadoSolicitud(false);
+                  }}
                   className="-mr-1 font-medium">Inicio</span>
               </a>
             </li>
@@ -66,10 +72,14 @@ export default function Dashboard_Asociado() {
                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
                 </svg>
                 <span
-                  onClick={() => setShowModal(true)}
+                  onClick={() => {
+                    setShowModal(true);
+                    setEstadoFormulario(false);
+                    setEstadoSolicitud(false)
+                  }}
                   className="group-hover:text-cyan-600">Retiros</span>
               </a>
-              {showModal && <Aviso_retiro onClose={() => handleClose()} cambiarEstado={() => cambiarEstadoRetiro()}></Aviso_retiro>}
+              {showModal && <Aviso_retiro onClose={() => handleClose()} cambiarEstadoFormulario={() => cambiarEstadoRetiro()} cambiarEstadoSolicitud={() => cambiarEstadoSolicitudRetiro()}></Aviso_retiro>}
             </li>
             <li>
               <a href="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
@@ -112,7 +122,7 @@ export default function Dashboard_Asociado() {
       </aside>
       {
         (mostrar_formulario_retiro) ?
-          <Formulario_retiro /> : <Inicio_asociado />
+          <Formulario_retiro /> : ((mostrar_solicitud_retiro) ? <Solicitud_retiro /> : <Inicio_asociado />)
       }
     </div>
   )
