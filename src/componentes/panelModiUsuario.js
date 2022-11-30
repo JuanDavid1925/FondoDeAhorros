@@ -27,7 +27,7 @@ export default function PanelModiUsuario() {
 
 
         onSubmit={fields => {
-          handleSubmit(fields)//agregar modal de que se logró todo con éxito
+          handleSubmit(fields)
         }}
 
       >
