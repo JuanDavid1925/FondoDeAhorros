@@ -16,7 +16,7 @@ export default function Header() {
     const { isLogged, logout } = useUser()
     const [showModal, setShowModal] = useState(false)
     const handleClose = () => { setShowModal(false) }
-    
+
     return (
         <div className="relative overflow-hidden bg-white">
             <div className="mx-auto max-w-7xl">
