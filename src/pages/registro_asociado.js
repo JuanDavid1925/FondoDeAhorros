@@ -21,22 +21,6 @@ export default function Registro() {
     }
   }, [estado])
 
-  {/*const validar_campos = useCallback(data => {
-    switch (estado) {
-      case -101:
-        return <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Nombre inválido </span>
-      case -102:
-        return <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Apellido inválido </span>
-      case -103:
-        return <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Documento inválido </span>
-      case -104:
-        return <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> La contraseña no es segura</span>
-      case -105:
-        return <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Número de teléfono inválido </span>
-
-    }
-  })*/}
-
   const handleSubmit = useCallback(data => {
     registroAsociado(data, setEstado)
   }, [registroAsociado])
