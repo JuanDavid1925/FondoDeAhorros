@@ -5,14 +5,16 @@
 import { isInteger } from "formik"
 
 /**
- * Función para validar si el dato entregado es un valor numérico entero.
- * @param { String } numero Dato a evaluar.
+ * Función para validar si el dato entregado puede ser un nombre.
+ * @param { String } nombre Dato a evaluar.
  */
-function validarEntero(numero) {
+function validarNombre(nombre) {
   try {
-    let num = isInteger(numero)
+    let tamanoMin = nombre.length >= 1
+    let tamanoMax = nombre.length <= 50
+    let soloLetras = /^[a-z A-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/.test(nombre)
 
-    return num
+    return tamanoMin && tamanoMax && soloLetras
 
   } catch (error) {
     return false
@@ -39,59 +41,6 @@ function validarNumeroDocumento(documento) {
 
 
 /**
- * Función para validar si el dato entregado es una contraseña válida.
- * @param { String } contrasena Dato a evaluar.
- */
-function validarContrasena(contrasena) {
-  try {
-    let tamanoMin = contrasena.toString().length >= 6
-    let tamanoMax = contrasena.toString().length <= 100
-    let tieneNum = /\d/.test(contrasena)
-    let tieneMinus = /[a-z]/.test(contrasena)
-    let tieneMayus = /[A-Z]/.test(contrasena)
-    let tieneEspecial = /[!-/:-@[-`{-■]/.test(contrasena)
-
-    return tamanoMin && tamanoMax && tieneNum && tieneMinus && tieneMayus && tieneEspecial
-
-  } catch (error) {
-    return false
-  }
-}
-
-
-/**
- * Función para validar si el dato entregado es una fecha de nacimiento
- * válida y si la persona es mayor de edad.
- * @param { String } fecha Dato a evaluar.
- */
-function validarNacimiento(fecha) {
-  try {
-    return new Date(new Date() - new Date(fecha)).getFullYear() - 1970 >= 18
-  } catch (error) {
-    return false
-  }
-}
-
-
-/**
- * Función para validar si el dato entregado puede ser un nombre.
- * @param { String } nombre Dato a evaluar.
- */
-function validarNombre(nombre) {
-  try {
-    let tamanoMin = nombre.length >= 1
-    let tamanoMax = nombre.length <= 50
-    let soloLetras = /^[a-z A-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/.test(nombre)
-
-    return tamanoMin && tamanoMax && soloLetras
-
-  } catch (error) {
-    return false
-  }
-}
-
-
-/**
  * Función para validar si el dato entregado es un valor numérico entero.
  * @param { String } telefono Dato a evaluar.
  */
@@ -110,6 +59,24 @@ function validarNumeroTelefono(telefono) {
 
 
 /**
+ * Función para validar si el dato entregado es un correo.
+ * @param { String } correo Dato a evaluar.
+ */
+function validarCorreo(correo) {
+  try {
+    const tamanoMin = correo.length >= 8
+    const tamanoMax = correo.length <= 255
+    const regExp = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(correo)
+
+    return regExp
+
+  } catch (error) {
+    return false
+  }
+}
+
+
+/**
  * Función para validar si el dato entregado puede ser una ciudad.
  * @param { String } ocupacion Dato a evaluar.
  */
@@ -120,6 +87,20 @@ function validarOcupacion(ocupacion) {
 
     return tamanoMin && tamanoMax
 
+  } catch (error) {
+    return false
+  }
+}
+
+
+/**
+ * Función para validar si el dato entregado es una fecha de nacimiento
+ * válida y si la persona es mayor de edad.
+ * @param { String } fecha Dato a evaluar.
+ */
+function validarNacimiento(fecha) {
+  try {
+    return new Date(new Date() - new Date(fecha)).getFullYear() - 1970 >= 18
   } catch (error) {
     return false
   }
@@ -161,6 +142,43 @@ function validarDireccion(direccion) {
 
 
 /**
+ * Función para validar si el dato entregado es una contraseña válida.
+ * @param { String } contrasena Dato a evaluar.
+ */
+function validarContrasena(contrasena) {
+  try {
+    let tamanoMin = contrasena.toString().length >= 6
+    let tamanoMax = contrasena.toString().length <= 100
+    let tieneNum = /\d/.test(contrasena)
+    let tieneMinus = /[a-z]/.test(contrasena)
+    let tieneMayus = /[A-Z]/.test(contrasena)
+    let tieneEspecial = /[!-/:-@[-`{-■]/.test(contrasena)
+
+    return tamanoMin && tamanoMax && tieneNum && tieneMinus && tieneMayus && tieneEspecial
+
+  } catch (error) {
+    return false
+  }
+}
+
+
+/**
+ * Función para validar si el dato entregado es un valor numérico entero.
+ * @param { String } numero Dato a evaluar.
+ */
+function validarEntero(numero) {
+  try {
+    let num = isInteger(numero)
+
+    return num
+
+  } catch (error) {
+    return false
+  }
+}
+
+
+/**
  * Función para validar si los dato entregados son parte de un logueo válido.
  * @param { String } documento Número de documento a evaluar.
  */
@@ -177,7 +195,7 @@ function validarDatosLogin({ documento }) {
  * @param { String } documento Número de documento a evaluar.
  * @param { String } contrasena Contraseña a evaluar.
  */
-function validarDatosRegistroAsociado({ nombres, apellidos, documento, contrasena, telefono, fecha_nacimiento, ocupacion, ciudad, direccion, cuota_fija_mensual }) {
+function validarDatosRegistroAsociado({ nombres, apellidos, documento, telefono, correo, ocupacion, fecha_nacimiento, ciudad, direccion, contrasena, confirContrasena, cuota_fija_mensual, aceptarTerminos }) {
   if (!validarNombre(nombres)) {
     return -101
   }
@@ -187,16 +205,16 @@ function validarDatosRegistroAsociado({ nombres, apellidos, documento, contrasen
   if (!validarNumeroDocumento(documento)) {
     return -103
   }
-  if (!validarContrasena(contrasena)) {
+  if (!validarNumeroTelefono(telefono)) {
     return -104
   }
-  if (!validarNumeroTelefono(telefono)) {
-    return -105
-  }
-  if (!validarNacimiento(fecha_nacimiento)) {
-    return -106
+  if (!validarCorreo(correo)) {
+    return -104
   }
   if (!validarOcupacion(ocupacion)) {
+    return -106
+  }
+  if (!validarNacimiento(fecha_nacimiento)) {
     return -107
   }
   if (!validarCiudad(ciudad)) {
@@ -205,8 +223,17 @@ function validarDatosRegistroAsociado({ nombres, apellidos, documento, contrasen
   if (!validarDireccion(direccion)) {
     return -109
   }
-  if (!validarEntero(cuota_fija_mensual)) {
+  if (!validarContrasena(contrasena)) {
     return -110
+  }
+  if (!confirContrasena) {
+    return -10
+  }
+  if (!validarEntero(cuota_fija_mensual)) {
+    return -111
+  }
+  if (!aceptarTerminos) {
+    return -112
   }
   return 1
 }
@@ -217,7 +244,7 @@ function validarDatosRegistroAsociado({ nombres, apellidos, documento, contrasen
  * @param { String } documento Número de documento a evaluar.
  * @param { String } contrasena Contraseña a evaluar.
  */
-function validarDatosRegistroCliente({ nombres, apellidos, documento, contrasena, telefono, documento_asociado }) {
+function validarDatosRegistroCliente({ nombres, apellidos, documento, telefono, documento_asociado, contrasena, confirContrasena }) {
   if (!validarNombre(nombres)) {
     return -101
   }
@@ -227,14 +254,17 @@ function validarDatosRegistroCliente({ nombres, apellidos, documento, contrasena
   if (!validarNumeroDocumento(documento)) {
     return -103
   }
-  if (!validarContrasena(contrasena)) {
+  if (!validarNumeroTelefono(telefono)) {
     return -104
   }
-  if (!validarNumeroTelefono(telefono)) {
+  if (!validarNumeroDocumento(documento_asociado)) {
     return -105
   }
-  if (!validarNumeroDocumento(documento_asociado)) {
+  if (!validarContrasena(contrasena)) {
     return -106
+  }
+  if (!confirContrasena) {
+    return -6
   }
   return 1
 }

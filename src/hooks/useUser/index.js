@@ -97,25 +97,6 @@ export default function useUser() {
       return
     }
 
-    if (!data.aceptarTerminos) {
-      setEstado(-9)
-      console.log(-9)
-      return
-    }
-    else {
-      delete data.aceptarTerminos
-    }
-
-    {
-      const { contrasena, confirContrasena } = data
-      if (!(contrasena === confirContrasena)) {
-        console.log(`Contra: ${contrasena}; confirmación: ${confirContrasena}`)
-        setEstado(-10)
-        console.log(-10)
-        return
-      }
-    }
-
     setEstado(2)
 
     fetch(
@@ -169,14 +150,6 @@ export default function useUser() {
       setEstado(validacion)
       console.log(validacion)
       return
-    }
-
-    {
-      const { contrasena, confirContrasena } = data
-      if (!(contrasena === confirContrasena)) {
-        setEstado(-10)
-        console.log(-10)
-      }
     }
 
     setEstado(2)
