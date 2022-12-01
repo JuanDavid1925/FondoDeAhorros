@@ -1,6 +1,6 @@
 import { useCallback, useContext } from 'react'
 import Context from '/src/context/userContext'
-import { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente } from '/src/utils/validations'
+import { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente } from '/src/utils/validations/users'
 
 export default function useUser() {
   const { userData, setUserData } = useContext(Context)
