@@ -85,7 +85,6 @@ export default function Formulario_retiro() {
                                         type="date"
                                         placeholder=""
                                         className="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" />
-                                    <input type="text" name="credit-cvc" className="w-1/6 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="CVC" />
                                 </div>
                                 <label htmlFor="billing-address" className="mt-4 mb-2 block text-sm font-medium">Dirección</label>
                                 <div className="flex flex-col sm:flex-row">
