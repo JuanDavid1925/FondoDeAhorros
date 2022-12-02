@@ -56,6 +56,7 @@ export default function Dashboard_Admin() {
                   className={"group-hover:text-cyan-600 " + ((panelAMostrar === 1) ? "text-white group-hover:text-white" : "")}>Usuarios</span>
               </a>
             </li>
+
             <li>
               <a href="#" onClick={() => setUsuarios(2)} className={"px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group " + ((panelAMostrar === 2) ? "bg-gradient-to-r from-sky-600 to-cyan-400" : "")}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
