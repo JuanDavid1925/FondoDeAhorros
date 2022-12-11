@@ -56,14 +56,14 @@ const PanelModiUsuario = ({ router }) => {
                         <div className="px-8 ml-28 mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
                           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Documento a buscar</label>
+                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Documento a buscar</label>
                               <input
                                 onChange={handleChange}
                                 id="documentoB"
                                 name="documentoB"
                                 type="text"
                                 placeholder="Ingrese el documento del asociado"
-                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div className="form-group flex">
                               <button className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold">
@@ -74,74 +74,74 @@ const PanelModiUsuario = ({ router }) => {
                               </button>
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Nombre(s) </label>
+                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Nombre(s) </label>
                               <input
                                 onChange={handleChange}
                                 id="nombres"
                                 name="nombres"
                                 type="text"
                                 placeholder="Ingrese el nuevo nombre"
-                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Apellido(s)</label>
+                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Apellido(s)</label>
                               <input
                                 onChange={handleChange}
                                 id="apellidos"
                                 name="apellidos"
                                 type="text"
                                 placeholder="Ingrese el nuevo apellido"
-                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Teléfono</label>
+                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Teléfono</label>
                               <input
                                 onChange={handleChange}
                                 id="telefono"
                                 name="telefono"
                                 type="text"
                                 placeholder="Ingrese el nuevo número de contacto"
-                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Correo electrónico</label>
+                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Correo electrónico</label>
                               <input
                                 onChange={handleChange}
                                 id="correo"
                                 name="correo"
                                 type="email"
                                 placeholder="Ingrese el nuevo correo electrónico"
-                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Ocupación</label>
+                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Ocupación</label>
                               <input
                                 onChange={handleChange}
                                 id="ocupacion"
                                 name="ocupacion"
                                 type="text"
                                 placeholder="Ingrese la nueva ocupación"
-                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Ciudad</label>
+                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Ciudad</label>
                               <input
                                 onChange={handleChange}
                                 id="ciudad"
                                 name="ciudad"
                                 type="text"
                                 placeholder="Ingrese la nueva ciudad"
-                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Dirección de residencia</label>
+                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Dirección de residencia</label>
                               <input
                                 onChange={handleChange}
                                 id="direccion"
                                 name="direccion"
                                 type="text"
                                 placeholder="Ingrese la nueva dirección"
-                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <br></br>
                             <div className="form-group flex ">
@@ -186,14 +186,14 @@ const PanelModiUsuario = ({ router }) => {
                       <div className="px-8 mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
                         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
                           <div>
-                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Documento a buscar</label>
+                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Documento a buscar</label>
                             <input
                               onChange={handleChange}
                               id="documentoB"
                               name="documentoB"
                               type="text"
                               placeholder="Ingrese el documento del cliente"
-                              className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                              className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                           </div>
                           <div className="form-group flex">
                             <button className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold">
@@ -204,34 +204,34 @@ const PanelModiUsuario = ({ router }) => {
                             </button>
                           </div>
                           <div>
-                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Nombre(s) </label>
+                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Nombre(s) </label>
                             <input
                               onChange={handleChange}
                               id="nombres"
                               name="nombres"
                               type="text"
                               placeholder="Ingrese el nuevo nombre"
-                              className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                              className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                           </div>
                           <div>
-                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Apellido(s)</label>
+                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Apellido(s)</label>
                             <input
                               onChange={handleChange}
                               id="apellidos"
                               name="apellidos"
                               type="text"
                               placeholder="Ingrese el nuevo apellido"
-                              className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                              className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                           </div>
                           <div>
-                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Teléfono</label>
+                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Teléfono</label>
                             <input
                               onChange={handleChange}
                               id="telefono"
                               name="telefono"
                               type="text"
                               placeholder="Ingrese el nuevo número de contacto"
-                              className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                              className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                           </div>
 
                           <br></br>
