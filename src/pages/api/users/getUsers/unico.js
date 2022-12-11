@@ -43,7 +43,7 @@ export default async (req, res) => {
         const res1 = await conn.query(query1)
 
         if (res1.rows.length === 0) {
-          return res.status(400).json({ estado: 400, mensaje: 'Error al crear al usuario.' })
+          return res.status(400).json({ estado: 404, mensaje: 'Usuario no encontrado.' })
         }
 
         return res.status(200).json({
@@ -52,9 +52,9 @@ export default async (req, res) => {
           usuario: rows[0]
         })
 
-      } catch (error) {
-        console.error(error.message)
-        res.status(504).json(`La base de datos no responde.`)
+      } catch ({ message }) {
+        console.log(message)
+        res.status(408).json({ estado: 408, mensaje: message })
 
       } finally {
         break

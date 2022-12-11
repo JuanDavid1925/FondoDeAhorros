@@ -21,12 +21,12 @@ export default async (req, res) => {
         INSERT INTO clientes (
           documento_asociado_retiro,
           fecha_solicitada_retiro,
-          realizado_retiro
+          estado_retiro
         )
         VALUES (
           '${documento_asociado}',
           '${fecha}',
-          false
+          -2
         )
         RETURNING *;`
 

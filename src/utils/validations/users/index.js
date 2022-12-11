@@ -1,5 +1,5 @@
 /**
- * Funciones para validar las diferentes entradas esperadas.
+ * Funciones para validar las diferentes entradas esperadas en los registros de usuarios.
  */
 
 import { isInteger } from "formik"
@@ -100,6 +100,7 @@ function validarOcupacion(ocupacion) {
  */
 function validarNacimiento(fecha) {
   try {
+    console.log(fecha)
     return new Date(new Date() - new Date(fecha)).getFullYear() - 1970 >= 18
   } catch (error) {
     return false
