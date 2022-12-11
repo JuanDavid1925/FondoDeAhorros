@@ -202,7 +202,7 @@ export default function useUser() {
     fetch(
       URL,
       {
-        method: 'POST',
+        method: 'POST'
       }
     )
       .then(response => response.json())
@@ -215,12 +215,54 @@ export default function useUser() {
       .catch(error => console.error(`Error: ${error}`))
   }, [setUserData])
 
+  const getUser = useCallback((data, setEstado, setUser) => {
+    const URL = '/api/users/getUsers/unico'
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+        body: JSON.stringify(data)
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, user }) => {
+        switch (estado) {
+          case 200:
+            setUser(user)
+            setEstado(1)
+            break
+          case 404:
+            setEstado(-1)
+            break
+          case 401:
+            setEstado(-2)
+            break
+          case 408:
+            setEstado(-408)
+            break
+          default:
+            setEstado(-500)
+            console.log('No se ha podido conectar con la base de datos.')
+            break
+        }
+
+        console.log(mensaje)
+
+      })
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
   return {
     isLogged: Boolean(userData),
     login,
     logout,
     registroAsociado,
     registroCliente,
-    getProfile
+    getProfile,
+    getUser
   }
 }
