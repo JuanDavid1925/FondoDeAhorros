@@ -28,7 +28,7 @@ export default async (req, res) => {
             break
           case 'Cliente':
             query1 = `SELECT nombres_usuario, apellidos_usuario, telefono_usuario, 
-                      FROM usuarios
+                      FROM usuarios, clientes
                       WHERE documento_usuario = ${documento};`
             break
           case 'Admin':
