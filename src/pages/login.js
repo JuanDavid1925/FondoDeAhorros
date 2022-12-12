@@ -7,7 +7,7 @@ import useUser from "/src/hooks/useUser"
 export default function Login() {
   const router = useRouter()
   const { login } = useUser()
-  const [ estado, setEstado ] = useState(0)
+  const [estado, setEstado] = useState(0)
   const [showModal, setShowModal] = useState(false)
   const handleClose = () => { setShowModal(false) }
 
@@ -41,17 +41,17 @@ export default function Login() {
               <p className="mt-3 text-gray-600 dark:text-gray-300">Ingrese a su cuenta</p>
             </div>
             <div className="mt-8">
-                <Formik
-                  initialValues=
-                  {{
-                    documento: "",
-                    contrasena: ""
-                  }}
-                  onSubmit={handleSubmit}
-                >
-                  {
-                    ({ handleChange, handleSubmit }) => (
-                      <form onSubmit={handleSubmit}>
+              <Formik
+                initialValues=
+                {{
+                  documento: "",
+                  contrasena: ""
+                }}
+                onSubmit={handleSubmit}
+              >
+                {
+                  ({ handleChange, handleSubmit }) => (
+                    <form onSubmit={handleSubmit}>
                       <div>
                         <label htmlFor="documento" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Documento de identificación</label>
                         <input
@@ -62,6 +62,7 @@ export default function Login() {
                           placeholder="Ingrese su documento"
                           className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
+                        {(estado === -1) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">Documento incorrecto </span> : <></>}
                       </div>
                       <div className="mt-6">
                         <div className="flex justify-between mb-2">
@@ -76,6 +77,7 @@ export default function Login() {
                           placeholder="Ingrese su contraseña"
                           className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                         />
+                        {(estado === -2) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">Contraseña incorrecta </span> : <></>}
                       </div>
                       <div className="mt-6">
                         <button
@@ -89,7 +91,7 @@ export default function Login() {
                   )
                 }
               </Formik>
-              
+
               <p className="mt-6 text-sm text-center text-gray-400">¿No tiene una cuenta?
                 <a
                   onClick={() => setShowModal(true)}
@@ -97,10 +99,10 @@ export default function Login() {
                 </a>.
               </p>
             </div>
-            <div style={{paddingTop: 10}} className="flex items-center justify-center">
+            <div style={{ paddingTop: 10 }} className="flex items-center justify-center">
               {
-                (estado === 2) 
-                  ? <div style={{ borderTopColor: "transparent" }} className="w-20 h-20 border-4 border-blue-200 rounded-full animate-spin"></div> 
+                (estado === 2)
+                  ? <div style={{ borderTopColor: "transparent" }} className="w-20 h-20 border-4 border-blue-200 rounded-full animate-spin"></div>
                   : <></>
               }
             </div>
