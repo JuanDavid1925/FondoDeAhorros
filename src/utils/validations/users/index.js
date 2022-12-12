@@ -192,7 +192,7 @@ function validarDatosLogin({ documento }) {
 
 
 /**
- * Función para validar si los dato entregados son parte de un logueo válido.
+ * Función para validar si los datos entregados son parte de un logueo válido.
  * @param { String } documento Número de documento a evaluar.
  * @param { String } contrasena Contraseña a evaluar.
  */
@@ -241,7 +241,7 @@ function validarDatosRegistroAsociado({ nombres, apellidos, documento, telefono,
 
 
 /**
- * Función para validar si los dato entregados son parte de un logueo válido.
+ * Función para validar si los datos entregados son parte de un logueo válido.
  * @param { String } documento Número de documento a evaluar.
  * @param { String } contrasena Contraseña a evaluar.
  */
@@ -270,4 +270,75 @@ function validarDatosRegistroCliente({ nombres, apellidos, documento, telefono, 
   return 1
 }
 
-export { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente }
+
+/**
+ * Función para validar si los datos entregados para modificar un asociado son válidos.
+ * @param { String } documento Número de documento a evaluar.
+ * @param { String } contrasena Contraseña a evaluar.
+ */
+function validarDatosModificacionAsociado({ nombres, apellidos, documento, telefono, correo, ocupacion, fecha_nacimiento, ciudad, direccion, contrasena, confirContrasena, cuota_fija_mensual, aceptarTerminos }) {
+  if (nombres !== undefined && !validarNombre(nombres)) {
+    return -101
+  }
+  if (apellidos !== undefined && !validarNombre(apellidos)) {
+    return -102
+  }
+  if (documento !== undefined && !validarNumeroDocumento(documento)) {
+    return -103
+  }
+  if (telefono !== undefined && !validarNumeroTelefono(telefono)) {
+    return -104
+  }
+  if (correo !== undefined && !validarCorreo(correo)) {
+    return -104
+  }
+  if (ocupacion !== undefined && !validarOcupacion(ocupacion)) {
+    return -106
+  }
+  if (fecha_nacimiento !== undefined && !validarNacimiento(fecha_nacimiento)) {
+    return -107
+  }
+  if (ciudad !== undefined && !validarCiudad(ciudad)) {
+    return -108
+  }
+  if (direccion !== undefined && !validarDireccion(direccion)) {
+    return -109
+  }
+  if (contrasena !== undefined && !validarContrasena(contrasena)) {
+    return -110
+  }
+  if (cuota_fija_mensual !== undefined && !validarEntero(cuota_fija_mensual)) {
+    return -111
+  }
+  return 1
+}
+
+
+/**
+ * Función para validar si los dato entregados para modificar un cliente son válidos.
+ * @param { String } documento Número de documento a evaluar.
+ * @param { String } contrasena Contraseña a evaluar.
+ */
+function validarDatosModificacionCliente({ nombres, apellidos, documento, telefono, documento_asociado, contrasena, confirContrasena }) {
+  if (nombres !== undefined && !validarNombre(nombres)) {
+    return -101
+  }
+  if (apellidos !== undefined && !validarNombre(apellidos)) {
+    return -102
+  }
+  if (documento !== undefined && !validarNumeroDocumento(documento)) {
+    return -103
+  }
+  if (telefono !== undefined && !validarNumeroTelefono(telefono)) {
+    return -104
+  }
+  if (documento_asociado !== undefined && !validarNumeroDocumento(documento_asociado)) {
+    return -105
+  }
+  if (contrasena !== undefined && !validarContrasena(contrasena)) {
+    return -106
+  }
+  return 1
+}
+
+export { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente, validarDatosModificacionAsociado, validarDatosModificacionCliente }

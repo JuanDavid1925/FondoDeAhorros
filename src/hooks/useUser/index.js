@@ -1,6 +1,6 @@
 import { useCallback, useContext } from 'react'
 import Context from '/src/context/userContext'
-import { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente } from '/src/utils/validations/users'
+import { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente, validarDatosModificacionAsociado, validarDatosModificacionCliente } from '/src/utils/validations/users'
 
 export default function useUser() {
   const { userData, setUserData } = useContext(Context)
@@ -254,6 +254,122 @@ export default function useUser() {
         setEstado(-400)
         console.error(`Error: ${error}`)
       })
+  }, [])
+
+  const modificacionAsociado = useCallback((data, setEstado) => {
+    const URL = '/api/users/updateProfile/asociado'
+    console.log("Entra al asociado.")
+
+    let validacion = validarDatosModificacionAsociado(data)
+
+    if (validacion !== 1) {
+      setEstado(validacion)
+      console.log(validacion)
+      return
+    }
+
+    setEstado(2)
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+        body: JSON.stringify(data)
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje }) => {
+        switch (estado) {
+          case 201:
+            setEstado(1)
+            break
+          case 400:
+            setEstado(-1)
+            break
+          case 401:
+            setEstado(-2)
+            break
+          case 402:
+            setEstado(-3)
+            break
+          case 408:
+            setEstado(-408)
+            break
+          case 409:
+            setEstado(-409)
+            break
+          default:
+            setEstado(-500)
+            console.log('No se ha podido conectar con la base de datos.')
+            break
+        }
+
+        console.log(mensaje)
+
+      })
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
+
+  }, [])
+
+  const modificacionCliente = useCallback((data, setEstado) => {
+    const URL = '/api/users/updateProfile/cliente'
+    console.log("Entra al cliente.")
+
+    let validacion = validarDatosModificacionCliente(data)
+
+    if (validacion !== 1) {
+      setEstado(validacion)
+      console.log(validacion)
+      return
+    }
+
+    setEstado(2)
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+        body: JSON.stringify(data)
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje }) => {
+        switch (estado) {
+          case 201:
+            setEstado(1)
+            break
+          case 400:
+            setEstado(-1)
+            break
+          case 401:
+            setEstado(-2)
+            break
+          case 402:
+            setEstado(-3)
+            break
+          case 408:
+            setEstado(-408)
+            break
+          case 409:
+            setEstado(-409)
+            break
+          default:
+            setEstado(-500)
+            console.log('No se ha podido conectar con la base de datos.')
+            break
+        }
+
+        console.log(mensaje)
+
+      })
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
+
   }, [])
 
   return {
