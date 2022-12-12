@@ -276,7 +276,7 @@ function validarDatosRegistroCliente({ nombres, apellidos, documento, telefono, 
  * @param { String } documento Número de documento a evaluar.
  * @param { String } contrasena Contraseña a evaluar.
  */
-function validarDatosModificacionAsociado({ nombres, apellidos, documento, telefono, correo, ocupacion, fecha_nacimiento, ciudad, direccion, contrasena, confirContrasena, cuota_fija_mensual, aceptarTerminos }) {
+function validarDatosModificacionAsociado({ nombres, apellidos, documento, telefono, correo, ocupacion, fecha_nacimiento, ciudad, direccion, contrasena, cuota_fija_mensual }) {
   if (nombres !== undefined && !validarNombre(nombres)) {
     return -101
   }
@@ -319,7 +319,7 @@ function validarDatosModificacionAsociado({ nombres, apellidos, documento, telef
  * @param { String } documento Número de documento a evaluar.
  * @param { String } contrasena Contraseña a evaluar.
  */
-function validarDatosModificacionCliente({ nombres, apellidos, documento, telefono, documento_asociado, contrasena, confirContrasena }) {
+function validarDatosModificacionCliente({ nombres, apellidos, documento, telefono, documento_asociado, contrasena }) {
   if (nombres !== undefined && !validarNombre(nombres)) {
     return -101
   }
