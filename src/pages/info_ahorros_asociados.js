@@ -11,7 +11,7 @@ export default function Info_ahorros_asociados() {
             <Head>
                 <link rel="icon" href="/icono_ahorro.png" />
                 <title>Ahorro asociado</title>
-                <meta name="description" content={"Registro asociado"} />
+                <meta name="description" content={"Ahorro asociado"} />
             </Head>
             <div className="container flex flex-col items-center px-4 py-20 mx-auto xl:flex-row">
                 <div className="flex justify-center xl:w-1/2">
