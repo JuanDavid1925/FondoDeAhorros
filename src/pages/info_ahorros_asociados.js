@@ -1,4 +1,5 @@
 import Aviso_registro from "../componentes/aviso_registro"
+import Head from "next/head";
 import { useRef, useState } from 'react'
 
 export default function Info_ahorros_asociados() {
@@ -7,6 +8,11 @@ export default function Info_ahorros_asociados() {
 
     return (
         <section className="bg-white">
+            <Head>
+                <link rel="icon" href="/icono_ahorro.png" />
+                <title>Ahorro asociado</title>
+                <meta name="description" content={"Registro asociado"} />
+            </Head>
             <div className="container flex flex-col items-center px-4 py-20 mx-auto xl:flex-row">
                 <div className="flex justify-center xl:w-1/2">
                     <img className="h-80 w-80 sm:w-[28rem] sm:h-[28rem] flex-shrink-0 object-cover rounded-full" src="./ahorro3.jpg" alt="" />

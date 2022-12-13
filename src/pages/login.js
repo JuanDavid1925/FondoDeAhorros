@@ -1,4 +1,5 @@
 import { Formik } from "formik"
+import Head from "next/head";
 import { useRouter } from "next/Router"
 import { useCallback, useEffect, useState } from "react"
 import Aviso_registro from "../componentes/aviso_registro"
@@ -24,6 +25,11 @@ export default function Login() {
   return (
 
     <div className="bg-white dark:bg-gray-900" >
+      <Head>
+        <link rel="icon" href="/icono_inicio_sesion.png" />
+        <title>Iniciar sesión</title>
+        <meta name="description" content={"Iniciar sesión"} />
+      </Head>
       <div className="flex justify-center h-screen">
         <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("https://www.semana.com/resizer/KBqsa1apFXMpiYrzLIKHestVJkk=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/IMMOPWHLBBGGLDWBUB4VAZZHIE.jpg")' }}>
           <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">

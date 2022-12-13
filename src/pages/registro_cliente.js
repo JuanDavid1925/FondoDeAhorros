@@ -1,4 +1,5 @@
 import { Formik } from "formik"
+import Head from "next/head";
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
@@ -24,6 +25,11 @@ export default function Registro_cliente() {
   return (
 
     <section className="bg-white dark:bg-gray-900">
+      <Head>
+        <link rel="icon" href="/icono_inicio_sesion.png" />
+        <title>Registro cliente</title>
+        <meta name="description" content={"Registro cliente"} />
+      </Head>
       <div className="flex justify-center min-h-screen">
         <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("./clientes3.jpg")' }}>
         </div>

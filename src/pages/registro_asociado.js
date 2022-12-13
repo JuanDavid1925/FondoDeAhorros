@@ -1,4 +1,5 @@
 import { Formik, Form, ErrorMessage, Field } from 'formik';
+import Head from "next/head";
 import * as Yup from 'yup';
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from "react"
@@ -27,6 +28,11 @@ export default function Registro() {
 
   return (
     <section className="bg-white dark:bg-gray-900">
+      <Head>
+        <link rel="icon" href="/icono_inicio_sesion.png" />
+        <title>Registro asociado</title>
+        <meta name="description" content={"Registro asociado"} />
+      </Head>
       <div className="flex justify-center position:fixed">
         <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("./asociados3.jpg")' }}>
         </div>
