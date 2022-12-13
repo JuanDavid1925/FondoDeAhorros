@@ -1,4 +1,5 @@
 import { Formik, Form, ErrorMessage, Field } from 'formik';
+import Head from "next/head";
 import * as Yup from 'yup';
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from "react"
@@ -26,13 +27,22 @@ export default function Registro() {
   }, [registroAsociado])
 
   return (
-
     <section className="bg-white dark:bg-gray-900">
+      <Head>
+        <link rel="icon" href="/icono_inicio_sesion.png" />
+        <title>Registro asociado</title>
+        <meta name="description" content={"Registro asociado"} />
+      </Head>
       <div className="flex justify-center position:fixed">
         <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: 'url("./asociados3.jpg")' }}>
         </div>
         <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
           <div className="w-full">
+            <a href="./" className="inline-flex items-center justify-center w-full px-0 py-3 text-base font-medium text-white bg-transparent hover:from-gray-600 hover:to-gray-600 sm:w-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+              </svg>
+            </a>
             <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-white">
               Sé parte de nuestros asociados.
             </h2>
