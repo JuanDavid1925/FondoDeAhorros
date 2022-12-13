@@ -47,3 +47,12 @@ CREATE TABLE IF NOT EXISTS clientes(
   FOREIGN KEY(documento_cliente) REFERENCES usuarios(documento_usuario),
   FOREIGN KEY(documento_asociado_cliente) REFERENCES asociados(documento_asociado)
 );
+
+CREATE TABLE IF NOT EXISTS solicitudes(
+  id_retiro SERIAL NOT NULL,
+  documento_asociado_retiro VARCHAR(32),
+  fecha_solicitada_retiro VARCHAR(32),
+  realizado_retiro BOOL,
+  PRIMARY KEY(id_retiro),
+  FOREIGN KEY(documento_asociado_retiro) REFERENCES usuarios (documento_usuario)
+);
