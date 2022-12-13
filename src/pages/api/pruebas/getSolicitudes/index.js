@@ -13,11 +13,19 @@ export default async (req, res) => {
   switch (method) {
     case 'GET':
       try {
-        const response = await conn.query(`SELECT NOW();`)
+        const query1 = `SELECT * FROM solicitudes;`
 
-        res.status(200).json(`Conectado a la base de datos. ${response.rows[0].now}.`)
+        const res1 = await conn.query(query1)
+
+        if (res1.rows.length === 0) {
+          res.status(404).json(`No se encontraron solicitudes.`)
+        }
+        else {
+          res.status(200).json({ estado: 200, solicitudes: res1.rows })
+        }
 
       } catch (error) {
+        console.error(error.message)
         res.status(504).json(`La base de datos no responde.`)
 
       } finally {
