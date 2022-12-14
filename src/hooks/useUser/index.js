@@ -298,7 +298,7 @@ export default function useUser() {
 
   const modificacionAsociado = useCallback((data, setEstado) => {
     const URL = '/api/users/updateProfile/asociado'
-    console.log("Entra al asociado.")
+    console.log("Entra a modificar asociado.")
 
     let validacion = validarDatosModificacionAsociado(data)
 

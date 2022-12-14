@@ -30,12 +30,12 @@ export default async (req, res) => {
 
           const query1 = `UPDATE usuarios 
           SET
-          ${`${(nombres) ? `nombres_usuario = '${nombres}',` : ''}
-            ${(apellidos) ? `apellidos_usuario = '${apellidos}',` : ''}
-            ${(contrasena) ? `contrasena_usuario = '${contra}',` : ''}
-            ${(telefono) ? `telefono_usuario = '${telefono}',` : ''}`
+          ${`${(!nombres) ? '' : `nombres_usuario = '${nombres}',`}
+            ${(!apellidos) ? '' : `apellidos_usuario = '${apellidos}',`}
+            ${(!contrasena) ? '' : `contrasena_usuario = '${contra}',`}
+            ${(!telefono) ? '' : `telefono_usuario = '${telefono}',`}`
               .trim().slice(0, -1)}
-          WHERE documento_usuario = ${documento}
+          WHERE documento_usuario = '${documento}'
           RETURNING *;`
 
           res1 = await conn.query(query1)
@@ -47,10 +47,10 @@ export default async (req, res) => {
         if (documento_asociado || activo) {
           const query2 = `UPDATE asociados
           SET
-          ${`${(documento_asociado) ? `documento_asociado = '${documento_asociado}',` : ''}
-            ${(activo) ? `activo_asociado = ${activo},` : ''}`
+          ${`${(!documento_asociado) ? '' : `documento_asociado = '${documento_asociado}',`}
+            ${(!activo) ? '' : `activo_asociado = ${activo},`}`
               .trim().slice(0, -1)}
-          WHERE documento_asociado = ${documento}
+          WHERE documento_asociado = '${documento}'
           RETURNING *;`
 
           res2 = await conn.query(query2)

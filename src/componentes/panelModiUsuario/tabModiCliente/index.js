@@ -11,7 +11,7 @@ export default function TabModiCliente() {
 
   const handleSubmitCliente = useCallback((data) => {
     console.log(data)
-    modificacionCliente//(data, setEstado)
+    modificacionCliente(data, setEstado)
   }, [modificacionCliente])
 
   const cargarDatos = useCallback((documento) => {
@@ -33,14 +33,14 @@ export default function TabModiCliente() {
       <Formik
         initialValues=
         {{
-          documento: "",
-          nombres: "",
-          apellidos: "",
-          telefono: "",
-          correo: "",
-          ocupacion: "",
-          ciudad: "",
-          direccion: "",
+          documento: undefined,
+          nombres: undefined,
+          apellidos: undefined,
+          telefono: undefined,
+          correo: undefined,
+          ocupacion: undefined,
+          ciudad: undefined,
+          direccion: undefined
         }}
 
         onSubmit={handleSubmitCliente}

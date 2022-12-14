@@ -10,8 +10,7 @@ export default function TabModiAsociado() {
   const [asociado, setAsociado] = useState()
 
   const handleSubmitAsociado = useCallback((data) => {
-    console.log(data)
-    modificacionAsociado//(data, setEstado)
+    modificacionAsociado(data, setEstado)
   }, [modificacionAsociado])
 
   const cargarDatos = useCallback((documento) => {
@@ -37,14 +36,14 @@ export default function TabModiAsociado() {
       <Formik
         initialValues=
         {{
-          documento: "",
-          nombres: "",
-          apellidos: "",
-          telefono: "",
-          correo: "",
-          ocupacion: "",
-          ciudad: "",
-          direccion: "",
+          documento: undefined,
+          nombres: undefined,
+          apellidos: undefined,
+          telefono: undefined,
+          correo: undefined,
+          ocupacion: undefined,
+          ciudad: undefined,
+          direccion: undefined
         }}
 
 
