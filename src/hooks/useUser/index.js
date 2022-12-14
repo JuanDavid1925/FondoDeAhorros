@@ -1,6 +1,6 @@
 import { useCallback, useContext } from 'react'
 import Context from '/src/context/userContext'
-import { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente } from '/src/utils/validations'
+import { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente, validarDatosModificacionAsociado, validarDatosModificacionCliente } from '/src/utils/validations/users'
 
 export default function useUser() {
   const { userData, setUserData } = useContext(Context)
@@ -97,25 +97,6 @@ export default function useUser() {
       return
     }
 
-    if (!data.aceptarTerminos) {
-      setEstado(-9)
-      console.log(-9)
-      return
-    }
-    else {
-      delete data.aceptarTerminos
-    }
-
-    {
-      const { contrasena, confirContrasena } = data
-      if (!(contrasena === confirContrasena)) {
-        console.log(`Contra: ${contrasena}; confirmación: ${confirContrasena}`)
-        setEstado(-10)
-        console.log(-10)
-        return
-      }
-    }
-
     setEstado(2)
 
     fetch(
@@ -171,14 +152,6 @@ export default function useUser() {
       return
     }
 
-    {
-      const { contrasena, confirContrasena } = data
-      if (!(contrasena === confirContrasena)) {
-        setEstado(-10)
-        console.log(-10)
-      }
-    }
-
     setEstado(2)
 
     fetch(
@@ -229,7 +202,7 @@ export default function useUser() {
     fetch(
       URL,
       {
-        method: 'POST',
+        method: 'POST'
       }
     )
       .then(response => response.json())
@@ -242,12 +215,214 @@ export default function useUser() {
       .catch(error => console.error(`Error: ${error}`))
   }, [setUserData])
 
+  const getUser = useCallback((data, setEstado, setUser) => {
+    const URL = '/api/users/getUsers/unico'
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+        body: JSON.stringify(data)
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, usuario }) => {
+        switch (estado) {
+          case 200:
+            setUser(usuario)
+            setEstado(1)
+            break
+          case 404:
+            setEstado(-1)
+            break
+          case 401:
+            setEstado(-2)
+            break
+          case 408:
+            setEstado(-408)
+            break
+          default:
+            setEstado(-500)
+            console.log('No se ha podido conectar con la base de datos.')
+            break
+        }
+
+        console.log(mensaje)
+
+      })
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
+  const getAllUsers = useCallback((data, setEstado, setUsers) => {
+    const URL = '/api/users/getUsers/todos'
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+        body: JSON.stringify(data)
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, users }) => {
+        switch (estado) {
+          case 200:
+            setUsers(users)
+            setEstado(1)
+            break
+          case 404:
+            setEstado(-1)
+            break
+          case 401:
+            setEstado(-2)
+            break
+          case 408:
+            setEstado(-408)
+            break
+          default:
+            setEstado(-500)
+            console.log('No se ha podido conectar con la base de datos.')
+            break
+        }
+
+        console.log(mensaje)
+
+      })
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
+  const modificacionAsociado = useCallback((data, setEstado) => {
+    const URL = '/api/users/updateProfile/asociado'
+    console.log("Entra al asociado.")
+
+    let validacion = validarDatosModificacionAsociado(data)
+
+    if (validacion !== 1) {
+      setEstado(validacion)
+      console.log(validacion)
+      return
+    }
+
+    setEstado(2)
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+        body: JSON.stringify(data)
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje }) => {
+        switch (estado) {
+          case 201:
+            setEstado(1)
+            break
+          case 400:
+            setEstado(-1)
+            break
+          case 401:
+            setEstado(-2)
+            break
+          case 402:
+            setEstado(-3)
+            break
+          case 408:
+            setEstado(-408)
+            break
+          case 409:
+            setEstado(-409)
+            break
+          default:
+            setEstado(-500)
+            console.log('No se ha podido conectar con la base de datos.')
+            break
+        }
+
+        console.log(mensaje)
+
+      })
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
+
+  }, [])
+
+  const modificacionCliente = useCallback((data, setEstado) => {
+    const URL = '/api/users/updateProfile/cliente'
+    console.log("Entra al cliente.")
+
+    let validacion = validarDatosModificacionCliente(data)
+
+    if (validacion !== 1) {
+      setEstado(validacion)
+      console.log(validacion)
+      return
+    }
+
+    setEstado(2)
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+        body: JSON.stringify(data)
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje }) => {
+        switch (estado) {
+          case 201:
+            setEstado(1)
+            break
+          case 400:
+            setEstado(-1)
+            break
+          case 401:
+            setEstado(-2)
+            break
+          case 402:
+            setEstado(-3)
+            break
+          case 408:
+            setEstado(-408)
+            break
+          case 409:
+            setEstado(-409)
+            break
+          default:
+            setEstado(-500)
+            console.log('No se ha podido conectar con la base de datos.')
+            break
+        }
+
+        console.log(mensaje)
+
+      })
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
+
+  }, [])
+
   return {
     isLogged: Boolean(userData),
     login,
     logout,
     registroAsociado,
     registroCliente,
-    getProfile
+    getProfile,
+    getUser,
+    getAllUsers,
+    modificacionAsociado,
+    modificacionCliente
   }
 }
