@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/styled": "^11.10.5",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
     "bcryptjs": "^2.4.3",
     "cookie": "^0.5.0",
     "formik": "^2.2.9",
     "jose": "^4.11.0",
+    "jquery": "^3.6.2",
     "jsonwebtoken": "^8.5.1",
     "next": "12.3.1",
     "pg": "^8.8.0",

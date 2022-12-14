@@ -57,9 +57,9 @@ export default function useUser() {
         console.log(mensaje)
 
       })
-      .catch(error =>{
+      .catch(error => {
         setEstado(-400)
-        console.error(`Error: ${error}`) 
+        console.error(`Error: ${error}`)
       })
 
   }, [setUserData])

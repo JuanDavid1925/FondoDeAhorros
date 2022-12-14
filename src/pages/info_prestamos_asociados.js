@@ -1,5 +1,6 @@
 import Aviso_registro from "../componentes/aviso_registro"
 import { useRef, useState } from 'react'
+import Head from "next/head";
 
 export default function Info_prestamos_clientes() {
     const [showModal, setShowModal] = useState(false)
@@ -7,6 +8,11 @@ export default function Info_prestamos_clientes() {
 
     return (
         <div className="container flex flex-col items-center px-4 py-20 mx-auto xl:flex-row">
+            <Head>
+                <link rel="icon" href="/icono_prestamo.png" />
+                <title>Préstamo asociado</title>
+                <meta name="description" content={"Préstamo asociado"} />
+            </Head>
             <div className="flex justify-center xl:w-1/2">
                 <img className="h-80 w-80 sm:w-[28rem] sm:h-[28rem] flex-shrink-0 object-cover rounded-full" src="./prestamos3.jpg" alt="" />
             </div>

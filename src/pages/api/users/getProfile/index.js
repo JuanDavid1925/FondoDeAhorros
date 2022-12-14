@@ -16,7 +16,7 @@ export default (req, res) => {
 
     const userData = verify(jwt, 'DSII')
 
-    return res.status(200).json({ estado: 200, mensaje: 'Datos obtenidos correctamente.', user: { nombres: userData.nombres, apellidos: userData.apellidos, tipo: userData.tipo } })
+    return res.status(200).json({ estado: 200, mensaje: 'Datos obtenidos correctamente.', user: { nombres: userData.nombres, apellidos: userData.apellidos, tipo: userData.tipo, documento: userData.documento } })
   } catch ({ message }) {
     return res.status(401).json({ estado: 401, mensaje: message })
   }
