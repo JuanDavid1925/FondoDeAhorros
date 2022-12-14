@@ -38,7 +38,7 @@ export default function Solicitud_retiro() {
                 <div className="flex min-h-screen items-center justify-start bg-white">
                     <div className="mx-auto w-full max-w-lg">
                         <h1 className="text-4xl font-medium">Solicitud de retiro</h1>
-                        <p className="mt-3">Notifica al fondo sobre tu deseo de retirar tus ahorros</p>
+                        <p className="mt-3">Notifique al fondo su deseo de retirar sus ahorros</p>
                         <form className="mt-10">
                             <input type="hidden" name="access_key" defaultValue="YOUR_ACCESS_KEY_HERE" />
                             <div className="grid gap-6 sm:grid-cols-2">
