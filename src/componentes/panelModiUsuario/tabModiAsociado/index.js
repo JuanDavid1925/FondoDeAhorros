@@ -6,7 +6,8 @@ import $ from "jquery"
 export default function TabModiAsociado() {
   const { modificacionAsociado, getUser } = useUser()
 
-  const [estado, setEstado] = useState()
+  const [estadoModificacion, setEstadoModificacion] = useState()
+  const [estadoCargar, setEstadoCargar] = useState()
   const [asociado, setAsociado] = useState()
 
   const handleSubmitAsociado = useCallback((data) => {
@@ -30,6 +31,19 @@ export default function TabModiAsociado() {
     $("#ciudad").val(asociado.ciudad_asociado)
     $("#direccion").val(asociado.direccion_asociado)
   }, [asociado])
+
+  useEffect(() => {
+    if (estadoModificacion === 1) {
+      $("#documento").val('')
+      $("#nombres").val('')
+      $("#apellidos").val('')
+      $("#telefono").val('')
+      $("#correo").val('')
+      $("#ocupacion").val('')
+      $("#ciudad").val('')
+      $("#direccion").val('')
+    }
+    }, [estadoModificacion])
 
   return <>
     <div>
