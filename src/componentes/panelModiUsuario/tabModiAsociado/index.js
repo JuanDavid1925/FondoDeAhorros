@@ -6,17 +6,17 @@ import $ from "jquery"
 export default function TabModiAsociado() {
   const { modificacionAsociado, getUser } = useUser()
 
-  const [estado, setEstado] = useState()
+  const [estadoModificacion, setEstadoModificacion] = useState()
+  const [estadoCargar, setEstadoCargar] = useState()
   const [asociado, setAsociado] = useState()
 
   const handleSubmitAsociado = useCallback((data) => {
-    console.log(data)
-    modificacionAsociado//(data, setEstado)
+    modificacionAsociado(data, setEstadoModificacion)
   }, [modificacionAsociado])
 
   const cargarDatos = useCallback((documento) => {
     console.log(`documento: ${documento}, tipo: Asociado`)
-    getUser({ documento: documento, tipo: 'Asociado' }, setEstado, setAsociado)
+    getUser({ documento: documento, tipo: 'Asociado' }, setEstadoCargar, setAsociado)
   }, [getUser])
 
   useEffect(() => {
@@ -32,19 +32,32 @@ export default function TabModiAsociado() {
     $("#direccion").val(asociado.direccion_asociado)
   }, [asociado])
 
+  useEffect(() => {
+    if (estadoModificacion === 1) {
+      $("#documento").val('')
+      $("#nombres").val('')
+      $("#apellidos").val('')
+      $("#telefono").val('')
+      $("#correo").val('')
+      $("#ocupacion").val('')
+      $("#ciudad").val('')
+      $("#direccion").val('')
+    }
+  }, [estadoModificacion])
+
   return <>
     <div>
       <Formik
         initialValues=
         {{
-          documento: "",
-          nombres: "",
-          apellidos: "",
-          telefono: "",
-          correo: "",
-          ocupacion: "",
-          ciudad: "",
-          direccion: "",
+          documento: undefined,
+          nombres: undefined,
+          apellidos: undefined,
+          telefono: undefined,
+          correo: undefined,
+          ocupacion: undefined,
+          ciudad: undefined,
+          direccion: undefined
         }}
 
 
@@ -64,7 +77,7 @@ export default function TabModiAsociado() {
                       name="documento"
                       type="text"
                       placeholder="Ingrese el documento del asociado"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div className="form-group flex">
                     <div
@@ -89,7 +102,7 @@ export default function TabModiAsociado() {
                       name="nombres"
                       type="text"
                       placeholder="Ingrese el nuevo nombre"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div>
                     <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Apellido(s)</label>
@@ -99,7 +112,7 @@ export default function TabModiAsociado() {
                       name="apellidos"
                       type="text"
                       placeholder="Ingrese el nuevo apellido"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div>
                     <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Teléfono</label>
@@ -109,7 +122,7 @@ export default function TabModiAsociado() {
                       name="telefono"
                       type="text"
                       placeholder="Ingrese el nuevo número de contacto"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div>
                     <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Correo electrónico</label>
@@ -119,7 +132,7 @@ export default function TabModiAsociado() {
                       name="correo"
                       type="email"
                       placeholder="Ingrese el nuevo correo electrónico"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div>
                     <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Ocupación</label>
@@ -129,7 +142,7 @@ export default function TabModiAsociado() {
                       name="ocupacion"
                       type="text"
                       placeholder="Ingrese la nueva ocupación"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div>
                     <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Ciudad</label>
@@ -139,7 +152,7 @@ export default function TabModiAsociado() {
                       name="ciudad"
                       type="text"
                       placeholder="Ingrese la nueva ciudad"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div>
                     <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Dirección de residencia</label>
@@ -149,7 +162,7 @@ export default function TabModiAsociado() {
                       name="direccion"
                       type="text"
                       placeholder="Ingrese la nueva dirección"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <br></br>
                   <div className="form-group flex ">
@@ -159,6 +172,8 @@ export default function TabModiAsociado() {
                       <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Modificar datos</label></span>
                     </button>
                   </div>
+                  <br></br>
+                  {(estadoModificacion === 1) ? <span class="flex items-center font-medium tracking-wide text-green-500 text-md mt-1 ml-1">Asociado modificado con éxito. </span> : <></>}
                 </form>
               </div>
             </div>
