@@ -41,17 +41,17 @@ export default function Aviso_retiro({ children, onClose, cambiarEstadoFormulari
                                         </div>
                                         <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                                             <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
-                                                ¿Quieres retirar tu dinero?
+                                                ¿Quiere retirar su dinero?
                                             </Dialog.Title>
                                             <div className="mt-2">
                                                 <p className="text-sm text-gray-600">
-                                                    Para retirar tus ahorros puedes acercarte a nuestras oficinas ubicadas en la carrera 65 # 11 - 83 en Cali o
-                                                    contáctanos llamando a nuestras lineas + 01 234 567 88 o + 01 234 567 89 pero si lo desea también puede proceder a
+                                                    Para retirar sus ahorros puede acercarse a nuestras oficinas ubicadas en la carrera 65 # 11 - 83 en Cali o
+                                                    contactarnos llamando a nuestras líneas + 01 234 567 88 o + 01 234 567 89, pero si lo desea también puede proceder a
                                                     realizar su retiro de manera virtual a través del siguiente formulario.
                                                 </p>
                                                 <p className="text-sm text-gray-600 space-y-1">
-                                                    Recuerda que para retirar tus ahorros debes notificar al fondo con un mes de anticipación, si ya realizaste este
-                                                    proceso puedes continuar, sino realiza primero la solicitud al fondo y te será respondida en 5 días habiles.
+                                                    Recuerde que para retirar sus ahorros debe notificar al fondo con un mes de anticipación, si ya realizó este
+                                                    proceso puede continuar, sino realice primero la solicitud al fondo y le será respondida en 5 días habiles.
                                                 </p>
                                             </div>
                                         </div>
