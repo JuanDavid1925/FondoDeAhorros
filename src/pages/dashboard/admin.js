@@ -3,6 +3,7 @@ import { useCallback, useContext, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
 import Context from "/src/context/userContext"
 import PanelModiUsuario from "../../componentes/panelModiUsuario"
+import PanelAhorros from "../../componentes/panelAhorros"
 import PanelAux from "../../componentes/panelAux"
 import InicioAdmin from "../../componentes/inicioAdmin"
 
@@ -67,6 +68,7 @@ export default function Dashboard_Admin() {
                   className={"group-hover:text-cyan-600 " + ((panelAMostrar === 2) ? "text-white group-hover:text-white" : "")}>Ahorros</span>
               </a>
             </li>
+
             <li></li>
             <li>
               <a href="#" onClick={() => setUsuarios(3)} className={"px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group " + ((panelAMostrar === 3) ? "bg-gradient-to-r from-sky-600 to-cyan-400" : "")}>
@@ -107,7 +109,9 @@ export default function Dashboard_Admin() {
         (panelAMostrar === 0) ?
           <InicioAdmin /> :
           (panelAMostrar === 1) ?
-            <PanelModiUsuario /> : <PanelAux />
+            <PanelModiUsuario /> :
+            (panelAMostrar === 2) ?
+              <PanelAhorros /> : <PanelAux />
       }
     </div >
 

@@ -68,7 +68,7 @@ const PanelModiUsuario = ({ router }) => {
                         <div className="px-8 ml-28 mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
                           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Documento a buscar</label>
+                              <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Documento a buscar</label>
                               <input
                                 onChange={handleChange}
                                 id="documentoB"
@@ -86,7 +86,7 @@ const PanelModiUsuario = ({ router }) => {
                               </button>
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Nombre(s) </label>
+                              <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Nombre(s) </label>
                               <input
                                 onChange={handleChange}
                                 id="nombres"
@@ -96,7 +96,7 @@ const PanelModiUsuario = ({ router }) => {
                                 className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Apellido(s)</label>
+                              <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Apellido(s)</label>
                               <input
                                 onChange={handleChange}
                                 id="apellidos"
@@ -106,7 +106,7 @@ const PanelModiUsuario = ({ router }) => {
                                 className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Teléfono</label>
+                              <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Teléfono</label>
                               <input
                                 onChange={handleChange}
                                 id="telefono"
@@ -116,7 +116,7 @@ const PanelModiUsuario = ({ router }) => {
                                 className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Correo electrónico</label>
+                              <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Correo electrónico</label>
                               <input
                                 onChange={handleChange}
                                 id="correo"
@@ -126,7 +126,7 @@ const PanelModiUsuario = ({ router }) => {
                                 className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Ocupación</label>
+                              <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Ocupación</label>
                               <input
                                 onChange={handleChange}
                                 id="ocupacion"
@@ -136,7 +136,7 @@ const PanelModiUsuario = ({ router }) => {
                                 className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Ciudad</label>
+                              <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Ciudad</label>
                               <input
                                 onChange={handleChange}
                                 id="ciudad"
@@ -146,7 +146,7 @@ const PanelModiUsuario = ({ router }) => {
                                 className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div>
-                              <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Dirección de residencia</label>
+                              <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Dirección de residencia</label>
                               <input
                                 onChange={handleChange}
                                 id="direccion"
@@ -197,7 +197,7 @@ const PanelModiUsuario = ({ router }) => {
                       <div className="px-8 mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
                         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
                           <div>
-                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Documento a buscar</label>
+                            <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Documento a buscar</label>
                             <input
                               onChange={handleChange}
                               id="documentoB"
@@ -215,7 +215,7 @@ const PanelModiUsuario = ({ router }) => {
                             </button>
                           </div>
                           <div>
-                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Nombre(s) </label>
+                            <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Nombre(s) </label>
                             <input
                               onChange={handleChange}
                               id="nombres"
@@ -225,7 +225,7 @@ const PanelModiUsuario = ({ router }) => {
                               className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                           </div>
                           <div>
-                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Apellido(s)</label>
+                            <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Apellido(s)</label>
                             <input
                               onChange={handleChange}
                               id="apellidos"
@@ -235,7 +235,7 @@ const PanelModiUsuario = ({ router }) => {
                               className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                           </div>
                           <div>
-                            <label className="block mb-2 text-sm text-gray-600 dark:text-gray-700">Teléfono</label>
+                            <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Teléfono</label>
                             <input
                               onChange={handleChange}
                               id="telefono"
