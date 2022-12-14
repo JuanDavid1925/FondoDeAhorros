@@ -8,20 +8,27 @@ import { conn } from '/src/utils/database'
 */
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-  const { method } = req
+  const { method, body } = req
+
+  const {
+    documento_asociado,
+    estado
+  } = body
 
   switch (method) {
     case 'POST':
       try {
-        const query1 = `SELECT documento_usuario, nombres_usuario, apellidos_usuario, telefono_usuario, tipo_usuario FROM usuarios;`
+        const query1 = `SELECT * FROM solicitudes WHERE documento_asociado_retiro = ${documento_asociado} 
+          ${(!estado) ? '' : `, AND estado_retiro = ${estado}`}
+        ;`
 
         const res1 = await conn.query(query1)
 
         if (res1.rows.length === 0) {
-          res.status(404).json(`Sin usuarios.`)
+          res.status(404).json(`No se encontraron solicitudes.`)
         }
         else {
-          res.status(200).json(res1.rows)
+          res.status(200).json({ estado: 200, solicitudes: res1.rows })
         }
 
       } catch (error) {
