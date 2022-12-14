@@ -256,6 +256,47 @@ export default function useUser() {
       })
   }, [])
 
+  const getAllUsers = useCallback((data, setEstado, setUsers) => {
+    const URL = '/api/users/getUsers/todos'
+
+    fetch(
+      URL,
+      {
+        method: 'POST',
+        body: JSON.stringify(data)
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, users }) => {
+        switch (estado) {
+          case 200:
+            setUsers(users)
+            setEstado(1)
+            break
+          case 404:
+            setEstado(-1)
+            break
+          case 401:
+            setEstado(-2)
+            break
+          case 408:
+            setEstado(-408)
+            break
+          default:
+            setEstado(-500)
+            console.log('No se ha podido conectar con la base de datos.')
+            break
+        }
+
+        console.log(mensaje)
+
+      })
+      .catch(error => {
+        setEstado(-400)
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
   const modificacionAsociado = useCallback((data, setEstado) => {
     const URL = '/api/users/updateProfile/asociado'
     console.log("Entra al asociado.")
@@ -379,6 +420,9 @@ export default function useUser() {
     registroAsociado,
     registroCliente,
     getProfile,
-    getUser
+    getUser,
+    getAllUsers,
+    modificacionAsociado,
+    modificacionCliente
   }
 }
