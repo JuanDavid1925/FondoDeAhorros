@@ -32,7 +32,7 @@ const PanelModiUsuario = ({ router }) => {
 
   const cargarDatos = useCallback((documento, tipo) => {
     console.log(`documento: ${documento}, tipo: ${tipo}`)
-    //getUser({documento: documento, tipo: tipo}, setEstadoModCliente, setUser)
+    getUser({documento: documento, tipo: tipo}, setEstadoModCliente, setUser)
   }, [getUser, setUser, setEstadoModCliente])
 
   return (
