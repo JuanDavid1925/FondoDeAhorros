@@ -1,4 +1,7 @@
+import { useRouter } from 'next/router'
+
 export default function Registro() {
+  const router = useRouter()
   return (
 
     <div className="bg-gradient-to-tl from-blue-500 to-blue-300 text-white  flex flex-col min-h-screen">
@@ -14,19 +17,22 @@ export default function Registro() {
             <div className="px-8 mb-4 text-center">
               <h2 className="text-4xl font-bold text-center text-gray-700 dark:text-gray-700">Cambiar contraseña</h2>
               <p className="mt-3  text-gray-700">
-                Lo entendemos, muchas cosas pueden pasar. Ingrese su número de contacto y le enviaremos un mensaje de texto
+                Lo entendemos, muchas cosas pueden pasar. Ingrese su correo electrónico y le enviaremos un código de seguridad
                 para reestablecer su contraseña.
               </p>
             </div>
-
             <div className="mb-4">
               <label className="block mb-2 font-bold text-gray-700" htmlFor="text">
-                Teléfono
+                Correo electrónico
               </label>
-              <input className="w-full px-3 py-2 text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Ingrese su número de teléfono" />
+              <input className="w-full px-3 py-2 text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Ingrese su correo electrónico" />
             </div>
             <div className="mb-6 text-center">
-              <button className="w-full px-4 py-2 font-bold text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50" type="button">
+              <button
+                onClick={() => {
+                  router.push('/cambio_contra')
+                }}
+                className="w-full px-4 py-2 font-bold text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50" type="button">
                 Cambiar
               </button>
             </div>

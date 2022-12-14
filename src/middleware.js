@@ -2,7 +2,10 @@ import { jwtVerify } from "jose"
 import { NextResponse } from "next/server"
 
 export async function middleware(req) {
-  if (req.nextUrl.pathname.includes('/api') && req.method === 'GET') {
+  if (req.nextUrl.pathname.includes('/pruebas') && req.method === 'GET') {
+    return NextResponse.next()
+  }
+  else if (req.nextUrl.pathname.includes('/api') && req.method === 'GET') {
     return NextResponse.redirect(new URL('/', req.url))
   }
   else if (req.method === 'POST') {
