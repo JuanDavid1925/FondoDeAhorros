@@ -5,6 +5,7 @@ import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/menuTabs"
 import { Formik } from 'formik';
 import { useEffect } from "react"
 import useUser from "../hooks/useUser";
+import $ from "jquery"
 
 const PanelModiUsuario = ({ router }) => {
   const {
@@ -14,12 +15,25 @@ const PanelModiUsuario = ({ router }) => {
   const isTabOne = tab === "1" || tab == null
   const isTabTwo = tab === "2"
 
-  const { modificacionAsociado } = useUser()
+  const { modificacionAsociado, modificacionCliente, getUser } = useUser()
+
   const [estadoModAsociado, setEstadoModAsociado] = useState()
+  const [estadoModCliente, setEstadoModCliente] = useState()
+  const [user, setUser] = useState()
 
   const handleSubmitAsociado = useCallback((data) => {
-    modificacionAsociado(data, setEstadoModAsociado)
+    console.log(data)
+    //modificacionAsociado(data, setEstadoModAsociado)
   }, [modificacionAsociado, setEstadoModAsociado])
+
+  const handleSubmitCliente = useCallback((data) => {
+    modificacionCliente(data, setEstadoModCliente)
+  }, [modificacionCliente, setEstadoModCliente])
+
+  const cargarDatos = useCallback((documento, tipo) => {
+    console.log(`documento: ${documento}, tipo: ${tipo}`)
+    //getUser({documento: documento, tipo: tipo}, setEstadoModCliente, setUser)
+  }, [getUser, setUser, setEstadoModCliente])
 
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
@@ -42,6 +56,7 @@ const PanelModiUsuario = ({ router }) => {
                 <Formik
                   initialValues=
                   {{
+                    documento: "",
                     nombres: "",
                     apellidos: "",
                     telefono: "",
@@ -64,19 +79,27 @@ const PanelModiUsuario = ({ router }) => {
                               <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Documento a buscar</label>
                               <input
                                 onChange={handleChange}
-                                id="documentoB"
-                                name="documentoB"
+                                id="documentoA"
+                                name="documento"
                                 type="text"
                                 placeholder="Ingrese el documento del asociado"
                                 className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
                             <div className="form-group flex">
-                              <button className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold">
+                              <div 
+                                onClick={ 
+                                  () => {
+                                    const documento = $("#documentoA").val()
+                                    cargarDatos(documento, "Asociado")
+                                  }
+                                }
+                                className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold"
+                              >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer"> Buscar</label></span>
-                              </button>
+                              </div>
                             </div>
                             <div>
                               <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Nombre(s) </label>
@@ -170,6 +193,7 @@ const PanelModiUsuario = ({ router }) => {
               <Formik
                 initialValues=
                 {{
+                  documento: "",
                   nombres: "",
                   apellidos: "",
                   telefono: "",
@@ -180,9 +204,7 @@ const PanelModiUsuario = ({ router }) => {
                 }}
 
 
-                onSubmit={fields => {
-                  handleSubmit(fields)
-                }}
+                onSubmit={handleSubmitCliente}
 
               >
                 {
@@ -194,19 +216,27 @@ const PanelModiUsuario = ({ router }) => {
                             <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Documento a buscar</label>
                             <input
                               onChange={handleChange}
-                              id="documentoB"
-                              name="documentoB"
+                              id="documentoC"
+                              name="documento"
                               type="text"
                               placeholder="Ingrese el documento del cliente"
                               className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                           </div>
                           <div className="form-group flex">
-                            <button className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold">
+                            <div
+                              onClick={
+                                () => {
+                                  const documento = $("#documentoC").val()
+                                  cargarDatos(documento, "Cliente")
+                                }
+                              } 
+                              className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold"
+                            >
                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
                               <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer"> Buscar</label></span>
-                            </button>
+                            </div>
                           </div>
                           <div>
                             <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Nombre(s) </label>

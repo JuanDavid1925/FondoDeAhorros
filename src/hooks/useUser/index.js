@@ -379,6 +379,8 @@ export default function useUser() {
     registroAsociado,
     registroCliente,
     getProfile,
-    getUser
+    getUser,
+    modificacionAsociado,
+    modificacionCliente
   }
 }
