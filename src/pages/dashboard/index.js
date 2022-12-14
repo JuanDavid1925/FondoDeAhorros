@@ -9,7 +9,6 @@ export default function Dashboard() {
   const { getProfile } = useUser()
 
   useEffect(() => {
-    console.log(userData);
     if (!userData) {
       getProfile()
     }
