@@ -30,7 +30,8 @@ export default async (req, res) => {
           apellidos_usuario,
           contrasena_usuario,
           telefono_usuario,
-          tipo_usuario
+          tipo_usuario,
+          activo_usuario
         )
         VALUES (
           '${documento}',
@@ -38,14 +39,14 @@ export default async (req, res) => {
           '${apellidos}',
           '${contra}',
           '${telefono}',
-          'Cliente'
+          'Cliente',
+          true
         )
         RETURNING *;`
 
         const query2 = `INSERT INTO clientes (
           documento_cliente,
-          documento_asociado_cliente,
-          activo_cliente
+          documento_asociado_cliente
         )
         VALUES (
           '${documento}',
