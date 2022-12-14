@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
-import useUser from "/src/hooks/useUser";
-import { Formik } from 'formik';
+import { useCallback, useEffect, useState } from 'react'
+import useUser from "/src/hooks/useUser"
+import { Formik } from 'formik'
 import $ from "jquery"
 
 export default function TabModiAsociado() {

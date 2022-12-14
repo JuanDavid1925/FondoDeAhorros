@@ -2,10 +2,9 @@ import React, { useCallback, useState } from "react"
 import Link from "next/link"
 import { withRouter } from "next/router"
 import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/menuTabs"
-import useUser from "/src/hooks/useUser";
-import TabUsuarios from "./tabUsuarios";
-import TabModiAsociado from "./tabModiAsociado";
-import TabModiCliente from "./tabModiCliente";
+import TabUsuarios from "./tabUsuarios"
+import TabModiAsociado from "./tabModiAsociado"
+import TabModiCliente from "./tabModiCliente"
 
 const PanelModiUsuario = ({ router }) => {
   const {
