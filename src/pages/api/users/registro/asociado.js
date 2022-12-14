@@ -27,9 +27,11 @@ export default async (req, res) => {
     case 'POST':
       try {
         const bcryptjs = require('bcryptjs')
-        let contra = await bcryptjs.hash(contrasena, 8)
+        const contra = await bcryptjs.hash(contrasena, 8)
 
-        const query1 = `INSERT INTO usuarios (
+        const query = `BEGIN;
+
+        INSERT INTO usuarios (
           documento_usuario,
           nombres_usuario,
           apellidos_usuario,
@@ -47,9 +49,9 @@ export default async (req, res) => {
           'Asociado',
           true
         )
-        RETURNING *;`
+        RETURNING *;
 
-        const query2 = `INSERT INTO asociados (
+        INSERT INTO asociados (
           documento_asociado,
           ciudad_asociado,
           ocupacion_asociado,
@@ -65,33 +67,32 @@ export default async (req, res) => {
           '${ciudad}',
           '${ocupacion}',
           '${direccion}',
-          '${cuota_fija_mensual}',
+          ${cuota_fija_mensual},
           '${correo}',
           '${fecha_nacimiento}',
           5000,
           0
         )
-        RETURNING *;`
+        RETURNING *;
 
-        const res1 = await conn.query(query1)
+        COMMIT;`
 
-        const res2 = await conn.query(query2)
+        const resp = await conn.query(query)
 
-        if (res1.rowcount === 0)
-          return res.status(400).json({ estado: 400, mensaje: 'Error al crear al usuario' })
+        if (resp[1].rowcount === 0)
+          return res.status(400).json({ estado: 400, mensaje: 'Error al crear al usuario.' })
 
-        if (res2.rowcount === 0)
-          return res.status(401).json({ estado: 401, mensaje: 'Error al crear al asociado' })
-
-        console.log(res2.rows);
+        if (resp[2].rowcount === 0)
+          return res.status(401).json({ estado: 401, mensaje: 'Error al crear al asociado.' })
 
         return res.status(201).json({
           estado: 201,
-          mensaje: 'Usuario creado con éxito',
-          usuario: res1.rows[0].usuario
+          mensaje: 'Usuario creado con éxito.',
+          usuario: resp[1].rows[0].usuario
         })
 
       } catch ({ message }) {
+        console.log(message);
         res.status(408).json({ estado: 408, mensaje: message })
 
       } finally {
