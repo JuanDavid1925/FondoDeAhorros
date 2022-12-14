@@ -226,10 +226,10 @@ export default function useUser() {
       }
     )
       .then(response => response.json())
-      .then(({ estado, mensaje, user }) => {
+      .then(({ estado, mensaje, usuario }) => {
         switch (estado) {
           case 200:
-            setUser(user)
+            setUser(usuario)
             setEstado(1)
             break
           case 404:

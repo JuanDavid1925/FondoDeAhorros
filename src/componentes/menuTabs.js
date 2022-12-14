@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 
 export const TabHead = styled("div")`
+  border-top: 1px solid blue; 
   border-bottom: 1px solid blue;
   display: flex;
 `

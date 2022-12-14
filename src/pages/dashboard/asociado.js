@@ -6,6 +6,7 @@ import Aviso_retiro from "../../componentes/aviso_retiro"
 import Formulario_retiro from "../../componentes/formulario_retiro"
 import Inicio_asociado from "../../componentes/inicio_asociado"
 import Solicitud_retiro from "../../componentes/solicitud_retiro"
+import PanelTarjeta from "../../componentes/panelTarjeta"
 
 export default function Dashboard_Asociado() {
   const router = useRouter()
@@ -31,6 +32,8 @@ export default function Dashboard_Asociado() {
     switch (numeroPagina) {
       case 1:
         return <Inicio_asociado />
+      case 2:
+        return <PanelTarjeta />
       case 3:
         return <Formulario_retiro />
       case 4:
