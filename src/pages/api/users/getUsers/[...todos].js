@@ -11,17 +11,27 @@ export default async (req, res) => {
   const { method } = req
 
   switch (method) {
-    case 'POST':
+    case 'GET':
       try {
-        const query1 = `SELECT documento_usuario, nombres_usuario, apellidos_usuario, telefono_usuario, tipo_usuario FROM usuarios;`
+        const query1 = `SELECT * FROM usuarios, asociados WHERE usuarios.documento_usuario = asociados.documento_asociado;`
 
         const res1 = await conn.query(query1)
 
-        if (res1.rows.length === 0) {
+        const query2 = `SELECT * FROM usuarios, clientes WHERE usuarios.documento_usuario = clientes.documento_cliente;`
+
+        const res2 = await conn.query(query2)
+
+        if (res1.rows.length + res2.rows.length === 0) {
           res.status(404).json(`Sin usuarios.`)
         }
-        else {
+        else if (res1.rows.length === 0) {
+          res.status(200).json(res2.rows)
+        }
+        else if (res2.rows.length === 0) {
           res.status(200).json(res1.rows)
+        }
+        else {
+          res.status(200).json([res1.rows, res2.rows])
         }
 
       } catch (error) {
