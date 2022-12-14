@@ -2,13 +2,7 @@ import { useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
 
 export default function TabUsuarios() {
-  const {getAllUsers} = useUser()
-
-  const datos_usuarios = [
-    { nombre: "nombre", apellido: "apellido", documento: "documento", telefono: "telefono", rol: "tipo" },
-    { nombre: "nombre", apellido: "apellido", documento: "documento", telefono: "telefono", rol: "tipo" },
-    { nombre: "nombre", apellido: "apellido", documento: "documento", telefono: "telefono", rol: "tipo" }
-  ]
+  const { getAllUsers } = useUser()
 
   const [usuarios, setUsuarios] = useState()
   const [estado, setEstado] = useState()
