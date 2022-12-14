@@ -23,9 +23,9 @@ export default function TabModiCliente() {
     if (!cliente)
       return
 
-    $("#nombres").val(cliente.nombres)
-    $("#apellidos").val(cliente.apellidos)
-    $("#telefono").val(cliente.telefono)
+    $("#nombres").val(cliente.nombres_usuario)
+    $("#apellidos").val(cliente.apellidos_usuario)
+    $("#telefono").val(cliente.telefono_usuario)
   }, [cliente])
 
   return <>
