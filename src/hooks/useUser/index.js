@@ -256,21 +256,20 @@ export default function useUser() {
       })
   }, [])
 
-  const getAllUsers = useCallback((data, setEstado, setUsers) => {
+  const getAllUsers = useCallback((setEstado, setUsers) => {
     const URL = '/api/users/getUsers/todos'
 
     fetch(
       URL,
       {
-        method: 'POST',
-        body: JSON.stringify(data)
+        method: 'POST'
       }
     )
       .then(response => response.json())
-      .then(({ estado, mensaje, users }) => {
+      .then(({ estado, mensaje, usuarios }) => {
         switch (estado) {
           case 200:
-            setUsers(users)
+            setUsers(usuarios)
             setEstado(1)
             break
           case 404:

@@ -17,11 +17,13 @@ export default async (req, res) => {
 
         const res1 = await conn.query(query1)
 
-        if (res1.rows.length === 0) {
-          res.status(404).json(`Sin usuarios.`)
+        console.log(res1.rows)
+
+        if (!res1.rowCount) {
+          res.status(404).json({estado: 404, mensaje: `Sin usuarios.`})
         }
         else {
-          res.status(200).json(res1.rows)
+          res.status(200).json({estado: 200, mensaje: 'Usuarios encontrados.', usuarios: res1.rows})
         }
 
       } catch (error) {
