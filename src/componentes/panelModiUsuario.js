@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useCallback, useState } from "react"
 import Link from "next/link"
 import { withRouter } from "next/router"
 import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/menuTabs"
-import { Formik, Form, ErrorMessage, Field } from 'formik';
-import * as Yup from 'yup';
-import { useCallback, useContext, useEffect, useState } from "react"
+import { Formik } from 'formik';
+import { useEffect } from "react"
+import useUser from "../hooks/useUser";
 
 const PanelModiUsuario = ({ router }) => {
   const {
@@ -13,6 +13,14 @@ const PanelModiUsuario = ({ router }) => {
 
   const isTabOne = tab === "1" || tab == null
   const isTabTwo = tab === "2"
+
+  const { modificacionAsociado } = useUser()
+  const [estadoModAsociado, setEstadoModAsociado] = useState()
+
+  const handleSubmitAsociado = useCallback((data) => {
+    modificacionAsociado(data, setEstadoModAsociado)
+  }, [modificacionAsociado, setEstadoModAsociado])
+
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
       <TabContainer>
@@ -29,9 +37,8 @@ const PanelModiUsuario = ({ router }) => {
           </Tab>
         </TabHead>
         <TabBody>
-          {isTabOne &&
-            <React.Fragment>
-              <div >
+          {isTabOne && <>
+              <div>
                 <Formik
                   initialValues=
                   {{
@@ -45,9 +52,7 @@ const PanelModiUsuario = ({ router }) => {
                   }}
 
 
-                  onSubmit={fields => {
-                    handleSubmit(fields)
-                  }}
+                  onSubmit={handleSubmitAsociado}
 
                 >
                   {
@@ -159,8 +164,8 @@ const PanelModiUsuario = ({ router }) => {
                   }
                 </Formik>
               </div >
-            </React.Fragment>}
-          {isTabTwo && <React.Fragment>
+            </>}
+          {isTabTwo && <>
             <div >
               <Formik
                 initialValues=
@@ -251,7 +256,7 @@ const PanelModiUsuario = ({ router }) => {
               </Formik>
             </div >
 
-          </React.Fragment>}
+          </>}
         </TabBody>
       </TabContainer>
     </div>
