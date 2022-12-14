@@ -39,7 +39,7 @@ export default function Solicitud_retiro() {
                 <div className="flex min-h-screen items-center justify-start bg-white">
                     <div className="mx-auto w-full max-w-lg">
                         <h1 className="text-4xl font-medium">Solicitud de retiro</h1>
-                        <p className="mt-3">Notifica al fondo sobre tu deseo de retirar tus ahorros</p>
+                        <p className="mt-3">Notifique al fondo sobre su deseo de retirar sus ahorros</p>
                         <Formik
                             initialValues=
                             {{
