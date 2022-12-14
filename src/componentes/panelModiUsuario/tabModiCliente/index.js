@@ -6,17 +6,18 @@ import $ from "jquery"
 export default function TabModiCliente() {
   const { modificacionCliente, getUser } = useUser()
 
-  const [estado, setEstado] = useState()
+  const [estadoModificacion, setEstadoModificacion] = useState()
+  const [estadoCargar, setEstadoCargar] = useState()
   const [cliente, setCliente] = useState()
 
   const handleSubmitCliente = useCallback((data) => {
     console.log(data)
-    modificacionCliente(data, setEstado)
+    modificacionCliente(data, setEstadoModificacion)
   }, [modificacionCliente])
 
   const cargarDatos = useCallback((documento) => {
     console.log(`documento: ${documento}, tipo: 'Cliente`)
-    getUser({ documento: documento, tipo: 'Cliente' }, setEstado, setCliente)
+    getUser({ documento: documento, tipo: 'Cliente' }, setEstadoCargar, setCliente)
   }, [getUser])
 
   useEffect(() => {
@@ -27,6 +28,15 @@ export default function TabModiCliente() {
     $("#apellidos").val(cliente.apellidos_usuario)
     $("#telefono").val(cliente.telefono_usuario)
   }, [cliente])
+
+  useEffect(() => {
+    if (estadoModificacion === 1) {
+      $("#documento").val('')
+      $("#nombres").val('')
+      $("#apellidos").val('')
+      $("#telefono").val('')
+    }
+  }, [estadoModificacion])
 
   return <>
     <div >
