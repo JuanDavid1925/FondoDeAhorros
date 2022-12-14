@@ -134,7 +134,7 @@ export default function Registro() {
                           type="email"
                           placeholder="Ingrese su correo electrónico"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-
+                        {(estado === -104) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Correo inválido </span> : <></>}
                       </div>
                       <div>
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Ocupación</label>
@@ -145,7 +145,7 @@ export default function Registro() {
                           type="text"
                           placeholder="Ingrese su ocupación"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                        {(estado === -107) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Ocupación inválida </span> : <></>}
+                        {(estado === -106) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Ocupación inválida </span> : <></>}
                       </div>
                       <div>
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Fecha de nacimiento</label>
@@ -156,7 +156,7 @@ export default function Registro() {
                           type="date"
                           placeholder=""
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                        {(estado === -106) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Debes ser mayor de edad. </span> : <></>}
+                        {(estado === -107) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Debes ser mayor de edad. </span> : <></>}
                       </div>
                       <div>
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Ciudad</label>
@@ -189,7 +189,7 @@ export default function Registro() {
                           type="password"
                           placeholder="Ingrese una contraseña"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                        {(estado === -104) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> La contraseña no es segura </span> : <></>}
+                        {(estado === -110) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> La contraseña no es segura </span> : <></>}
                       </div>
                       <div>
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Confirmar contraseña</label>
@@ -200,7 +200,7 @@ export default function Registro() {
                           type="password"
                           placeholder="Ingrese otra vez su contraseña "
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                        {(estado === -104) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Las contraseñas no coinciden </span> : <></>}
+                        {(estado === -10) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Las contraseñas no coinciden </span> : <></>}
                       </div>
                       <div>
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Cuota mensual</label>
@@ -211,7 +211,7 @@ export default function Registro() {
                           type="text"
                           placeholder="Ingrese la cuota que va a pagar"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                        {(estado === -110) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> La cuota debe ser mayor o igual a la estipulada </span> : <></>}
+                        {(estado === -111) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> La cuota debe ser mayor o igual a la estipulada </span> : <></>}
                       </div>
                       <div className="form-group form-check">
                         <Field type="checkbox" name="aceptarTerminos" className={'form-check-input ' + (errors.aceptarTerminos && touched.aceptarTerminos ? ' Inválido' : '')} />
