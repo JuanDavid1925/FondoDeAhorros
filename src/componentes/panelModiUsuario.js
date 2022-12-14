@@ -19,7 +19,8 @@ const PanelModiUsuario = ({ router }) => {
 
   const [estadoModAsociado, setEstadoModAsociado] = useState()
   const [estadoModCliente, setEstadoModCliente] = useState()
-  const [user, setUser] = useState()
+  const [asociado, setAsociado] = useState()
+  const [cliente, setCliente] = useState()
 
   const handleSubmitAsociado = useCallback((data) => {
     console.log(data)
@@ -30,10 +31,10 @@ const PanelModiUsuario = ({ router }) => {
     modificacionCliente(data, setEstadoModCliente)
   }, [modificacionCliente, setEstadoModCliente])
 
-  const cargarDatos = useCallback((documento, tipo) => {
+  const cargarDatos = useCallback((documento, tipo, set) => {
     console.log(`documento: ${documento}, tipo: ${tipo}`)
-    getUser({documento: documento, tipo: tipo}, setEstadoModCliente, setUser)
-  }, [getUser, setUser, setEstadoModCliente])
+    getUser({ documento: documento, tipo: tipo }, setEstadoModCliente, set)
+  }, [getUser, setEstadoModCliente])
 
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
@@ -90,7 +91,7 @@ const PanelModiUsuario = ({ router }) => {
                                 onClick={ 
                                   () => {
                                     const documento = $("#documentoA").val()
-                                    cargarDatos(documento, "Asociado")
+                                    cargarDatos(documento, "Asociado", setAsociado)
                                   }
                                 }
                                 className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold"
@@ -227,7 +228,7 @@ const PanelModiUsuario = ({ router }) => {
                               onClick={
                                 () => {
                                   const documento = $("#documentoC").val()
-                                  cargarDatos(documento, "Cliente")
+                                  cargarDatos(documento, "Cliente", setCliente)
                                 }
                               } 
                               className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold"
