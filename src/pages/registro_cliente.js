@@ -105,7 +105,7 @@ export default function Registro_cliente() {
                           type="text"
                           placeholder="Ingrese su número de contacto"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                        {(estado === -105) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Teléfono inválido </span> : <></>}
+                        {(estado === -104) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Teléfono inválido </span> : <></>}
                       </div>
                       <div>
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Identificación del asociado a vincular</label>
@@ -116,7 +116,7 @@ export default function Registro_cliente() {
                           type="text"
                           placeholder="Ingrese el número del asociado"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                        {(estado === -106) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> El asociado ingresado no existe </span> : <></>}
+                        {(estado === -105) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> El asociado ingresado no existe </span> : <></>}
                       </div>
                       <div>
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Contraseña</label>
@@ -127,7 +127,7 @@ export default function Registro_cliente() {
                           type="password"
                           placeholder="Ingrese una contraseña"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                        {(estado === -104) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> La contraseña no es segura </span> : <></>}
+                        {(estado === -106) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> La contraseña no es segura </span> : <></>}
                       </div>
                       <div>
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Confirmar contraseña</label>
@@ -138,7 +138,7 @@ export default function Registro_cliente() {
                           type="password"
                           placeholder="Ingrese nuevamente su contraseña"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                        {(estado === -104) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Las contraseñas no coinciden </span> : <></>}
+                        {(estado === -6) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Las contraseñas no coinciden </span> : <></>}
                       </div>
                       {showModal && <Registro_exitoso onClose={() => handleClose()}></Registro_exitoso>}
                       <div></div>
