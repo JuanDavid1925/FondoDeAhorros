@@ -22,9 +22,11 @@ export default async (req, res) => {
     case 'POST':
       try {
         const bcryptjs = require('bcryptjs')
-        let contra = await bcryptjs.hash(contrasena, 8)
+        const contra = await bcryptjs.hash(contrasena, 8)
 
-        const query1 = `INSERT INTO usuarios (
+        const query = `BEGIN;
+
+        INSERT INTO usuarios (
           documento_usuario, 
           nombres_usuario,
           apellidos_usuario,
@@ -40,9 +42,9 @@ export default async (req, res) => {
           '${telefono}',
           'Cliente'
         )
-        RETURNING *;`
+        RETURNING *;
 
-        const query2 = `INSERT INTO clientes (
+        INSERT INTO clientes (
           documento_cliente,
           documento_asociado_cliente,
           activo_cliente
@@ -52,22 +54,22 @@ export default async (req, res) => {
           '${documento_asociado}',
           true
         )
-        RETURNING *;`
+        RETURNING *;
 
-        const res1 = await conn.query(query1)
+        COMMIT;`
 
-        const res2 = await conn.query(query2)
+        const resp = await conn.query(query)
 
-        if (res1.rowcount === 0)
-          return res.status(400).json({ estado: 400, mensaje: 'Error al crear al usuario' })
+        if (resp[1].rowcount === 0)
+          return res.status(400).json({ estado: 400, mensaje: 'Error al crear al usuario.' })
 
-        if (res2.rowcount === 0)
-          return res.status(401).json({ estado: 401, mensaje: 'Error al crear al cliente' })
+        if (resp[2].rowcount === 0)
+          return res.status(401).json({ estado: 401, mensaje: 'Error al crear al cliente.' })
 
         return res.status(201).json({
           estado: 201,
-          mensaje: 'Usuario creado con éxito',
-          usuario: res1.rows[0].usuario
+          mensaje: 'Usuario creado con éxito.',
+          usuario: resp[1].rows[0].usuario
         })
 
       } catch ({ message }) {
