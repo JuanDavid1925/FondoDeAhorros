@@ -125,6 +125,9 @@ export default function TabModiCliente() {
                       <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Modificar datos</label></span>
                     </button>
                   </div>
+                  <br></br>
+                  {(estadoModificacion === 1) ? <span class="flex items-center font-medium tracking-wide text-green-500 text-md mt-1 ml-1">Cliente modificado con éxito. </span> : <></>}
+
                 </form>
               </div>
             </div>

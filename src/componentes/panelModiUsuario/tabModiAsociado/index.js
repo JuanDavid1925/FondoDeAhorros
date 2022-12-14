@@ -11,12 +11,12 @@ export default function TabModiAsociado() {
   const [asociado, setAsociado] = useState()
 
   const handleSubmitAsociado = useCallback((data) => {
-    modificacionAsociado(data, setEstado)
+    modificacionAsociado(data, setEstadoModificacion)
   }, [modificacionAsociado])
 
   const cargarDatos = useCallback((documento) => {
     console.log(`documento: ${documento}, tipo: Asociado`)
-    getUser({ documento: documento, tipo: 'Asociado' }, setEstado, setAsociado)
+    getUser({ documento: documento, tipo: 'Asociado' }, setEstadoCargar, setAsociado)
   }, [getUser])
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function TabModiAsociado() {
       $("#ciudad").val('')
       $("#direccion").val('')
     }
-    }, [estadoModificacion])
+  }, [estadoModificacion])
 
   return <>
     <div>
@@ -172,7 +172,8 @@ export default function TabModiAsociado() {
                       <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Modificar datos</label></span>
                     </button>
                   </div>
-                  {(estado === 1) ? <span class="flex items-center font-medium tracking-wide text-green-500 text-md mt-1 ml-1">Asociado modificado con éxito. </span> : <></>}
+                  <br></br>
+                  {(estadoModificacion === 1) ? <span class="flex items-center font-medium tracking-wide text-green-500 text-md mt-1 ml-1">Asociado modificado con éxito. </span> : <></>}
                 </form>
               </div>
             </div>
