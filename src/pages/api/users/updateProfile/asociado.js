@@ -36,12 +36,12 @@ export default async (req, res) => {
 
           const query1 = `UPDATE usuarios 
           SET
-          ${`${(nombres) ? `nombres_usuario = '${nombres}',` : ''}
-            ${(apellidos) ? `apellidos_usuario = '${apellidos}',` : ''}
-            ${(contrasena) ? `contrasena_usuario = '${contra}',` : ''}
-            ${(telefono) ? `telefono_usuario = '${telefono}',` : ''}`
+          ${`${(!nombres) ? '' : `nombres_usuario = '${nombres}',`}
+            ${(!apellidos) ? '' : `apellidos_usuario = '${apellidos}',`}
+            ${(!contrasena) ? '' : `contrasena_usuario = '${contra}',`}
+            ${(!telefono) ? '' : `telefono_usuario = '${telefono}',`}`
               .trim().slice(0, -1)}
-          WHERE documento_usuario = ${documento}
+          WHERE documento_usuario = '${documento}'
           RETURNING *;`
 
           res1 = await conn.query(query1)
@@ -53,16 +53,16 @@ export default async (req, res) => {
         if (ciudad || ocupacion || direccion || cuota_fija_mensual || correo || fecha_nacimiento || cuota_manejo_pendiente || activo) {
           const query2 = `UPDATE asociados
           SET
-          ${`${(ciudad) ? `ciudad_asociado = '${ciudad}',` : ''}
-            ${(ocupacion) ? `ocupacion_asociado = '${ocupacion}',` : ''}
-            ${(direccion) ? `direccion_asociado = '${direccion}',` : ''}
-            ${(cuota_fija_mensual) ? `cuota_fija_mensual_asociado = ${cuota_fija_mensual},` : ''}
-            ${(cuota_fija_mensual) ? `correo_asociado = '${cuota_fija_mensual}',` : ''}
-            ${(fecha_nacimiento) ? `fecha_nacimiento_asociado = '${fecha_nacimiento}',` : ''}
-            ${(cuota_manejo_pendiente) ? `cuota_manejo_pendiente_asociado = ${cuota_manejo_pendiente},` : ''}
-            ${(activo) ? `activo_asociado = ${activo},` : ''}`
+          ${`${(!ciudad) ? '' : `ciudad_asociado = '${ciudad}',`}
+            ${(!ocupacion) ? '' : `ocupacion_asociado = '${ocupacion}',`}
+            ${(!direccion) ? '' : `direccion_asociado = '${direccion}',`}
+            ${(!cuota_fija_mensual) ? '' : `cuota_fija_mensual_asociado = ${cuota_fija_mensual},`}
+            ${(!correo) ? '' : `correo_asociado = '${correo}',`}
+            ${(!fecha_nacimiento) ? '' : `fecha_nacimiento_asociado = '${fecha_nacimiento}',`}
+            ${(!cuota_manejo_pendiente) ? '' : `cuota_manejo_pendiente_asociado = ${cuota_manejo_pendiente},`}
+            ${(!activo) ? '' : `activo_asociado = ${activo},`}`
               .trim().slice(0, -1)}
-          WHERE documento_asociado = ${documento}
+          WHERE documento_asociado = '${documento}'
           RETURNING *;`
 
           res2 = await conn.query(query2)
