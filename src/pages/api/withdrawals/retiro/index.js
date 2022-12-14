@@ -10,32 +10,26 @@ import { conn } from '/src/utils/database'
 export default async (req, res) => {
   const { method, body } = req
   const {
-    documento_asociado,
-    fecha
+    id
   } = JSON.parse(body)
 
   switch (method) {
     case 'POST':
       try {
-        const query = `
-        INSERT INTO clientes (
-          documento_asociado_retiro,
-          fecha_solicitada_retiro,
-          estado_retiro
-        )
-        VALUES (
-          '${documento_asociado}',
-          '${fecha}',
-          -2
-        )
-        RETURNING *;`
+        const query1 = `
+        UPDATE solicitudes
+        SET
+          estado_retiro = 0
+        WHERE
+          id_retiro = ${id}
+        RETURNING*;`
 
-        const resp = await conn.query(query)
+        const resp1 = await conn.query(query1)
 
-        if (resp.rowcount === 0)
-          return res.status(400).json({ estado: 400, mensaje: 'Error al crear la solicitud.' })
+        if (resp1.rowcount === 0)
+          return res.status(400).json({ estado: 400, mensaje: 'Error al realizar el retiro.' })
 
-        return res.status(201).json({ estado: 201, mensaje: 'Solicitud de retiro creada con éxito.' })
+        return res.status(201).json({ estado: 201, mensaje: 'Retiro realizado con éxito.' })
 
       } catch ({ message }) {
         res.status(408).json({ estado: 408, mensaje: message })
