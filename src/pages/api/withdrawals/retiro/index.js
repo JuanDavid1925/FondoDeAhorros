@@ -22,7 +22,7 @@ export default async (req, res) => {
           estado_retiro = 0
         WHERE
           id_retiro = ${id}
-        RETURNING*;`
+        RETURNING *;`
 
         const resp1 = await conn.query(query1)
 
