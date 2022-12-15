@@ -11,14 +11,14 @@ export default async (req, res) => {
   const { method, query } = req
 
   const {
-    id,
+    documento,
     estado
   } = query
 
   switch (method) {
     case 'GET':
       try {
-        const query1 = `SELECT * FROM solicitudes WHERE documento_asociado_retiro = '${id}'
+        const query1 = `SELECT * FROM solicitudes WHERE documento_asociado_retiro = '${documento}'
           ${(!estado) ? '' : ` AND estado_retiro = ${estado}`}
         ;`
 

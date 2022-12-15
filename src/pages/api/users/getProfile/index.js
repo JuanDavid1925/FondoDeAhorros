@@ -1,5 +1,5 @@
-import { verify } from 'jsonwebtoken'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { verify } from 'jsonwebtoken'
 
 /**
  * @param {NextApiRequest} req
