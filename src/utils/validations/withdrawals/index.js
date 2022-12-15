@@ -2,17 +2,18 @@
  * Funciones para validar las diferentes entradas esperadas en los registros de usuarios.
  */
 
-/**
- * Función para validar si el dato entregado puede ser un nombre.
- * @param { String } nombre Dato a evaluar.
- */
-function validarNombre(nombre) {
-  try {
-    let tamanoMin = nombre.length >= 1
-    let tamanoMax = nombre.length <= 50
-    let soloLetras = /^[a-z A-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]+$/.test(nombre)
 
-    return tamanoMin && tamanoMax && soloLetras
+/**
+ * Función para validar si el dato entregado es un número de documento válido.
+ * @param { String } documento Dato a evaluar.
+ */
+function validarNumeroDocumento(documento) {
+  try {
+    let tamanoMin = documento.toString().length >= 5
+    let tamanoMax = documento.toString().length <= 15
+    let esNum = /^\d+$/.test(documento)
+
+    return tamanoMin && tamanoMax && esNum
 
   } catch (error) {
     return false
@@ -56,4 +57,19 @@ function validarFecha(fecha) {
   }
 }
 
-export { validarNombre, validarFecha }
+
+/**
+ * Función para validar si el dato entregado puede ser un nombre.
+ * @param { String } nombre Dato a evaluar.
+ * @param { String } fecha Dato a evaluar.
+ */
+function validarDatosSolicitud(documento, fecha) {
+  if (!validarNumeroDocumento(documento))
+    return -101
+  if (!validarFecha(fecha))
+    return -102
+
+  return 1
+}
+
+export { validarDatosSolicitud }

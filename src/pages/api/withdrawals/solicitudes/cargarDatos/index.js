@@ -25,11 +25,11 @@ export default async (req, res) => {
         : `JOIN ${(userData.tipo === 'Asociado') ? 'asociados' : 'clientes'}
           ON usuarios.documento_usuario = ${(userData.tipo === 'Asociado') ? 'documento_asociado' : 'documento_cliente'}`
       }
-      WHERE documento_usuario = ${userData.documento};`
+      WHERE documento_usuario = '${userData.documento}';`
 
     const resp1 = await conn.query(query1)
 
-    if (!resp1.rowcount)
+    if (!resp1.rowCount)
       return res.status(400).json({ estado: 404, mensaje: 'Usuario no encontrado.' })
 
     return res.status(200).json({ 
