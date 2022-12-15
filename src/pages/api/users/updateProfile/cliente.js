@@ -33,7 +33,8 @@ export default async (req, res) => {
           ${`${(!nombres) ? '' : `nombres_usuario = '${nombres}',`}
             ${(!apellidos) ? '' : `apellidos_usuario = '${apellidos}',`}
             ${(!contrasena) ? '' : `contrasena_usuario = '${contra}',`}
-            ${(!telefono) ? '' : `telefono_usuario = '${telefono}',`}`
+            ${(!telefono) ? '' : `telefono_usuario = '${telefono}',`}
+            ${(!activo) ? '' : `activo_usuario = ${activo},`}`
               .trim().slice(0, -1)}
           WHERE documento_usuario = '${documento}'
           RETURNING *;`
@@ -45,12 +46,11 @@ export default async (req, res) => {
         }
 
         if (documento_asociado || activo) {
-          const query2 = `UPDATE asociados
+          const query2 = `UPDATE clientes
           SET
-          ${`${(!documento_asociado) ? '' : `documento_asociado = '${documento_asociado}',`}
-            ${(!activo) ? '' : `activo_asociado = ${activo},`}`
+          ${`${(!documento_asociado) ? '' : `documento_asociado_cliente = '${documento_asociado}',`}`
               .trim().slice(0, -1)}
-          WHERE documento_asociado = '${documento}'
+          WHERE documento_cliente = '${documento}'
           RETURNING *;`
 
           res2 = await conn.query(query2)
