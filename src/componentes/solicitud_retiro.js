@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react"
 import { Formik } from 'formik';
-import $ from "jquery"
+import $, { data } from "jquery"
 
 import Solicitud_retiro_exitoso from "./solicitud_retiro_exitosa"
 import useSaves from '/src/hooks/useSaves'
@@ -9,13 +9,13 @@ export default function Solicitud_retiro() {
   const [showModal, setShowModal] = useState(false)
   const [estado, setEstado] = useState()
   const [datos, setDatos] = useState()
-  const { solicitarRetiro, cargarDatosRetiro } = useSaves()
+  const { solicitarRetiro, cargarDatosSolicitud } = useSaves()
 
   const handleClose = useCallback(() => { setShowModal(false) }, [])
 
   useEffect(() => {
-    cargarDatosRetiro(setDatos)
-  }, [cargarDatosRetiro, setDatos])
+    cargarDatosSolicitud(setDatos)
+  }, [cargarDatosSolicitud, setDatos])
 
   useEffect(() => {
     if (!datos)
@@ -33,9 +33,12 @@ export default function Solicitud_retiro() {
   }, [estado])
 
   const handleSubmit = useCallback(data => {
-    console.log("Crear solicitud de retiro.")
+    data.documento = datos.documento
+    data.correo = datos.correo
+    data.saldo = datos.saldo
+
     solicitarRetiro(data, setEstado)
-  }, [solicitarRetiro])
+  }, [datos, solicitarRetiro])
 
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
@@ -78,6 +81,7 @@ export default function Solicitud_retiro() {
                 correo: "",
                 fecha: "",
                 motivo: "",
+                saldo: ""
               }}
               onSubmit={handleSubmit}
             >

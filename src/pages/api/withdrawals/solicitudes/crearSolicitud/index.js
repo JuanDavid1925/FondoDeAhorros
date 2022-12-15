@@ -10,7 +10,7 @@ import { conn } from '/src/utils/database'
 export default async (req, res) => {
   const { method, body } = req
   const {
-    documento_asociado,
+    documento,
     fecha
   } = JSON.parse(body)
 
@@ -21,7 +21,7 @@ export default async (req, res) => {
         SELECT documento_asociado_retiro 
         FROM solicitudes
         WHERE 
-          documento_asociado_retiro = '${documento_asociado}'
+          documento_asociado_retiro = '${documento}'
           AND estado_retiro > 0;`
 
         const resp1 = await conn.query(query1)
@@ -36,7 +36,7 @@ export default async (req, res) => {
           estado_retiro
         )
         VALUES (
-          '${documento_asociado}',
+          '${documento}',
           '${fecha}',
           4
         )

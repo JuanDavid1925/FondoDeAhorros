@@ -63,7 +63,7 @@ function validarFecha(fecha) {
  * @param { String } nombre Dato a evaluar.
  * @param { String } fecha Dato a evaluar.
  */
-function validarDatosSolicitud(documento, fecha) {
+function validarDatosSolicitud({ documento, fecha }) {
   if (!validarNumeroDocumento(documento))
     return -101
   if (!validarFecha(fecha))

@@ -3,7 +3,7 @@ import { useCallback, useContext } from 'react'
 import { validarDatosSolicitud } from '/src/utils/validations/withdrawals'
 
 export default function useSaves() {
-  const cargarDatosRetiro = useCallback((setDatos) => {
+  const cargarDatosSolicitud = useCallback((setDatos) => {
     const url = '/api/withdrawals/solicitudes/cargarDatos'
 
     fetch(
@@ -15,7 +15,6 @@ export default function useSaves() {
       .then(response => response.json())
       .then(({ estado, mensaje, datos }) => {
         if (estado === 200) {
-          console.log(datos)
           setDatos(datos)
         }
         console.log(mensaje)
@@ -93,5 +92,5 @@ export default function useSaves() {
       })
   }, [])
 
-  return { cargarDatosRetiro, solicitarRetiro, prueba }
+  return { cargarDatosSolicitud, solicitarRetiro, prueba }
 }
