@@ -22,13 +22,14 @@ export default async (req, res) => {
         switch (tipo) {
           case 'Asociado':
             query1 = `SELECT nombres_usuario, apellidos_usuario, telefono_usuario, ocupacion_asociado, direccion_asociado, ciudad_asociado, correo_asociado
-                      FROM usuarios, asociados 
-                      WHERE usuarios.documento_usuario = asociados.documento_asociado
-                      AND documento_usuario = '${documento}';`
+                      FROM usuarios JOIN asociados 
+                      ON usuarios.documento_usuario = asociados.documento_asociado
+                      WHERE documento_usuario = '${documento}';`
             break
           case 'Cliente':
             query1 = `SELECT nombres_usuario, apellidos_usuario, telefono_usuario 
-                      FROM usuarios, clientes
+                      FROM usuarios JOIN clientes 
+                      ON usuarios.documento_usuario = clientes.documento_cliente
                       WHERE documento_usuario = '${documento}';`
             break
           case 'Admin':
@@ -41,8 +42,6 @@ export default async (req, res) => {
         }
 
         const res1 = await conn.query(query1)
-
-        console.log(res1.rows);
 
         if (!res1.rowCount) {
           return res.status(400).json({ estado: 404, mensaje: 'Usuario no encontrado.' })
