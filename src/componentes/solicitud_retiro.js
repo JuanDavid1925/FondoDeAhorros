@@ -1,10 +1,44 @@
 import { useCallback, useContext, useEffect, useState } from "react"
-import Solicitud_retiro_exitoso from "./solicitud_retiro_exitosa"
 import { Formik } from 'formik';
+import $, { data } from "jquery"
+
+import Solicitud_retiro_exitoso from "./solicitud_retiro_exitosa"
+import useSaves from '/src/hooks/useSaves'
 
 export default function Solicitud_retiro() {
   const [showModal, setShowModal] = useState(false)
-  const handleClose = () => { setShowModal(false) }
+  const [estado, setEstado] = useState()
+  const [datos, setDatos] = useState()
+  const { solicitarRetiro, cargarDatosSolicitud } = useSaves()
+
+  const handleClose = useCallback(() => { setShowModal(false) }, [])
+
+  useEffect(() => {
+    cargarDatosSolicitud(setDatos)
+  }, [cargarDatosSolicitud, setDatos])
+
+  useEffect(() => {
+    if (!datos)
+      return
+
+    $("#documento").val(datos.documento)
+    $("#correo").val(datos.correo)
+    $("#saldo").val(datos.saldo)
+  }, [datos])
+
+  useEffect(() => {
+    if (estado == 1) {
+      setShowModal(true)
+    }
+  }, [estado])
+
+  const handleSubmit = useCallback(data => {
+    data.documento = datos.documento
+    data.correo = datos.correo
+    data.saldo = datos.saldo
+
+    solicitarRetiro(data, setEstado)
+  }, [datos, solicitarRetiro])
 
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
@@ -47,45 +81,78 @@ export default function Solicitud_retiro() {
                 correo: "",
                 fecha: "",
                 motivo: "",
+                saldo: ""
               }}
+              onSubmit={handleSubmit}
             >
               {
                 ({ handleChange, handleSubmit, errors, touched }) => (
                   <div>
-                    <form className="mt-10">
+                    <form className="mt-10" onSubmit={handleSubmit}>
                       <input type="hidden" name="access_key" defaultValue="YOUR_ACCESS_KEY_HERE" />
                       <div className="grid gap-6 sm:grid-cols-2">
                         <div className="relative z-0">
-                          <input onChange={handleChange} type="text" name="name" className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-indigo-600 focus:outline-none focus:ring-0" placeholder=" " required defaultValue={""} />
+                          <input
+                            onChange={handleChange}
+                            type="text"
+                            id="documento"
+                            name="documento"
+                            className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-indigo-600 focus:outline-none focus:ring-0"
+                            placeholder=" "
+                            defaultValue={''}
+                            disabled
+                          />
                           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500">Documento de identificación</label>
                         </div>
                         <div className="relative z-0">
-                          <input onChange={handleChange} type="text" name="email" className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-indigo-600 focus:outline-none focus:ring-0" placeholder=" " required defaultValue={""} />
+                          <input
+                            onChange={handleChange}
+                            type="email"
+                            id="correo"
+                            name="correo"
+                            className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-indigo-600 focus:outline-none focus:ring-0"
+                            placeholder=" "
+                            defaultValue={""}
+                            disabled
+                          />
                           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500">Correo electrónico</label>
                         </div>
                         <div className="relative z-0">
                           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-lg text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500">Saldo disponible</label>
-                          <input type="text" name="email" className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-indigo-600 focus:outline-none focus:ring-0" placeholder=" " disabled />
+                          <input
+                            onChange={handleChange}
+                            type="text"
+                            id="saldo"
+                            name="saldo"
+                            className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-indigo-600 focus:outline-none focus:ring-0"
+                            placeholder=" "
+                            disabled
+                          />
                         </div>
                         <div className="relative z-0">
                           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500">¿Cuando desea retirar sus ahorros?</label>
                           <input
                             onChange={handleChange}
                             id="fecha de expiración"
-                            name="fecha de expiración"
+                            name="fecha"
                             type="date"
                             placeholder=""
                             className="mt-4 h-5 w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" />
                         </div>
                         <div className="relative z-0 col-span-2">
-                          <textarea onChange={handleChange} name="message" rows={5} className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-indigo-600 focus:outline-none focus:ring-0" placeholder=" " required defaultValue={""} />
+                          <textarea
+                            onChange={handleChange}
+                            name="motivo"
+                            rows={5}
+                            className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-indigo-600 focus:outline-none focus:ring-0"
+                            placeholder=" "
+                            defaultValue={""}
+                            required
+                          />
                           <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500">¿Por qué desea retirar sus ahorros?</label>
                         </div>
                       </div>
                       <button type="submit"
-                        onClick={() =>
-                          setShowModal(true)
-                        }
                         className="mt-5 rounded-md bg-indigo-700 px-10 py-2 text-white">Realizar solicitud de retiro
                       </button>
                     </form>
