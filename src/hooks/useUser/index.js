@@ -13,9 +13,10 @@ export default function useUser() {
     }
     console.log(`Entra al login.`)
 
-    let validacion = validarDatosLogin(data)
+    const validacion = validarDatosLogin(data)
 
     if (validacion !== 1) {
+      setEstado(validacion)
       console.log(validacion)
       return
     }
@@ -89,7 +90,7 @@ export default function useUser() {
     const URL = '/api/users/registro/asociado'
     console.log("Entra al asociado.")
 
-    let validacion = validarDatosRegistroAsociado(data)
+    const validacion = validarDatosRegistroAsociado(data)
 
     if (validacion !== 1) {
       setEstado(validacion)
@@ -144,7 +145,7 @@ export default function useUser() {
     const URL = '/api/users/registro/cliente'
     console.log("Entra al cliente.")
 
-    let validacion = validarDatosRegistroCliente(data)
+    const validacion = validarDatosRegistroCliente(data)
 
     if (validacion !== 1) {
       setEstado(validacion)
@@ -256,21 +257,20 @@ export default function useUser() {
       })
   }, [])
 
-  const getAllUsers = useCallback((data, setEstado, setUsers) => {
+  const getAllUsers = useCallback((setEstado, setUsers) => {
     const URL = '/api/users/getUsers/todos'
 
     fetch(
       URL,
       {
-        method: 'POST',
-        body: JSON.stringify(data)
+        method: 'POST'
       }
     )
       .then(response => response.json())
-      .then(({ estado, mensaje, users }) => {
+      .then(({ estado, mensaje, usuarios }) => {
         switch (estado) {
           case 200:
-            setUsers(users)
+            setUsers(usuarios)
             setEstado(1)
             break
           case 404:
@@ -299,9 +299,9 @@ export default function useUser() {
 
   const modificacionAsociado = useCallback((data, setEstado) => {
     const URL = '/api/users/updateProfile/asociado'
-    console.log("Entra al asociado.")
+    console.log("Entra a modificar asociado.")
 
-    let validacion = validarDatosModificacionAsociado(data)
+    const validacion = validarDatosModificacionAsociado(data)
 
     if (validacion !== 1) {
       setEstado(validacion)
@@ -359,7 +359,7 @@ export default function useUser() {
     const URL = '/api/users/updateProfile/cliente'
     console.log("Entra al cliente.")
 
-    let validacion = validarDatosModificacionCliente(data)
+    const validacion = validarDatosModificacionCliente(data)
 
     if (validacion !== 1) {
       setEstado(validacion)

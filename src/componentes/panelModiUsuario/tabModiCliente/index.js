@@ -1,22 +1,23 @@
 import { useCallback, useEffect, useState } from "react"
-import useUser from "/src/hooks/useUser";
+import useUser from "/src/hooks/useUser"
 import { Formik } from "formik"
 import $ from "jquery"
 
 export default function TabModiCliente() {
   const { modificacionCliente, getUser } = useUser()
 
-  const [estado, setEstado] = useState()
+  const [estadoModificacion, setEstadoModificacion] = useState()
+  const [estadoCargar, setEstadoCargar] = useState()
   const [cliente, setCliente] = useState()
 
   const handleSubmitCliente = useCallback((data) => {
     console.log(data)
-    modificacionCliente//(data, setEstado)
+    modificacionCliente(data, setEstadoModificacion)
   }, [modificacionCliente])
 
   const cargarDatos = useCallback((documento) => {
     console.log(`documento: ${documento}, tipo: 'Cliente`)
-    getUser({ documento: documento, tipo: 'Cliente' }, setEstado, setCliente)
+    getUser({ documento: documento, tipo: 'Cliente' }, setEstadoCargar, setCliente)
   }, [getUser])
 
   useEffect(() => {
@@ -28,19 +29,28 @@ export default function TabModiCliente() {
     $("#telefono").val(cliente.telefono_usuario)
   }, [cliente])
 
+  useEffect(() => {
+    if (estadoModificacion === 1) {
+      $("#documento").val('')
+      $("#nombres").val('')
+      $("#apellidos").val('')
+      $("#telefono").val('')
+    }
+  }, [estadoModificacion])
+
   return <>
     <div >
       <Formik
         initialValues=
         {{
-          documento: "",
-          nombres: "",
-          apellidos: "",
-          telefono: "",
-          correo: "",
-          ocupacion: "",
-          ciudad: "",
-          direccion: "",
+          documento: undefined,
+          nombres: undefined,
+          apellidos: undefined,
+          telefono: undefined,
+          correo: undefined,
+          ocupacion: undefined,
+          ciudad: undefined,
+          direccion: undefined
         }}
 
         onSubmit={handleSubmitCliente}
@@ -59,7 +69,7 @@ export default function TabModiCliente() {
                       name="documento"
                       type="text"
                       placeholder="Ingrese el documento del cliente"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div className="form-group flex">
                     <div
@@ -84,7 +94,7 @@ export default function TabModiCliente() {
                       name="nombres"
                       type="text"
                       placeholder="Ingrese el nuevo nombre"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div>
                     <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Apellido(s)</label>
@@ -94,7 +104,7 @@ export default function TabModiCliente() {
                       name="apellidos"
                       type="text"
                       placeholder="Ingrese el nuevo apellido"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div>
                     <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Teléfono</label>
@@ -104,7 +114,7 @@ export default function TabModiCliente() {
                       name="telefono"
                       type="text"
                       placeholder="Ingrese el nuevo número de contacto"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-300 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
 
                   <br></br>
@@ -115,6 +125,9 @@ export default function TabModiCliente() {
                       <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Modificar datos</label></span>
                     </button>
                   </div>
+                  <br></br>
+                  {(estadoModificacion === 1) ? <span class="flex items-center font-medium tracking-wide text-green-500 text-md mt-1 ml-1">Cliente modificado con éxito. </span> : <></>}
+
                 </form>
               </div>
             </div>
