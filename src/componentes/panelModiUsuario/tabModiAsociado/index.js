@@ -30,6 +30,7 @@ export default function TabModiAsociado() {
     $("#ocupacion").val(asociado.ocupacion_asociado)
     $("#ciudad").val(asociado.ciudad_asociado)
     $("#direccion").val(asociado.direccion_asociado)
+    $("#estado").val(asociado.activo_usuario)
   }, [asociado])
 
   useEffect(() => {
@@ -42,6 +43,7 @@ export default function TabModiAsociado() {
       $("#ocupacion").val('')
       $("#ciudad").val('')
       $("#direccion").val('')
+      $("#estado").val('')
     }
   }, [estadoModificacion])
 
@@ -164,7 +166,16 @@ export default function TabModiAsociado() {
                       placeholder="Ingrese la nueva dirección"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
-                  <br></br>
+                  <div>
+                    <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Estado</label>
+                    <input
+                      onChange={handleChange}
+                      id="estado"
+                      name="activo"
+                      type="text"
+                      placeholder="Estado del asociado"
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                  </div>
                   <div className="form-group flex ">
                     <button type="submit"
                       onClick={() => useEffect}

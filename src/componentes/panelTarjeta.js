@@ -22,11 +22,11 @@ const PanelTarjeta = ({ router }) => {
               <a>Pago de cuota mínima</a>
             </Link>
           </Tab>
-          <Tab selected={isTabTwo}>
+          {/*<Tab selected={isTabTwo}>
             <Link href={{ query: { tab: "2" } }}>
               <a>Pago de cuota de manejo</a>
             </Link>
-          </Tab>
+  </Tab>*/}
         </TabHead>
         <TabBody>
           {isTabOne &&

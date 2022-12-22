@@ -1,11 +1,27 @@
-import { useEffect, useState } from "react"
+import Modificacion_asociados from "../../modificacion_asociados"
+import Modificacion_cliente from "../../modificacion_cliente"
+import { Fragment, useRef, useState, useCallback, useEffect } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
+import { Formik } from 'formik'
 import useUser from "/src/hooks/useUser"
+import $ from "jquery"
 
 export default function TabUsuarios() {
   const { getAllUsers } = useUser()
-
   const [usuarios, setUsuarios] = useState()
   const [estado, setEstado] = useState()
+  const [showModal, setShowModal] = useState(false)
+  const handleClose = () => { setShowModal(false) }
+  const [showModal1, setShowModal1] = useState(false)
+  const handleClose1 = () => { setShowModal1(false) }
+  const { modificacionAsociado, getUser } = useUser()
+  const [estadoCargar, setEstadoCargar] = useState()
+
+
+  const cargarDatos = useCallback((documento) => {
+    console.log(`documento: ${documento}, tipo: Asociado`)
+    getUser({ documento: documento, tipo: 'Asociado' }, setEstadoCargar, setAsociado)
+  }, [getUser])
 
   useEffect(() => {
     if (!usuarios)
@@ -32,6 +48,9 @@ export default function TabUsuarios() {
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Rol
                   </th>
+                  <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    Modificar
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -56,10 +75,24 @@ export default function TabUsuarios() {
                         </p>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                        {(usuario.tipo_usuario === "Asociado") ? <span className="relative inline-block px-3 py-1 font-semibold text-gray-900 leading-tight">
                           <span aria-hidden className="absolute inset-0 bg-blue-500 opacity-50 rounded-full" />
                           <span className="relative">{usuario.tipo_usuario}</span>
-                        </span>
+                        </span> : (usuario.tipo_usuario === "Cliente") ? <span className="relative inline-block px-3 py-1 font-semibold text-gray-900 leading-tight">
+                          <span aria-hidden className="absolute inset-0 bg-green-500 opacity-50 rounded-full" />
+                          <span className="relative">{usuario.tipo_usuario}</span>
+                        </span> : (usuario.tipo_usuario === "Admin") ? <span className="relative inline-block px-3 py-1 font-semibold text-gray-900 leading-tight">
+                          <span aria-hidden className="absolute inset-0 bg-yellow-500 opacity-50 rounded-full" />
+                          <span className="relative">{usuario.tipo_usuario}</span>
+                        </span> : <></>}
+                      </td>
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <a
+                          onClick={(usuario.tipo_usuario === "Asociado") ? () => setShowModal(true) : () => setShowModal1(true)}
+                          className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline cursor-pointer">Editar
+                        </a>
+                        {showModal && <Modificacion_asociados onClose={() => handleClose()} documento1={usuario.documento_usuario}></Modificacion_asociados>}
+                        {showModal1 && <Modificacion_cliente onClose={() => handleClose1()} ></Modificacion_cliente>}
                       </td>
                     </tr>
                   </>

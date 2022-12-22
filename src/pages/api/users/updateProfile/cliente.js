@@ -24,7 +24,7 @@ export default async (req, res) => {
       try {
         let res1, res2
 
-        if (nombres || apellidos || contrasena || telefono) {
+        if (nombres || apellidos || contrasena || telefono || activo) {
           const bcryptjs = (contrasena) ? require('bcryptjs') : undefined
           const contra = (contrasena) ? await bcryptjs.hash(contrasena, 8) : undefined
 
@@ -45,7 +45,7 @@ export default async (req, res) => {
             return res.status(400).json({ estado: 400, mensaje: 'Error al modificar los datos del usuario.' })
         }
 
-        if (documento_asociado || activo) {
+        if (documento_asociado) {
           const query2 = `UPDATE clientes
           SET
           ${`${(!documento_asociado) ? '' : `documento_asociado_cliente = '${documento_asociado}',`}`
