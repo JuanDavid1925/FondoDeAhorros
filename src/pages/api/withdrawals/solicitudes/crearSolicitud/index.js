@@ -26,7 +26,7 @@ export default async (req, res) => {
 
         const resp1 = await conn.query(query1)
 
-        if (resp1.rowcount > 0)
+        if (resp1.rowCount > 0)
           return res.status(400).json({ estado: 409, mensaje: 'El usuario ya posee una solicitud en proceso.' })
 
         const query2 = `
@@ -44,7 +44,7 @@ export default async (req, res) => {
 
         const resp2 = await conn.query(query2)
 
-        if (resp2.rowcount === 0)
+        if (!resp2.rowCount)
           return res.status(400).json({ estado: 400, mensaje: 'Error al crear la solicitud.' })
 
         return res.status(201).json({ estado: 201, mensaje: 'Solicitud de retiro creada con éxito.' })

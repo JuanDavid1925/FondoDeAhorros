@@ -15,7 +15,7 @@ export default function TabModiAsociado() {
   }, [modificacionAsociado])
 
   const cargarDatos = useCallback((documento) => {
-    console.log(`documento: ${documento}, tipo: Asociado`)
+    console.log(`documento: ${documento.trim()}, tipo: Asociado`)
     getUser({ documento: documento, tipo: 'Asociado' }, setEstadoCargar, setAsociado)
   }, [getUser])
 
