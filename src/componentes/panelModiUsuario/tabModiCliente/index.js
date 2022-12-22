@@ -5,7 +5,6 @@ import $ from "jquery"
 
 export default function TabModiCliente() {
   const { modificacionCliente, getUser } = useUser()
-
   const [estadoModificacion, setEstadoModificacion] = useState()
   const [estadoCargar, setEstadoCargar] = useState()
   const [cliente, setCliente] = useState()
