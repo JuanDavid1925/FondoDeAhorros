@@ -5,8 +5,8 @@ import Context from "/src/context/userContext"
 import Aviso_retiro from "../../componentes/aviso_retiro"
 import Formulario_retiro from "../../componentes/formulario_retiro"
 import Inicio_asociado from "../../componentes/inicio_asociado"
-import Solicitud_retiro from "../../componentes/solicitud_retiro"
 import PanelTarjeta from "../../componentes/panelTarjeta"
+import Solicitud_retiro from "../../componentes/solicitudRetiro"
 
 export default function Dashboard_Asociado() {
   const router = useRouter()
