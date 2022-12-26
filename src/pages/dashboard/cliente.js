@@ -2,6 +2,8 @@ import { useRouter } from "next/Router"
 import { useCallback, useContext, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
 import Context from "/src/context/userContext"
+import Head from "next/head";
+
 
 export default function Dashboard() {
 	const router = useRouter()
@@ -21,13 +23,18 @@ export default function Dashboard() {
 
 	return (
 		<div>
+			<Head>
+				<link rel="icon" href="/icono_inicio_sesion.png" />
+				<title>{(!userData) ? 'John Snow' : `${userData.nombres} ${userData.apellidos}`} </title>
+				<meta name="description" content={"Dashboard cliente"} />
+			</Head>
 			<aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
 				<div>
 					<br></br>
 					<br></br>
 					<div className="mt-8 text-center">
 						<img src="./../cliente_aliv1.jpg" alt="" className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28" />
-						<h4 className="text-2xl font-bold text-center text-gray-700 dark:text-gray-700">{(!userData) ? 'John Snow' : `${userData.documento} ${userData.apellidos}`}</h4>
+						<h4 className="text-2xl font-bold text-center text-gray-700 dark:text-gray-700">{(!userData) ? 'John Snow' : `${userData.nombres} ${userData.apellidos}`}</h4>
 						<span className="mt-3 text-gray-400 dark:text-gray-400">Cliente</span>
 					</div>
 					<ul className="space-y-2 tracking-wide mt-8">

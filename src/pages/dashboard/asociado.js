@@ -7,6 +7,7 @@ import Formulario_retiro from "../../componentes/formulario_retiro"
 import Inicio_asociado from "../../componentes/inicio_asociado"
 import PanelTarjeta from "../../componentes/panelTarjeta"
 import Solicitud_retiro from "../../componentes/solicitudRetiro"
+import Head from "next/head";
 
 export default function Dashboard_Asociado() {
   const router = useRouter()
@@ -45,6 +46,11 @@ export default function Dashboard_Asociado() {
 
   return (
     <div>
+      <Head>
+        <link rel="icon" href="/icono_inicio_sesion.png" />
+        <title>{(!userData) ? 'John Doe' : `${userData.nombres} ${userData.apellidos}`} </title>
+        <meta name="description" content={"Dashboard asociado"} />
+      </Head>
       <aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
         <div>
           <br></br>
