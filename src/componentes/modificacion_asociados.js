@@ -4,28 +4,39 @@ import { Formik } from 'formik'
 import useUser from "/src/hooks/useUser"
 import $ from "jquery"
 
-export default function Modificacion_asociados({ children, onClose, documento1, nombre, apellido, telefono, correo, ocupacion, ciudad, direccion }) {
-	const [open, setOpen] = useState(true)
+export default function Modificacion_asociados({ children, onClose, documento1 }) {
+	const { modificacionAsociado, getUser } = useUser()
 	const cancelButtonRef = useRef(null)
+	const [open, setOpen] = useState(true)
 	const [estadoModificacion, setEstadoModificacion] = useState()
 	const [asociado, setAsociado] = useState()
-	const { modificacionAsociado, getUser } = useUser()
+	const [estadoCargar, setEstadoCargar] = useState()
 
 	useEffect(() => {
+		getUser({ documento: documento1, tipo: 'Asociado' }, setEstadoCargar, setAsociado)
+	}, [getUser, documento1])
+
+	useEffect(() => {
+		if (!asociado)
+			return
+
 		$("#documento").val(documento1)
-		$("#nombres").val(nombre)
-		$("#apellidos").val(apellido)
-		$("#telefono").val(telefono)
-		$("#correo").val(correo)
-		$("#ocupacion").val(ocupacion)
-		$("#ciudad").val(ciudad)
-		$("#direccion").val(direccion)
-		{/*$("#estado").val(asociado.activo_usuario)*/ }
-	}, [asociado])
+		$("#nombres").val(asociado.nombres_usuario)
+		$("#apellidos").val(asociado.apellidos_usuario)
+		$("#telefono").val(asociado.telefono_usuario)
+		$("#correo").val(asociado.correo_asociado)
+		$("#ocupacion").val(asociado.ocupacion_asociado)
+		$("#ciudad").val(asociado.ciudad_asociado)
+		$("#direccion").val(asociado.direccion_asociado)
+		$("#activo").val(asociado.activo_usuario)
+		$("#activo").prop('checked', asociado.activo_usuario)
+		$("#inactivo").prop('checked', !asociado.activo_usuario)
+	}, [asociado, documento1])
 
 	const handleSubmitAsociado = useCallback((data) => {
+		data.documento = documento1
 		modificacionAsociado(data, setEstadoModificacion)
-	}, [modificacionAsociado])
+	}, [modificacionAsociado, documento1])
 
 
 	return (
@@ -87,7 +98,7 @@ export default function Modificacion_asociados({ children, onClose, documento1, 
 
 									>
 										{
-											({ handleChange, handleSubmit, errors, touched }) => (
+											({ handleChange, handleSubmit }) => (
 												<div>
 													<div className="px-8 ml-10 mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
 														<form onSubmit={handleSubmit} className="justify-left grid grid-cols-1 gap-2 mt-8 md:grid-cols-2">
@@ -99,7 +110,9 @@ export default function Modificacion_asociados({ children, onClose, documento1, 
 																	name="documento"
 																	type="text"
 																	placeholder="Documento del asociado"
-																	className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+																	className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+																	disabled
+																/>
 															</div>
 															<div>
 																<label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Nombre(s) </label>
@@ -175,7 +188,14 @@ export default function Modificacion_asociados({ children, onClose, documento1, 
 																<label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Estado</label>
 																<div className="mt-5 flex items-start mb-6">
 																	<div className="flex items-center h-5">
-																		<input id="remember" aria-describedby="remember" type="checkbox" className="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded" required />
+																		<input
+																			id="activo"
+																			name="activo"
+																			aria-describedby="remember"
+																			type="checkbox"
+																			className="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded"
+																			required
+																		/>
 																	</div>
 																	<div className="text-sm ml-3">
 																		<label htmlFor="remember" className="font-medium text-gray-900">Activo</label>
@@ -184,21 +204,21 @@ export default function Modificacion_asociados({ children, onClose, documento1, 
 															</div>
 															<div className="mt-10 flex items-start mb-6">
 																<div className="flex items-center h-5">
-																	<input id="remember" aria-describedby="remember" type="checkbox" className="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded" required />
+																	<input id="inactivo" aria-describedby="remember" type="checkbox" className="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded" required />
 																</div>
 																<div className="text-sm ml-3">
 																	<label htmlFor="remember" className="font-medium text-gray-900">Inactivo</label>
 																</div>
 															</div>
 															<br></br>
-															{(estadoModificacion === 1) ? <span class="flex items-center font-medium tracking-wide text-green-500 text-md mt-1 ml-1">Asociado modificado con éxito. </span> : <></>}
+															{(estadoModificacion === 1) ? <span class="flex font-medium tracking-wide text-green-500 text-md mt-1 ml-1">Asociado modificado con éxito. </span> : <></>}
 														</form>
 													</div>
 													<div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
 														<button
-															type="button"
+															type="submit"
+															onClick={handleSubmit}
 															className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-															onClick={() => setOpen(false)}
 														>
 															Modificar datos
 														</button>

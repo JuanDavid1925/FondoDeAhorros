@@ -15,7 +15,7 @@ export default function TabModiAsociado() {
   }, [modificacionAsociado])
 
   const cargarDatos = useCallback((documento) => {
-    console.log(`documento: ${documento}, tipo: Asociado`)
+    console.log(`documento: ${documento.trim()}, tipo: Asociado`)
     getUser({ documento: documento, tipo: 'Asociado' }, setEstadoCargar, setAsociado)
   }, [getUser])
 
@@ -177,7 +177,8 @@ export default function TabModiAsociado() {
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
                   <div className="form-group flex ">
-                    <button type="submit"
+                    <button
+                      type="submit"
                       onClick={() => useEffect}
                       className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold">
                       <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Modificar datos</label></span>

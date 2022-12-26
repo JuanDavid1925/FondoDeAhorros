@@ -41,7 +41,7 @@ export default async (req, res) => {
 
           res1 = await conn.query(query1)
 
-          if (res1.rowcount === 0)
+          if (!res1.rowCount)
             return res.status(400).json({ estado: 400, mensaje: 'Error al modificar los datos del usuario.' })
         }
 
@@ -55,7 +55,7 @@ export default async (req, res) => {
 
           res2 = await conn.query(query2)
 
-          if (res2.rowcount === 0)
+          if (!res2.rowCount)
             return res.status(400).json({ estado: 401, mensaje: 'Error al modificar los datos del cliente.' })
         }
 

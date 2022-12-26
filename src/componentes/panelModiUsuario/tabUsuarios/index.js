@@ -9,19 +9,14 @@ import $ from "jquery"
 export default function TabUsuarios() {
   const { getAllUsers } = useUser()
   const [usuarios, setUsuarios] = useState()
+  const [documentoUsuario, setDocumentoUsuario] = useState()
   const [estado, setEstado] = useState()
   const [showModal, setShowModal] = useState(false)
-  const handleClose = () => { setShowModal(false) }
   const [showModal1, setShowModal1] = useState(false)
+
+  const handleClose = () => { setShowModal(false) }
+
   const handleClose1 = () => { setShowModal1(false) }
-  const { modificacionAsociado, getUser } = useUser()
-  const [estadoCargar, setEstadoCargar] = useState()
-
-
-  const cargarDatos = useCallback((documento) => {
-    console.log(`documento: ${documento}, tipo: Asociado`)
-    getUser({ documento: documento, tipo: 'Asociado' }, setEstadoCargar, setAsociado)
-  }, [getUser])
 
   useEffect(() => {
     if (!usuarios)
@@ -88,16 +83,20 @@ export default function TabUsuarios() {
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <a
-                          onClick={(usuario.tipo_usuario === "Asociado") ? () => setShowModal(true) : () => setShowModal1(true)}
+                          onClick={
+                            (usuario.tipo_usuario === "Asociado")
+                              ? () => { setShowModal(true); setDocumentoUsuario(usuario.documento_usuario) }
+                              : () => { setShowModal1(true); setDocumentoUsuario(usuario.documento_usuario) }
+                          }
                           className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline cursor-pointer">Editar
                         </a>
-                        {showModal && <Modificacion_asociados onClose={() => handleClose()} documento1={usuario.documento_usuario}></Modificacion_asociados>}
-                        {showModal1 && <Modificacion_cliente onClose={() => handleClose1()} ></Modificacion_cliente>}
                       </td>
                     </tr>
                   </>
                 ))
                 }
+                {showModal && <Modificacion_asociados onClose={() => handleClose()} documento1={documentoUsuario}></Modificacion_asociados>}
+                {showModal1 && <Modificacion_cliente onClose={() => handleClose1()} documento={documentoUsuario}></Modificacion_cliente>}
               </tbody>
             </table>
           </div>

@@ -21,13 +21,13 @@ export default async (req, res) => {
 
         const res2 = await conn.query(query2)
 
-        if (res1.rows.length + res2.rows.length === 0) {
+        if (res1.rowCount + res2.rowCount === 0) {
           res.status(404).json(`Sin usuarios.`)
         }
-        else if (res1.rows.length === 0) {
+        else if (res1.rowCount === 0) {
           res.status(200).json(res2.rows)
         }
-        else if (res2.rows.length === 0) {
+        else if (res2.rowCount === 0) {
           res.status(200).json(res1.rows)
         }
         else {
