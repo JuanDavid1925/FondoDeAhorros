@@ -47,7 +47,7 @@ export default function Dashboard_Asociado() {
   return (
     <div>
       <Head>
-        <link rel="icon" href="/icono_inicio_sesion.png" />
+        <link rel="icon" href="/usuario.png" />
         <title>{(!userData) ? 'John Doe' : `${userData.nombres} ${userData.apellidos}`} </title>
         <meta name="description" content={"Dashboard asociado"} />
       </Head>

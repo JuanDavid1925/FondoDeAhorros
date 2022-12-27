@@ -29,7 +29,7 @@ export default function Dashboard_Admin() {
   return (
     <div>
       <Head>
-        <link rel="icon" href="/icono_inicio_sesion.png" />
+        <link rel="icon" href="/usuario.png" />
         <title>{(!userData) ? 'Ivana Watts' : `${userData.nombres} ${userData.apellidos}`} </title>
         <meta name="description" content={"Dashboard admin"} />
       </Head>

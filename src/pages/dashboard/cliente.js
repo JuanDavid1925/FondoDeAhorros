@@ -24,7 +24,7 @@ export default function Dashboard() {
 	return (
 		<div>
 			<Head>
-				<link rel="icon" href="/icono_inicio_sesion.png" />
+				<link rel="icon" href="/usuario.png" />
 				<title>{(!userData) ? 'John Snow' : `${userData.nombres} ${userData.apellidos}`} </title>
 				<meta name="description" content={"Dashboard cliente"} />
 			</Head>
