@@ -104,7 +104,7 @@ export default function Solicitud_retiro() {
                                 onClick={() =>
                                     setShowModal(true)
                                 }
-                                className="mt-4 mb-8 w-full rounded-md bg-indigo-700 px-6 py-3 font-medium text-white">Realizar retiro</button>
+                                className="mt-4 mb-8 w-full rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 px-6 py-3 font-medium text-white">Solicitar retiro</button>
                         </div>
                         {showModal && <Solicitud_retiro_exitoso onClose={() => handleClose()}></Solicitud_retiro_exitoso>}
                     </div>

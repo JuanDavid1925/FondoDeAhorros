@@ -97,7 +97,7 @@ const PanelTarjeta = ({ router }) => {
                             </div>
                           </div>
                         </div>
-                        <button className="mt-4 mb-8 w- rounded-md bg-blue-500 px-6 py-3 font-medium text-white">Pagar</button>
+                        <button className="mt-4 mb-8 w- rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 px-6 py-3 font-medium text-white">Pagar</button>
                       </div>
 
                     )

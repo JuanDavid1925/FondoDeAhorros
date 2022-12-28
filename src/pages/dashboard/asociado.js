@@ -7,6 +7,7 @@ import Formulario_retiro from "../../componentes/formulario_retiro"
 import Inicio_asociado from "../../componentes/inicio_asociado"
 import PanelTarjeta from "../../componentes/panelTarjeta"
 import Solicitud_retiro from "../../componentes/solicitudRetiro"
+import Formulario_prestamo from "../../componentes/formulario_prestamo"
 import Head from "next/head";
 
 export default function Dashboard_Asociado() {
@@ -39,6 +40,8 @@ export default function Dashboard_Asociado() {
         return <Formulario_retiro />
       case 4:
         return <Solicitud_retiro />
+      case 5:
+        return <Formulario_prestamo />
       default:
         return <></>
     }
