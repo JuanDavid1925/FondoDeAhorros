@@ -2,6 +2,8 @@ import { useRouter } from "next/Router"
 import { useCallback, useContext, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
 import Context from "/src/context/userContext"
+import Head from "next/head";
+
 
 export default function Dashboard() {
 	const router = useRouter()
@@ -21,6 +23,11 @@ export default function Dashboard() {
 
 	return (
 		<div>
+			<Head>
+				<link rel="icon" href="/usuario.png" />
+				<title>{(!userData) ? 'John Snow' : `${userData.nombres} ${userData.apellidos}`} </title>
+				<meta name="description" content={"Dashboard cliente"} />
+			</Head>
 			<aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
 				<div>
 					<br></br>
