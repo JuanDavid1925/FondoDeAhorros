@@ -5,6 +5,7 @@ import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/menuTabs"
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { useCallback, useContext, useEffect, useState } from "react"
+import Header_admin from "./header_admin";
 
 const PanelAhorros = ({ router }) => {
   const {
@@ -15,6 +16,7 @@ const PanelAhorros = ({ router }) => {
   const isTabTwo = tab === "2"
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
+      <Header_admin nombre_seccion="Ahorros" />
       <TabContainer>
         <TabHead>
           <Tab selected={isTabOne}>
