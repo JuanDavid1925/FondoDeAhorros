@@ -2,12 +2,12 @@ import { useRouter } from "next/Router"
 import { useCallback, useContext, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
 import Context from "/src/context/userContext"
-import Aviso_retiro from "../../componentes/aviso_retiro"
-import Formulario_retiro from "../../componentes/formulario_retiro"
-import Inicio_asociado from "../../componentes/inicio_asociado"
-import PanelTarjeta from "../../componentes/panelTarjeta"
-import Solicitud_retiro from "../../componentes/solicitudRetiro"
-import Formulario_prestamo from "../../componentes/formulario_prestamo"
+import Aviso_retiro from "/src/componentes/aviso_retiro"
+import Formulario_retiro from "/src/componentes/formulario_retiro"
+import Inicio_asociado from "/src/componentes/inicio_asociado"
+import PanelTarjeta from "/src/componentes/panelTarjeta"
+import Solicitud_retiro from "/src/componentes/solicitudRetiro"
+import Formulario_prestamo from "/src/componentes/formulario_prestamo"
 import Head from "next/head";
 
 export default function Dashboard_Asociado() {
