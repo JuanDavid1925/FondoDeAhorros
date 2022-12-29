@@ -5,7 +5,7 @@ import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/menuTabs"
 import TabUsuarios from "./tabUsuarios"
 import TabModiAsociado from "./tabModiAsociado"
 import TabModiCliente from "./tabModiCliente"
-import Header_admin from "../header_admin"
+import Header_asociado from "../header_asociado"
 
 const PanelModiUsuario = ({ router }) => {
   const {
@@ -18,7 +18,7 @@ const PanelModiUsuario = ({ router }) => {
 
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-      <Header_admin nombre_seccion="Usuarios" />
+      <Header_asociado nombre_seccion="Usuarios" />
       <TabContainer>
         {/*<TabHead>
           <Tab selected={isTabOne}>
@@ -37,11 +37,13 @@ const PanelModiUsuario = ({ router }) => {
             </Link>
           </Tab>
         </TabHead>*/}
+        {/*
         <TabBody>
           {isTabOne && <TabModiAsociado />}
           {isTabTwo && <TabModiCliente />}
           {isTabThree && <TabUsuarios />}
-        </TabBody>
+        </TabBody>*/}
+        <TabUsuarios />
       </TabContainer>
     </div>
   )
