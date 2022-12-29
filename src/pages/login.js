@@ -26,7 +26,7 @@ export default function Login() {
 
     <div className="bg-white dark:bg-gray-900" >
       <Head>
-        <link rel="icon" href="/icono_inicio_sesion.png" />
+        <link rel="icon" href="/usuario.png" />
         <title>Iniciar sesión</title>
         <meta name="description" content={"Iniciar sesión"} />
       </Head>

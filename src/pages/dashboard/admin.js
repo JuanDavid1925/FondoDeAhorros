@@ -6,6 +6,7 @@ import PanelModiUsuario from "../../componentes/panelModiUsuario"
 import PanelAhorros from "../../componentes/panelAhorros"
 import PanelAux from "../../componentes/panelAux"
 import InicioAdmin from "../../componentes/inicioAdmin"
+import Panel_reuniones_admin from "../../componentes/panel_reuniones_admin"
 import Head from "next/head";
 
 export default function Dashboard_Admin() {
@@ -117,7 +118,10 @@ export default function Dashboard_Admin() {
           (panelAMostrar === 1) ?
             <PanelModiUsuario /> :
             (panelAMostrar === 2) ?
-              <PanelAhorros /> : <PanelAux />
+              <PanelAhorros /> :
+              (panelAMostrar === 3) ?
+                <Panel_reuniones_admin /> :
+                <PanelAux />
       }
     </div >
 
