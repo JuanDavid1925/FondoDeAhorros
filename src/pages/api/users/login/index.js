@@ -17,7 +17,10 @@ export default async (req, res) => {
     case 'POST':
       try {
         const { documento, contrasena } = JSON.parse(body)
-        const query = `SELECT nombres_usuario, apellidos_usuario, tipo_usuario, contrasena_usuario, documento_usuario FROM usuarios WHERE documento_usuario = '${documento}';`
+        const query = `
+          SELECT nombres_usuario, apellidos_usuario, tipo_usuario, contrasena_usuario, documento_usuario 
+          FROM usuarios 
+          WHERE documento_usuario = '${documento}' AND activo_usuario = true;`
         const { rows } = await conn.query(query)
 
         if (rows.length === 0)

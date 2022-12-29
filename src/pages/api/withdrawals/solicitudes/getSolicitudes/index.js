@@ -24,7 +24,7 @@ export default async (req, res) => {
 
         const res1 = await conn.query(query1)
 
-        if (res1.rows.length === 0) {
+        if (!res1.rowCount) {
           res.status(404).json(`No se encontraron solicitudes.`)
         }
         else {

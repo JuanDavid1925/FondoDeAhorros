@@ -60,7 +60,7 @@ export default function Aviso_retiro({ children, onClose, cambiarEstadoFormulari
                                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                     <button
                                         type="button"
-                                        className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                                        className="inline-flex w-full justify-center rounded-md border border-transparent bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                                         onClick={() => {
                                             cambiarEstadoFormulario();
                                             onClose()
@@ -70,7 +70,7 @@ export default function Aviso_retiro({ children, onClose, cambiarEstadoFormulari
                                     </button>
                                     <button
                                         type="button"
-                                        className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                                        className="inline-flex w-full justify-center rounded-md border border-transparent bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                                         onClick={() => {
                                             cambiarEstadoSolicitud();
                                             onClose()

@@ -5,7 +5,6 @@ import $ from "jquery"
 
 export default function TabModiCliente() {
   const { modificacionCliente, getUser } = useUser()
-
   const [estadoModificacion, setEstadoModificacion] = useState()
   const [estadoCargar, setEstadoCargar] = useState()
   const [cliente, setCliente] = useState()
@@ -27,6 +26,7 @@ export default function TabModiCliente() {
     $("#nombres").val(cliente.nombres_usuario)
     $("#apellidos").val(cliente.apellidos_usuario)
     $("#telefono").val(cliente.telefono_usuario)
+    $("#estado").val(cliente.activo_usuario)
   }, [cliente])
 
   useEffect(() => {
@@ -35,6 +35,7 @@ export default function TabModiCliente() {
       $("#nombres").val('')
       $("#apellidos").val('')
       $("#telefono").val('')
+      $("#estado").val('')
     }
   }, [estadoModificacion])
 
@@ -116,8 +117,16 @@ export default function TabModiCliente() {
                       placeholder="Ingrese el nuevo número de contacto"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
-
-                  <br></br>
+                  <div>
+                    <label className="block font-medium mb-2 text-sm text-gray-600 dark:text-gray-700">Estado</label>
+                    <input
+                      onChange={handleChange}
+                      id="estado"
+                      name="activo"
+                      type="text"
+                      placeholder="Estado del cliente"
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-400 dark:bg-white dark:text-gray-600 dark:border-gray-400 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                  </div>
                   <div className="form-group flex ">
                     <button type="submit"
                       onClick={() => useEffect}

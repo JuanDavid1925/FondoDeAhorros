@@ -17,8 +17,6 @@ export default async (req, res) => {
 
         const res1 = await conn.query(query1)
 
-        console.log(res1.rows)
-
         if (!res1.rowCount) {
           res.status(404).json({estado: 404, mensaje: `Sin usuarios.`})
         }

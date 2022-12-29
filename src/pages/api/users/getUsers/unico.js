@@ -21,19 +21,19 @@ export default async (req, res) => {
 
         switch (tipo) {
           case 'Asociado':
-            query1 = `SELECT nombres_usuario, apellidos_usuario, telefono_usuario, ocupacion_asociado, direccion_asociado, ciudad_asociado, correo_asociado
+            query1 = `SELECT nombres_usuario, apellidos_usuario, telefono_usuario, activo_usuario, ocupacion_asociado, direccion_asociado, ciudad_asociado, correo_asociado
                       FROM usuarios JOIN asociados 
                       ON usuarios.documento_usuario = asociados.documento_asociado
                       WHERE documento_usuario = '${documento}';`
             break
           case 'Cliente':
-            query1 = `SELECT nombres_usuario, apellidos_usuario, telefono_usuario 
+            query1 = `SELECT nombres_usuario, apellidos_usuario, telefono_usuario, activo_usuario
                       FROM usuarios JOIN clientes 
                       ON usuarios.documento_usuario = clientes.documento_cliente
                       WHERE documento_usuario = '${documento}';`
             break
           case 'Admin':
-            query1 = `SELECT nombres_usuario, apellidos_usuario, telefono_usuario 
+            query1 = `SELECT nombres_usuario, apellidos_usuario, telefono_usuario, activo_usuario
                       FROM usuarios
                       WHERE documento_usuario = '${documento}';`
             break

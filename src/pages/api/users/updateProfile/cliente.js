@@ -24,7 +24,7 @@ export default async (req, res) => {
       try {
         let res1, res2
 
-        if (nombres || apellidos || contrasena || telefono) {
+        if (nombres || apellidos || contrasena || telefono || activo) {
           const bcryptjs = (contrasena) ? require('bcryptjs') : undefined
           const contra = (contrasena) ? await bcryptjs.hash(contrasena, 8) : undefined
 
@@ -33,29 +33,29 @@ export default async (req, res) => {
           ${`${(!nombres) ? '' : `nombres_usuario = '${nombres}',`}
             ${(!apellidos) ? '' : `apellidos_usuario = '${apellidos}',`}
             ${(!contrasena) ? '' : `contrasena_usuario = '${contra}',`}
-            ${(!telefono) ? '' : `telefono_usuario = '${telefono}',`}`
+            ${(!telefono) ? '' : `telefono_usuario = '${telefono}',`}
+            ${(!activo) ? '' : `activo_usuario = ${activo},`}`
               .trim().slice(0, -1)}
           WHERE documento_usuario = '${documento}'
           RETURNING *;`
 
           res1 = await conn.query(query1)
 
-          if (res1.rowcount === 0)
+          if (!res1.rowCount)
             return res.status(400).json({ estado: 400, mensaje: 'Error al modificar los datos del usuario.' })
         }
 
-        if (documento_asociado || activo) {
-          const query2 = `UPDATE asociados
+        if (documento_asociado) {
+          const query2 = `UPDATE clientes
           SET
-          ${`${(!documento_asociado) ? '' : `documento_asociado = '${documento_asociado}',`}
-            ${(!activo) ? '' : `activo_asociado = ${activo},`}`
+          ${`${(!documento_asociado) ? '' : `documento_asociado_cliente = '${documento_asociado}',`}`
               .trim().slice(0, -1)}
-          WHERE documento_asociado = '${documento}'
+          WHERE documento_cliente = '${documento}'
           RETURNING *;`
 
           res2 = await conn.query(query2)
 
-          if (res2.rowcount === 0)
+          if (!res2.rowCount)
             return res.status(400).json({ estado: 401, mensaje: 'Error al modificar los datos del cliente.' })
         }
 

@@ -1,6 +1,6 @@
-import { useCallback, useContext, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { Formik } from 'formik';
-import $, { data } from "jquery"
+import $ from "jquery"
 
 import Solicitud_retiro_exitoso from "./solicitud_retiro_exitosa"
 import useSaves from '/src/hooks/useSaves'
@@ -137,7 +137,9 @@ export default function Solicitud_retiro() {
                             name="fecha"
                             type="date"
                             placeholder=""
-                            className="mt-4 h-5 w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" />
+                            className="mt-4 h-5 w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                            required
+                          />
                         </div>
                         <div className="relative z-0 col-span-2">
                           <textarea
