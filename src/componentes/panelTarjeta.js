@@ -4,6 +4,7 @@ import { withRouter } from "next/router"
 import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/menuTabs"
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import { useCallback, useContext, useEffect, useState } from "react"
+import Header_asociado from "./header_asociado"
 
 const PanelTarjeta = ({ router }) => {
   const {
@@ -14,7 +15,7 @@ const PanelTarjeta = ({ router }) => {
   const isTabTwo = tab === "2"
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-      <h5 className="px-6 py-2 text-4xl font-bold tracking-tight text-gray-700 sm:text-5xl md:text-4xl">Pagos</h5>
+      <Header_asociado nombre_seccion="Pagos" />
       <TabContainer>
         <TabHead>
           <Tab selected={isTabOne}>
@@ -22,11 +23,11 @@ const PanelTarjeta = ({ router }) => {
               <a>Pago de cuota mínima</a>
             </Link>
           </Tab>
-          <Tab selected={isTabTwo}>
+          {/*<Tab selected={isTabTwo}>
             <Link href={{ query: { tab: "2" } }}>
               <a>Pago de cuota de manejo</a>
             </Link>
-          </Tab>
+  </Tab>*/}
         </TabHead>
         <TabBody>
           {isTabOne &&
@@ -96,7 +97,7 @@ const PanelTarjeta = ({ router }) => {
                             </div>
                           </div>
                         </div>
-                        <button className="mt-4 mb-8 w- rounded-md bg-blue-500 px-6 py-3 font-medium text-white">Pagar</button>
+                        <button className="mt-4 mb-8 w- rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 px-6 py-3 font-medium text-white">Pagar</button>
                       </div>
 
                     )

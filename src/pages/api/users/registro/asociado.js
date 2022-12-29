@@ -79,10 +79,10 @@ export default async (req, res) => {
 
         const resp = await conn.query(query)
 
-        if (resp[1].rowcount === 0)
+        if (!resp[1].rowCount)
           return res.status(400).json({ estado: 400, mensaje: 'Error al crear al usuario.' })
 
-        if (resp[2].rowcount === 0)
+        if (!resp[2].rowCount)
           return res.status(401).json({ estado: 401, mensaje: 'Error al crear al asociado.' })
 
         return res.status(201).json({

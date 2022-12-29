@@ -30,7 +30,7 @@ export default async (req, res) => {
       try {
         let res1, res2
 
-        if (nombres || apellidos || contrasena || telefono) {
+        if (nombres || apellidos || contrasena || telefono || activo) {
           const bcryptjs = (contrasena) ? require('bcryptjs') : undefined
           const contra = (contrasena) ? await bcryptjs.hash(contrasena, 8) : undefined
 
@@ -39,18 +39,19 @@ export default async (req, res) => {
           ${`${(!nombres) ? '' : `nombres_usuario = '${nombres}',`}
             ${(!apellidos) ? '' : `apellidos_usuario = '${apellidos}',`}
             ${(!contrasena) ? '' : `contrasena_usuario = '${contra}',`}
-            ${(!telefono) ? '' : `telefono_usuario = '${telefono}',`}`
+            ${(!telefono) ? '' : `telefono_usuario = '${telefono}',`}
+            ${(!activo) ? '' : `activo_usuario = ${activo},`}`
               .trim().slice(0, -1)}
           WHERE documento_usuario = '${documento}'
           RETURNING *;`
 
           res1 = await conn.query(query1)
 
-          if (res1.rowcount === 0)
+          if (!res1.rowCount)
             return res.status(400).json({ estado: 400, mensaje: 'Error al modificar los datos del usuario.' })
         }
 
-        if (ciudad || ocupacion || direccion || cuota_fija_mensual || correo || fecha_nacimiento || cuota_manejo_pendiente || activo) {
+        if (ciudad || ocupacion || direccion || cuota_fija_mensual || correo || fecha_nacimiento || cuota_manejo_pendiente) {
           const query2 = `UPDATE asociados
           SET
           ${`${(!ciudad) ? '' : `ciudad_asociado = '${ciudad}',`}
@@ -59,15 +60,14 @@ export default async (req, res) => {
             ${(!cuota_fija_mensual) ? '' : `cuota_fija_mensual_asociado = ${cuota_fija_mensual},`}
             ${(!correo) ? '' : `correo_asociado = '${correo}',`}
             ${(!fecha_nacimiento) ? '' : `fecha_nacimiento_asociado = '${fecha_nacimiento}',`}
-            ${(!cuota_manejo_pendiente) ? '' : `cuota_manejo_pendiente_asociado = ${cuota_manejo_pendiente},`}
-            ${(!activo) ? '' : `activo_asociado = ${activo},`}`
+            ${(!cuota_manejo_pendiente) ? '' : `cuota_manejo_pendiente_asociado = ${cuota_manejo_pendiente},`}`
               .trim().slice(0, -1)}
           WHERE documento_asociado = '${documento}'
           RETURNING *;`
 
           res2 = await conn.query(query2)
 
-          if (res2.rowcount === 0)
+          if (!res2.rowCount)
             return res.status(400).json({ estado: 401, mensaje: 'Error al modificar los datos del asociado.' })
         }
 

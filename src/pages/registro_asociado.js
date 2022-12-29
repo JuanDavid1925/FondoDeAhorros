@@ -110,7 +110,7 @@ export default function Registro() {
                           id="documento"
                           name="documento"
                           type="text"
-                          placeholder="Ingrese tu documento"
+                          placeholder="Ingrese su número de documento"
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                         {(estado === -103) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Documento inválido </span> : <></>}
                       </div>

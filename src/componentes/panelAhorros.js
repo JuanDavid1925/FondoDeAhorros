@@ -5,6 +5,7 @@ import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/menuTabs"
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { useCallback, useContext, useEffect, useState } from "react"
+import Header_asociado from "./header_asociado";
 
 const PanelAhorros = ({ router }) => {
   const {
@@ -15,6 +16,7 @@ const PanelAhorros = ({ router }) => {
   const isTabTwo = tab === "2"
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
+      <Header_asociado nombre_seccion="Ahorros" />
       <TabContainer>
         <TabHead>
           <Tab selected={isTabOne}>
@@ -69,11 +71,11 @@ const PanelAhorros = ({ router }) => {
                             <div className="form-group flex ">
                               <button type="submit"
                                 onClick={() => useEffect}
-                                className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold">
+                                className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-gradient-to-r from-sky-600 to-cyan-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                                 </svg>
-                                <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Enviar</label></span>
+                                <span><label className="ml-2 mt-4 text-white-500 white:text-white-400 cursor-pointer">Enviar</label></span>
                               </button>
                             </div>
                             <div></div>
@@ -91,11 +93,11 @@ const PanelAhorros = ({ router }) => {
                             <div className="form-group flex ">
                               <button type="submit"
                                 onClick={() => useEffect}
-                                className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold">
+                                className="btn-primary flex items-center justify-between  px-6 py-5 text-sm tracking-wide bg-gradient-to-r from-sky-600 to-cyan-400 capitalize rounded-md border-blue-400 border-2 text-white font-semibold">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                                 </svg>
-                                <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Enviar</label></span>
+                                <span><label className="ml-2 mt-4 text-white-500 white:text-white-400 cursor-pointer">Enviar</label></span>
                               </button>
                             </div>
                           </form>
