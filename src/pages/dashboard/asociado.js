@@ -5,7 +5,7 @@ import Context from "/src/context/userContext"
 import Aviso_retiro from "../../componentes/aviso_retiro"
 import Formulario_retiro from "../../componentes/formulario_retiro"
 import Inicio_asociado from "../../componentes/inicio_asociado"
-import PanelTarjeta from "../../componentes/panelTarjeta"
+import PanelPagoCuotas from "../../componentes/panelPagoCuotas"
 import Solicitud_retiro from "../../componentes/solicitudRetiro"
 import Formulario_prestamo from "../../componentes/formulario_prestamo"
 import Head from "next/head";
@@ -35,7 +35,7 @@ export default function Dashboard_Asociado() {
       case 1:
         return <Inicio_asociado />
       case 2:
-        return <PanelTarjeta />
+        return <PanelPagoCuotas />
       case 3:
         return <Formulario_retiro />
       case 4:
