@@ -137,5 +137,56 @@ export default function useSaves() {
 
   }, [])
 
-  return { cargarDatosSolicitud, solicitarRetiro, cargarDatosRetiro, realizarRetiro }
+  const pagoMensual = useCallback(
+    /**
+     * Función para crear una nueva transacción 
+     * abonando el valor de la cuota mensual.
+     * @param {String} valor 
+     * @param {Function} setEstado 
+     */
+    (valor, setEstado) => {
+      const url = '/api/saves/CuotaMensual/pagar'
+
+      setEstado(2)
+
+      fetch(
+        url,
+        {
+          method: 'POST',
+          body: JSON.stringify({ monto: valor })
+        }
+      )
+        .then(response => response.json())
+        .then(({ estado, mensaje }) => {
+          switch (estado) {
+            case 201:
+              setEstado(1)
+              break
+            case 400:
+              setEstado(-1)
+              break
+            case 404:
+              setEstado(-404)
+              break
+            case 408:
+              setEstado(-408)
+              break
+            case 409:
+              setEstado(-2)
+              break
+            default:
+              setEstado(-500)
+              console.log('No se ha podido conectar con la base de datos.')
+              break
+          }
+
+          console.log(mensaje)
+        })
+        .catch(error => {
+          console.error(`Error: ${error}`)
+        })
+
+    }, [])
+
+  return { cargarDatosSolicitud, solicitarRetiro, cargarDatosRetiro, realizarRetiro, pagoMensual }
 }
