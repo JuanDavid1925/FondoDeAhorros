@@ -6,7 +6,7 @@ import Aviso_retiro from "/src/componentes/aviso_retiro"
 import Formulario_retiro from "/src/componentes/formulario_retiro"
 import Inicio_asociado from "/src/componentes/inicio_asociado"
 import PanelTarjeta from "/src/componentes/panelTarjeta"
-import Solicitud_retiro from "/src/componentes/solicitudRetiro"
+import Solicitud_retiro from "/src/componentes/solicitud_retiro"
 import Formulario_prestamo from "/src/componentes/formulario_prestamo"
 import Head from "next/head";
 

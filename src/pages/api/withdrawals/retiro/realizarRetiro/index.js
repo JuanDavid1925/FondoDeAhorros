@@ -10,23 +10,44 @@ import { conn } from '/src/utils/database'
 export default async (req, res) => {
   const { method, body } = req
   const {
-    id
+    idSolicitud,
+    documento,
+    saldo
   } = JSON.parse(body)
 
   switch (method) {
     case 'POST':
       try {
-        const query1 = `
+        const query1 = `BEGIN;
+
         UPDATE solicitudes
         SET
           estado_retiro = 0
         WHERE
-          id_retiro = ${id}
-        RETURNING *;`
+          id_retiro = ${idSolicitud}
+        RETURNING *;
 
-        const resp1 = await conn.query(query1)
+        INSERT INTO transacciones (
+          documento_asociado_transacciones,
+          fecha_transacciones,
+          descripcion_transacciones,
+          monto_transacciones
+        )
+        VALUES (
+          '${documento}',
+          '${new Date().getUTCMonth() + 1}-${new Date().getUTCDate()}-${new Date().getUTCFullYear()}',
+          'retiro-${idSolicitud}.',
+          -${saldo}
+        )
+        RETURNING *;
 
-        if (!resp1.rowCount)
+        COMMIT;`
+
+        const resp = await conn.query(query1)
+
+        console.log(resp)
+
+        if (!resp[0].rowCount || !resp[1].rowCount)
           return res.status(400).json({ estado: 400, mensaje: 'Error al realizar el retiro.' })
 
         return res.status(201).json({ estado: 201, mensaje: 'Retiro realizado con éxito.' })

@@ -30,6 +30,7 @@ export default function Modificacion_cliente({ children, onClose, documento }) {
 
   const handleSubmitCliente = useCallback((data) => {
     data.documento = documento
+    data.activo = $("#activo").prop('checked')
     modificacionCliente(data, setEstadoModificacion)
   }, [modificacionCliente, documento])
 
@@ -145,6 +146,7 @@ export default function Modificacion_cliente({ children, onClose, documento }) {
                                     <input
                                       id="activo"
                                       name="activo"
+                                      onChange={handleChange}
                                       aria-describedby="remember"
                                       type="checkbox"
                                       className="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded"

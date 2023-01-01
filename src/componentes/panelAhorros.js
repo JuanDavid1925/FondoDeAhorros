@@ -39,7 +39,7 @@ const PanelAhorros = ({ router }) => {
                   {{
                     cuotaMin: "",
                     cuotaManejo: ""
-                  }} y
+                  }}
 
                   onSubmit={fields => {
                     handleSubmit(fields)
