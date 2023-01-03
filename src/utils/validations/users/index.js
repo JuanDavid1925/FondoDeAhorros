@@ -207,7 +207,7 @@ function validarDatosRegistroAsociado({ nombres, apellidos, documento, telefono,
     return -103
   }
   if (!validarNumeroTelefono(telefono)) {
-    return -104
+    return -105
   }
   if (!validarCorreo(correo)) {
     return -104

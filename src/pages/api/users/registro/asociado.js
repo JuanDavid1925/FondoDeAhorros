@@ -37,7 +37,8 @@ export default async (req, res) => {
           apellidos_usuario,
           contrasena_usuario,
           telefono_usuario,
-          tipo_usuario
+          tipo_usuario,
+          activo_usuario
         )
         VALUES (
           '${documento}',
@@ -45,7 +46,8 @@ export default async (req, res) => {
           '${apellidos}',
           '${contra}',
           '${telefono}',
-          'Asociado'
+          'Asociado',
+          true
         )
         RETURNING *;
 
@@ -58,8 +60,7 @@ export default async (req, res) => {
           correo_asociado,
           fecha_nacimiento_asociado,
           cuota_manejo_pendiente_asociado,
-          monto_total_asociado,
-          activo_asociado
+          monto_total_asociado
         )
         VALUES (
           '${documento}',
@@ -70,8 +71,7 @@ export default async (req, res) => {
           '${correo}',
           '${fecha_nacimiento}',
           5000,
-          0,
-          true
+          0
         )
         RETURNING *;
 
@@ -79,10 +79,10 @@ export default async (req, res) => {
 
         const resp = await conn.query(query)
 
-        if (resp[1].rowcount === 0)
+        if (!resp[1].rowCount)
           return res.status(400).json({ estado: 400, mensaje: 'Error al crear al usuario.' })
 
-        if (resp[2].rowcount === 0)
+        if (!resp[2].rowCount)
           return res.status(401).json({ estado: 401, mensaje: 'Error al crear al asociado.' })
 
         return res.status(201).json({

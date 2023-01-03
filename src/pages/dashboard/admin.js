@@ -1,11 +1,14 @@
-import { useRouter } from "next/Router"
 import { useCallback, useContext, useEffect, useState } from "react"
-import useUser from "/src/hooks/useUser"
+import { useRouter } from "next/Router"
+import Head from "next/head"
+
+import Panel_reuniones_admin from "/src/componentes/dashboard/admin/reuniones"
+import PanelModiUsuario from "/src/componentes/dashboard/admin/usuarios"
+import PanelAhorros from "/src/componentes/dashboard/admin/ahorros"
+import InicioAdmin from "/src/componentes/dashboard/admin/inicio"
+import PanelAux from "/src/componentes/dashboard/admin/panelAux"
 import Context from "/src/context/userContext"
-import PanelModiUsuario from "../../componentes/panelModiUsuario"
-import PanelAhorros from "../../componentes/panelAhorros"
-import PanelAux from "../../componentes/panelAux"
-import InicioAdmin from "../../componentes/inicioAdmin"
+import useUser from "/src/hooks/useUser"
 
 export default function Dashboard_Admin() {
   const router = useRouter()
@@ -27,6 +30,11 @@ export default function Dashboard_Admin() {
 
   return (
     <div>
+      <Head>
+        <link rel="icon" href="/usuario.png" />
+        <title>{(!userData) ? 'Ivana Watts' : `${userData.nombres} ${userData.apellidos}`} </title>
+        <meta name="description" content={"Dashboard admin"} />
+      </Head>
       <aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
         <div>
           <br></br>
@@ -111,7 +119,10 @@ export default function Dashboard_Admin() {
           (panelAMostrar === 1) ?
             <PanelModiUsuario /> :
             (panelAMostrar === 2) ?
-              <PanelAhorros /> : <PanelAux />
+              <PanelAhorros /> :
+              (panelAMostrar === 3) ?
+                <Panel_reuniones_admin /> :
+                <PanelAux />
       }
     </div >
 

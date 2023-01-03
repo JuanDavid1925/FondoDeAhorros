@@ -1,12 +1,18 @@
-import { useRouter } from "next/Router"
 import { useCallback, useContext, useEffect, useState } from "react"
-import useUser from "/src/hooks/useUser"
+import { useRouter } from "next/Router"
+import Head from "next/head"
+
+import Formulario_retiro from "/src/componentes/dashboard/asociado/retiro/formulario_retiro"
+import Solicitud_retiro from "/src/componentes/dashboard/asociado/retiro/solicitud_retiro"
+import Aviso_retiro from "/src/componentes/dashboard/asociado/retiro/modales/aviso_retiro"
+import Formulario_prestamo from "/src/componentes/dashboard/compartido/prestamo"
+import PanelTarjeta from "/src/componentes/dashboard/compartido/panelTarjeta"
+import Inicio_asociado from "/src/componentes/dashboard/asociado/inicio"
 import Context from "/src/context/userContext"
-import Aviso_retiro from "../../componentes/aviso_retiro"
-import Formulario_retiro from "../../componentes/formulario_retiro"
-import Inicio_asociado from "../../componentes/inicio_asociado"
-import Solicitud_retiro from "../../componentes/solicitud_retiro"
-import PanelTarjeta from "../../componentes/panelTarjeta"
+
+import PanelPagoCuotas from "../../componentes/panelPagoCuotas"
+
+import useUser from "/src/hooks/useUser"
 
 export default function Dashboard_Asociado() {
   const router = useRouter()
@@ -33,11 +39,13 @@ export default function Dashboard_Asociado() {
       case 1:
         return <Inicio_asociado />
       case 2:
-        return <PanelTarjeta />
+        return <PanelPagoCuotas />
       case 3:
         return <Formulario_retiro />
       case 4:
         return <Solicitud_retiro />
+      case 5:
+        return <Formulario_prestamo />
       default:
         return <></>
     }
@@ -45,6 +53,11 @@ export default function Dashboard_Asociado() {
 
   return (
     <div>
+      <Head>
+        <link rel="icon" href="/usuario.png" />
+        <title>{(!userData) ? 'John Doe' : `${userData.nombres} ${userData.apellidos}`} </title>
+        <meta name="description" content={"Dashboard asociado"} />
+      </Head>
       <aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
         <div>
           <br></br>

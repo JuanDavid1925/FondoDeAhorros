@@ -13,11 +13,22 @@ export default async (req, res) => {
   switch (method) {
     case 'POST':
       try {
-        const query1 = `SELECT documento_usuario, nombres_usuario, apellidos_usuario, telefono_usuario, tipo_usuario FROM usuarios;`
+        const query1 = `
+        SELECT 
+          documento_usuario, 
+          nombres_usuario, 
+          apellidos_usuario, 
+          telefono_usuario, 
+          tipo_usuario 
+        FROM 
+          usuarios
+        ORDER BY 
+          tipo_usuario ASC, 
+          apellidos_usuario ASC, 
+          nombres_usuario ASC, 
+          documento_usuario ASC;`
 
         const res1 = await conn.query(query1)
-
-        console.log(res1.rows)
 
         if (!res1.rowCount) {
           res.status(404).json({estado: 404, mensaje: `Sin usuarios.`})
