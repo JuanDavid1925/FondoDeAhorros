@@ -1,13 +1,14 @@
-import { useRouter } from "next/Router"
 import { useCallback, useContext, useEffect, useState } from "react"
-import useUser from "/src/hooks/useUser"
+import { useRouter } from "next/Router"
+import Head from "next/head"
+
+import Panel_reuniones_admin from "/src/componentes/dashboard/admin/reuniones"
+import PanelModiUsuario from "/src/componentes/dashboard/admin/usuarios"
+import PanelAhorros from "/src/componentes/dashboard/admin/ahorros"
+import InicioAdmin from "/src/componentes/dashboard/admin/inicio"
+import PanelAux from "/src/componentes/dashboard/admin/panelAux"
 import Context from "/src/context/userContext"
-import PanelModiUsuario from "../../componentes/panelModiUsuario"
-import PanelAhorros from "../../componentes/panelAhorros"
-import PanelAux from "../../componentes/panelAux"
-import InicioAdmin from "../../componentes/inicioAdmin"
-import Panel_reuniones_admin from "../../componentes/panel_reuniones_admin"
-import Head from "next/head";
+import useUser from "/src/hooks/useUser"
 
 export default function Dashboard_Admin() {
   const router = useRouter()
