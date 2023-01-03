@@ -152,43 +152,43 @@ export default function Panel_reuniones_admin() {
                                                         className="mt-4 mb-8 w-full rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 px-6 py-3 font-medium text-white">Crear reunión</button>
                                                 </div>
                                                 :
-
-                                                <div>
-                                                    <label htmlFor="card-holder" className="mt-4 mb-2 block text-sm font-medium">Enlace de la reunión</label>
-                                                    <div className="relative">
-                                                        <input type="text" id="enlace" name="enlace" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enlace a la reunión" />
-                                                        <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-500">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-                                                            </svg>
+                                                (tipo_reunion === 2) ?
+                                                    <div>
+                                                        <label htmlFor="card-holder" className="mt-4 mb-2 block text-sm font-medium">Enlace de la reunión</label>
+                                                        <div className="relative">
+                                                            <input type="text" id="enlace" name="enlace" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Enlace a la reunión" />
+                                                            <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-500">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                                                                </svg>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="relative">
-                                                        <label htmlFor="card-holder" className="mt-4 mb-2 block text-sm font-medium">Fecha</label>
-                                                        <input
-                                                            id="fecha"
-                                                            name="fecha"
-                                                            type="date"
-                                                            placeholder=""
-                                                            className="w-full pl-11 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" />
-                                                        <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-7 h-5 w-5 text-gray-400">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
-                                                            </svg>
+                                                        <div className="relative">
+                                                            <label htmlFor="card-holder" className="mt-4 mb-2 block text-sm font-medium">Fecha</label>
+                                                            <input
+                                                                id="fecha"
+                                                                name="fecha"
+                                                                type="date"
+                                                                placeholder=""
+                                                                className="w-full pl-11 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" />
+                                                            <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-7 h-5 w-5 text-gray-400">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                                                                </svg>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="relative">
-                                                        <label htmlFor="card-holder" className="mt-4 mb-2 block text-sm font-medium">Hora</label>
-                                                        <input type="time" id="hora" name="hora" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Hora" />
-                                                        <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-7 h-5 w-5 text-gray-400">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                            </svg>
+                                                        <div className="relative">
+                                                            <label htmlFor="card-holder" className="mt-4 mb-2 block text-sm font-medium">Hora</label>
+                                                            <input type="time" id="hora" name="hora" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Hora" />
+                                                            <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-7 h-5 w-5 text-gray-400">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                </svg>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <button
-                                                        className="mt-4 mb-8 w-full rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 px-6 py-3 font-medium text-white">Crear reunión</button>
-                                                </div>}
+                                                        <button
+                                                            className="mt-4 mb-8 w-full rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 px-6 py-3 font-medium text-white">Crear reunión</button>
+                                                    </div> : <></>}
                                         </div>
                                     </form>
                                 </div>

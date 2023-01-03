@@ -9,8 +9,8 @@ import Formulario_prestamo from "/src/componentes/dashboard/compartido/prestamo"
 import PanelTarjeta from "/src/componentes/dashboard/compartido/panelTarjeta"
 import Inicio_asociado from "/src/componentes/dashboard/asociado/inicio"
 import Context from "/src/context/userContext"
+import PanelPagoCuotas from "../../componentes/dashboard/asociado/panelPagoCuotas"
 
-import PanelPagoCuotas from "../../componentes/panelPagoCuotas"
 
 import useUser from "/src/hooks/useUser"
 

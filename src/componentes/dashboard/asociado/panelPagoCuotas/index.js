@@ -3,7 +3,7 @@ import { withRouter } from "next/router"
 import { Formik } from 'formik'
 import Link from "next/link"
 import React from "react"
-
+import Header_asociado from "/src/componentes/dashboard/compartido/header_asociado"
 import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/dashboard/menuTabs"
 import PagoCuotaMensualExitoso from "./modalCuotaMensual"
 import PagoCuotaManejoExitoso from "./modalCuotaManejo"
@@ -29,7 +29,7 @@ const PanelPagoCuotas = ({ router }) => {
   const isTabTwo = tab === "2"
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
-      <h5 className="px-6 py-2 text-4xl font-bold tracking-tight text-gray-700 sm:text-5xl md:text-4xl">Pagos</h5>
+      <Header_asociado nombre_seccion="Pagos" />
       <TabContainer>
         <TabHead>
           <Tab selected={isTabOne}>
@@ -118,7 +118,7 @@ const PanelPagoCuotas = ({ router }) => {
                           onClick={() =>
                             setShowModal(true)
                           }
-                          className="mt-4 mb-8 w- rounded-md bg-blue-500 px-6 py-3 font-medium text-white">Pagar</button>
+                          className="mt-4 mb-8 w- rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 px-6 py-3 font-medium text-white">Pagar</button>
                         {showModal && <PagoCuotaMensualExitoso onClose={() => handleClose()}></PagoCuotaMensualExitoso>}
                       </div>
 
@@ -204,7 +204,7 @@ const PanelPagoCuotas = ({ router }) => {
                         onClick={() =>
                           setShowModal(true)
                         }
-                        className="mt-4 mb-8 w- rounded-md bg-blue-500 px-6 py-3 font-medium text-white">Pagar</button>
+                        className="mt-4 mb-8 w- rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 px-6 py-3 font-medium text-white">Pagar</button>
                       {showModal && <PagoCuotaManejoExitoso onClose={() => handleClose()}></PagoCuotaManejoExitoso>}
                     </div>
 
