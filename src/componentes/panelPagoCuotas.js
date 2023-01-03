@@ -10,7 +10,7 @@ import { useCallback, useContext, useEffect, useState } from "react"
 const PanelPagoCuotas = ({ router }) => {
 
   const [showModal, setShowModal] = useState(false)
-  const [estado, setEstado] = useState()
+  const [estado] = useState()
 
   const handleClose = useCallback(() => { setShowModal(false) }, [])
 

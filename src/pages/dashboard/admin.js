@@ -6,7 +6,6 @@ import Panel_reuniones_admin from "/src/componentes/dashboard/admin/reuniones"
 import PanelModiUsuario from "/src/componentes/dashboard/admin/usuarios"
 import PanelAhorros from "/src/componentes/dashboard/admin/ahorros"
 import InicioAdmin from "/src/componentes/dashboard/admin/inicio"
-import PanelAux from "/src/componentes/dashboard/admin/panelAux"
 import Context from "/src/context/userContext"
 import useUser from "/src/hooks/useUser"
 
