@@ -1,16 +1,17 @@
-import React from "react"
-import Link from "next/link"
+import { useCallback, useEffect, useState } from "react"
 import { withRouter } from "next/router"
-import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/menuTabs"
-import PagoCuotaManejoExitoso from "/src/componentes/modalCuotaManejo"
-import PagoCuotaMensualExitoso from "/src/componentes/modalCuotaMensual"
-import { Formik, Form, ErrorMessage, Field } from 'formik';
-import { useCallback, useContext, useEffect, useState } from "react"
+import { Formik } from 'formik'
+import Link from "next/link"
+import React from "react"
+
+import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/dashboard/menuTabs"
+import PagoCuotaMensualExitoso from "./modalCuotaMensual"
+import PagoCuotaManejoExitoso from "./modalCuotaManejo"
 
 const PanelPagoCuotas = ({ router }) => {
 
   const [showModal, setShowModal] = useState(false)
-  const [estado, setEstado] = useState()
+  const [estado] = useState()
 
   const handleClose = useCallback(() => { setShowModal(false) }, [])
 
