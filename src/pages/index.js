@@ -1,10 +1,11 @@
-import Head from "next/head";
-import Footer from '../componentes/Footer'
-import Seccion_prestamos from '../componentes/seccion_prestamos'
-import Seccion_ahorros from '../componentes/seccion_ahorros'
-import Seccion_clientes from '../componentes/Seccion_clientes'
-import Seccion_asociados from '../componentes/seccion_asociados'
-import Header from '../componentes/header'
+import Head from "next/head"
+
+import Seccion_prestamos from '/src/componentes/inicio/secciones/prestamos'
+import Seccion_asociados from '/src/componentes/inicio/secciones/asociados'
+import Seccion_clientes from '/src/componentes/inicio/Secciones/clientes'
+import Seccion_ahorros from '/src/componentes/inicio/secciones/ahorros'
+import Footer from '/src/componentes/inicio/Footer'
+import Header from '/src/componentes/inicio/header'
 
 
 export default function Home() {
