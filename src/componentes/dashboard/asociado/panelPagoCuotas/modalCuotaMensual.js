@@ -1,5 +1,5 @@
-import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useRef, useState } from 'react'
 
 export default function PagoCuotaMensualExitoso({ children, onClose }) {
   const [open, setOpen] = useState(true)
