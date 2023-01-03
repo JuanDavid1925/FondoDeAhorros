@@ -1,15 +1,17 @@
-import { useRouter } from "next/Router"
 import { useCallback, useContext, useEffect, useState } from "react"
-import useUser from "/src/hooks/useUser"
+import { useRouter } from "next/Router"
+import Head from "next/head"
+
+import Formulario_prestamo from "/src/componentes/dashboard/compartido/prestamo"
+import PanelTarjeta from "/src/componentes/dashboard/compartido/panelTarjeta"
+import Inicio_cliente from "/src/componentes/dashboard/cliente/inicio"
 import Context from "/src/context/userContext"
-import Head from "next/head";
-import Formulario_prestamo from "../../componentes/formulario_prestamo";
-import Inicio_cliente from "../../componentes/inicio_cliente";
+import useUser from "/src/hooks/useUser"
 
 
 export default function Dashboard() {
   const router = useRouter()
-  const { logout } = useUser()
+  const { logout } = useUser() 
   const [estado, setEstado] = useState()
   const { userData } = useContext(Context)
   const [mostrar_pagina, setEstadoPagina] = useState(1)

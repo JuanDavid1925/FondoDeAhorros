@@ -38,7 +38,7 @@ export default async (req, res) => {
         VALUES (
           '${documento}',
           '${fecha}',
-          4
+          3
         )
         RETURNING *;`
 

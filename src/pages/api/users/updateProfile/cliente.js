@@ -24,7 +24,7 @@ export default async (req, res) => {
       try {
         let res1, res2
 
-        if (nombres || apellidos || contrasena || telefono || activo) {
+        if (nombres || apellidos || contrasena || telefono || activo !== undefined) {
           const bcryptjs = (contrasena) ? require('bcryptjs') : undefined
           const contra = (contrasena) ? await bcryptjs.hash(contrasena, 8) : undefined
 
@@ -34,7 +34,7 @@ export default async (req, res) => {
             ${(!apellidos) ? '' : `apellidos_usuario = '${apellidos}',`}
             ${(!contrasena) ? '' : `contrasena_usuario = '${contra}',`}
             ${(!telefono) ? '' : `telefono_usuario = '${telefono}',`}
-            ${(!activo) ? '' : `activo_usuario = ${activo},`}`
+            ${(activo === undefined) ? '' : `activo_usuario = ${activo},`}`
               .trim().slice(0, -1)}
           WHERE documento_usuario = '${documento}'
           RETURNING *;`
