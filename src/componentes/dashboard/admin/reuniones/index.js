@@ -19,7 +19,7 @@ export default function Panel_reuniones_admin() {
                     initialValues=
                     {{
                         multa: "",
-                        cuotaManejo: ""
+
                     }}
 
                     onSubmit={fields => {

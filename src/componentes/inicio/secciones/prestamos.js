@@ -45,7 +45,7 @@ export default function Seccion_prestamos() {
                 onClick={() => {
                   router.push('/inicio/info/prestamos_clientes')
                 }}
-                className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700"
+                className="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700 cursor-pointer"
               >
                 Consulta más información sobre préstamos
               </a>
