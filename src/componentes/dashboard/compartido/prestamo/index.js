@@ -228,7 +228,7 @@ const Formulario_prestamo = ({ router }) => {
                                                                     'block px-4 py-2 text-sm'
                                                                 )}
                                                                 onClick={() => {
-                                                                    print()
+
                                                                 }}
                                                             >
                                                                 1707476
@@ -239,6 +239,55 @@ const Formulario_prestamo = ({ router }) => {
                                             </Menu.Items>
                                         </Transition>
                                     </Menu>
+                                    <div>
+                                        <div className="mt-10 w-full h-14 pt-2 text-center bg-gray-700  shadow overflow-hidden sm:rounded-md font-bold text-3xl text-white ">
+                                            Estado de cuenta
+                                        </div>
+                                        <section className="text-gray-600 body-font  m-0 p-0 relative" />
+                                        <div className="container    mx-auto">
+                                            <div className="flex flex-col text-center w-full mb-1">
+                                            </div>
+                                            <div className="mt-10 md:mt-0 md:col-span-2">
+                                                <form action="#" method="POST">
+                                                    <div className="shadow overflow-hidden sm:rounded-md">
+                                                        <div className="px-2 py-8 bg-white sm:p-6">
+                                                            <div className="grid grid-cols-6 gap-6">
+                                                                <div className="col-span-6 sm:col-span-3">
+                                                                    <label htmlFor="first-name" className="block text-lg font-medium text-gray-700">Número de obligación
+                                                                    </label>
+                                                                    <input type="text" name="numero_obligacion" placeholder="Número de obligación" id="numero_obligacion" autoComplete="given-name" className="mt-1 h-20 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" disabled />
+                                                                </div>
+                                                                <div className="col-span-6 sm:col-span-3">
+                                                                    <label htmlFor="last-name" className="block text-lg font-medium text-gray-700">Valor financiado
+                                                                    </label>
+                                                                    <input type="text" name="valor_financiado" placeholder="Valor financiado" id="valor_financiado" autoComplete="family-name" className="mt-1 h-20 focus:ring-indigo-500 text-gray-300  focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" disabled />
+                                                                </div>
+                                                                <div className="col-span-6 sm:col-span-3">
+                                                                    <label htmlFor="last-name" className="block text-lg font-medium text-gray-700">Número de cuotas
+                                                                    </label>
+                                                                    <input type="text" name="numero_cuota" placeholder="Número de cuotas" id="last-name" autoComplete="family-name" className="mt-1 h-20 focus:ring-indigo-500 text-gray-300  focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" disabled />
+                                                                </div>
+                                                                <div className="col-span-6 sm:col-span-3">
+                                                                    <label htmlFor="last-name" className="block text-lg font-medium text-gray-700">Tasa efectiva anual
+                                                                    </label>
+                                                                    <input type="text" name="tasa_anual" placeholder="Tasa efectiva anual" id="tasa_anual" autoComplete="family-name" className="mt-1 h-20 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" disabled />
+                                                                </div>
+                                                                <div className="col-span-6 sm:col-span-3">
+                                                                    <label htmlFor="last-name" className="block text-lg font-medium text-gray-700">
+                                                                        Cuotas pendientes</label>
+                                                                    <input type="text" name="cuotas_pendientes" placeholder="Cuotas pendientes" id="cuotas_pendientes" autoComplete="family-name" className="mt-1 h-20 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" disabled />
+                                                                </div>
+                                                                <div className="col-span-6 sm:col-span-3">
+                                                                    <label htmlFor="last-name" className="block text-lg font-medium text-gray-700">
+                                                                        Saldo a capital</label>
+                                                                    <input type="text" name="saldo_capital" placeholder="saldo a capital" id="saldo_capital" autoComplete="family-name" className="mt-1 h-20 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" disabled />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
