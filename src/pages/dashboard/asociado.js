@@ -10,6 +10,7 @@ import PanelTarjeta from "/src/componentes/dashboard/compartido/panelTarjeta"
 import Inicio_asociado from "/src/componentes/dashboard/asociado/inicio"
 import Context from "/src/context/userContext"
 import PanelPagoCuotas from "../../componentes/dashboard/asociado/panelPagoCuotas"
+import Reuniones_asociado from "../../componentes/dashboard/asociado/reuniones"
 
 
 import useUser from "/src/hooks/useUser"
@@ -46,6 +47,8 @@ export default function Dashboard_Asociado() {
         return <Solicitud_retiro />
       case 5:
         return <Formulario_prestamo />
+      case 6:
+        return <Reuniones_asociado />
       default:
         return <></>
     }
