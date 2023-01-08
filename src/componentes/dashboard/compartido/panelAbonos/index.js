@@ -14,7 +14,7 @@ const PanelAbonos = ({ router }) => {
   const [showModal, setShowModal] = useState(false)
   const [estado, setEstado] = useState()
 
-  const handleClose = useCallback(() => { console.log("Hi") }, [])
+  const handleClose = useCallback(() => { setShowModal(false) }, [])
 
 
   const {
@@ -97,7 +97,8 @@ const PanelAbonos = ({ router }) => {
                                 name="fechaDeExpiración"
                                 type="date"
                                 placeholder=""
-                                className="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" />
+                                className="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                              />
                               <label htmlFor="code" className="mt-4 mb-2 block text-sm font-medium">Código de seguridad</label>
                               <div className="relative">
                                 <input type="text" id="code" name="code" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Ingrese el código de seguridad de su tarjeta" />
@@ -127,10 +128,11 @@ const PanelAbonos = ({ router }) => {
                                 </div>
                               </div>
                               <button
-                                onClick={
+                                onClick={() => {
                                   setShowModal(true)
-                                }
-                                className="mt-4 mb-8 w- rounded-md bg-blue-500 px-6 py-3 font-medium text-white">Pagar</button>
+                                }}
+                                className="mt-4 mb-8 w- rounded-md bg-blue-500 px-6 py-3 font-medium text-white"
+                              >Pagar</button>
                             </div>
 
                           </div>
@@ -139,7 +141,7 @@ const PanelAbonos = ({ router }) => {
                     )
                   }
                 </Formik>
-                {showModal && <PagoAbonoExitoso onClose={() => handleClose()}></PagoAbonoExitoso>}
+                {showModal && <PagoAbonoExitoso onClose={() => handleClose()} />}
               </div >
             </React.Fragment>}
           {isTabTwo && <React.Fragment>
