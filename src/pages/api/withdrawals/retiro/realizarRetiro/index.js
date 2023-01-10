@@ -31,13 +31,15 @@ export default async (req, res) => {
           documento_asociado_transacciones,
           fecha_transacciones,
           descripcion_transacciones,
-          monto_transacciones
+          monto_transacciones,
+          tipo_transacciones
         )
         VALUES (
           '${documento}',
-          '${new Date().getUTCMonth() + 1}-${new Date().getUTCDate()}-${new Date().getUTCFullYear()}',
+          NOW(),
           'retiro-${idSolicitud}.',
-          -${saldo}
+          -${saldo},
+          'Retiro'
         )
         RETURNING *;
 
