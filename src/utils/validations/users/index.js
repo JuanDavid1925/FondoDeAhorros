@@ -2,7 +2,6 @@
  * Funciones para validar las diferentes entradas esperadas en los registros de usuarios.
  */
 
-const { isInteger } = require("formik")
 
 /**
  * Función para validar si el dato entregado puede ser un nombre.
@@ -100,7 +99,6 @@ function validarOcupacion(ocupacion) {
  */
 function validarNacimiento(fecha) {
   try {
-    console.log(fecha)
     return new Date(new Date() - new Date(fecha)).getFullYear() - 1970 >= 18
   } catch (error) {
     return false
@@ -169,14 +167,15 @@ function validarContrasena(contrasena) {
  */
 function validarEntero(numero) {
   try {
-    let num = isInteger(numero)
+    let esNum = /^\d+$/.test(numero)
 
-    return num
+    return esNum
 
   } catch (error) {
     return false
   }
 }
+
 
 /**
  * Función para validar si los dato entregados son parte de un logueo válido.
@@ -206,10 +205,10 @@ function validarDatosRegistroAsociado({ nombres, apellidos, documento, telefono,
     return -103
   }
   if (!validarNumeroTelefono(telefono)) {
-    return -105
+    return -104
   }
   if (!validarCorreo(correo)) {
-    return -104
+    return -105
   }
   if (!validarOcupacion(ocupacion)) {
     return -106
