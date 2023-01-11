@@ -67,7 +67,7 @@ function validarCorreo(correo) {
     const tamanoMax = correo.length <= 255
     const regExp = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(correo)
 
-    return regExp
+    return regExp && tamanoMin && tamanoMax
 
   } catch (error) {
     return false
@@ -99,7 +99,9 @@ function validarOcupacion(ocupacion) {
  */
 function validarNacimiento(fecha) {
   try {
-    return new Date(new Date() - new Date(fecha)).getFullYear() - 1970 >= 18
+    // setHours(-5) debido a la diferencia por la hora de Colombia (UTC -5)
+    return new Date(new Date() - new Date(fecha).setHours(-5)).getFullYear() - 1970 >= 18
+
   } catch (error) {
     return false
   }
