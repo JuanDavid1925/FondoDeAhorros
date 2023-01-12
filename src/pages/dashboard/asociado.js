@@ -7,6 +7,7 @@ import Solicitud_retiro from "/src/componentes/dashboard/asociado/retiro/solicit
 import Aviso_retiro from "/src/componentes/dashboard/asociado/retiro/modales/aviso_retiro"
 import PanelPagoCuotas from "../../componentes/dashboard/asociado/panelPagoCuotas"
 import Formulario_prestamo from "/src/componentes/dashboard/compartido/prestamo"
+import Reuniones_asociado from "../../componentes/dashboard/asociado/reuniones"
 import Inicio_asociado from "/src/componentes/dashboard/asociado/inicio"
 import Context from "/src/context/userContext"
 import useUser from "/src/hooks/useUser"
@@ -43,6 +44,8 @@ export default function Dashboard_Asociado() {
         return <Solicitud_retiro />
       case 5:
         return <Formulario_prestamo />
+      case 6:
+        return <Reuniones_asociado />
       default:
         return <></>
     }
