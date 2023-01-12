@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 
 export const TabHead = styled("div")`
-  border-top: 1px solid blue; 
-  border-bottom: 1px solid blue;
+  border-top: 1px solid gray; 
+  border-bottom: 1px solid gray;
   display: flex;
 `
 export const TabContainer = styled("div")`
@@ -16,6 +16,6 @@ export const TabBody = styled("div")`
 `
 export const Tab = styled("div")`
   padding: 0.5em;
-  background: ${({ selected }) => (selected ? "#60a5fa" : "#ebedf0")};
+  background: ${({ selected }) => (selected ? "#48B4E0" : "#ebedf0")};
   color: ${({ selected }) => (selected ? "white" : "#4b5563")}
 `
