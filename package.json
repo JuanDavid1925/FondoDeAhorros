@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --verbose --silent"
+    "test": "jest --verbose --silent",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@emotion/styled": "^11.10.5",
@@ -29,6 +30,7 @@
     "@types/node": "18.11.2",
     "@types/react": "18.0.21",
     "autoprefixer": "^10.4.13",
+    "cypress": "^12.3.0",
     "eslint": "8.25.0",
     "eslint-config-next": "12.3.1",
     "jest": "^29.3.1",
