@@ -4,7 +4,7 @@ describe('Logueo en la aplicación:', () => {
     cy.visit('http://localhost:3000/inicio/login')
   })
 
-  it('Abre el login', () => {
+  it('Abre el login.', () => {
     cy.contains('Ingrese a su cuenta')
   })
 
