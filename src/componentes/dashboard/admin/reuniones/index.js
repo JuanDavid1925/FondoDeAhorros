@@ -10,7 +10,7 @@ function classNames(...classes) {
 }
 
 export default function Panel_reuniones_admin() {
-    const [tipo_reunion, setEstadoReunion] = useState(0)
+    const [tipo_reunion, setTipoReunion] = useState(0)
     return (
         <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
             <Header_asociado nombre_seccion="Reuniones" />
@@ -86,7 +86,7 @@ export default function Panel_reuniones_admin() {
                                                                             'block px-4 py-2 text-sm'
                                                                         )}
                                                                         onClick={() => {
-                                                                            setEstadoReunion(1)
+                                                                            setTipoReunion(1)
                                                                         }}
                                                                     >
                                                                         Presencial
@@ -102,7 +102,7 @@ export default function Panel_reuniones_admin() {
                                                                             'block px-4 py-2 text-sm'
                                                                         )}
                                                                         onClick={() => {
-                                                                            setEstadoReunion(2)
+                                                                            setTipoReunion(2)
                                                                         }}
                                                                     >
                                                                         Virtual

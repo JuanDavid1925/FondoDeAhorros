@@ -11,6 +11,7 @@ export default async (req, res) => {
   const { method, body } = req
   const {
     fecha,
+    hora,
     motivo,
     multa,
     lugar,
@@ -24,12 +25,14 @@ export default async (req, res) => {
 
         INSERT INTO reunion (
           fecha_reunion,
+          hora_reunion,
           motivo_reunion,
           multa_reunion,
           tipo_reunion
         )
         VALUES (
           '${fecha}',
+          '${hora}',
           '${motivo}',
           ${multa},
           'Presencial'

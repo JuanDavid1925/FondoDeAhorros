@@ -11,6 +11,7 @@ export default async (req, res) => {
   const { method, body } = req
   const {
     fecha,
+    hora,
     motivo,
     multa,
     enlace
@@ -29,6 +30,7 @@ export default async (req, res) => {
         )
         VALUES (
           '${fecha}',
+          '${hora}',
           '${motivo}',
           ${multa},
           'Presencial'
