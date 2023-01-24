@@ -39,7 +39,7 @@ export default function Aviso_registro({ children, onClose }) {
                   <div className="sm:flex sm:items-start">
                     <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 sm:mx-0 sm:h-10 sm:w-10">
                       <img
-                        src="./icono_usuario.png"
+                        src="/icono_usuario.png"
                         alt=""
                         className="ml-0 h-8 w-8 object-cover object-center"
                       />
