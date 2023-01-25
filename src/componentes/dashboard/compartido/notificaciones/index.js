@@ -67,7 +67,7 @@ export default function Notificaciones_asociado({ children, onClose }) {
                                     <div className="flex items-center space-x-4">
                                         <img src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" className="rounded-full h-14 w-14" alt="" />
                                         <div className="flex flex-col space-y-1">
-                                            <span className="font-bold">Daniela Romero</span>
+                                            <span className="font-bold">Humberto Solórzano</span>
                                             <span className="text-sm">Solicitud de reunión.</span>
                                         </div>
                                     </div>
