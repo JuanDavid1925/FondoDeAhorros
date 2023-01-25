@@ -12,6 +12,7 @@
     "@emotion/styled": "^11.10.5",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
+    "anychart-react": "^1.4.1",
     "bcryptjs": "^2.4.3",
     "cookie": "^0.5.0",
     "formik": "^2.2.9",

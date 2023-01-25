@@ -53,7 +53,7 @@ export default function InicioAdmin() {
                 <tbody>
                   <tr>
                     <td className="py-2">Asociados</td>
-                    <td className="text-gray-500">896</td>
+                    <td className="text-gray-500">20</td>
                     <td>
                       <svg className="w-16 ml-auto" viewBox="0 0 68 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect opacity="0.4" width={17} height={21} rx={1} fill="#e4e4f2" />
@@ -72,7 +72,7 @@ export default function InicioAdmin() {
                   </tr>
                   <tr>
                     <td className="py-2">Clientes</td>
-                    <td className="text-gray-500">512</td>
+                    <td className="text-gray-500">15</td>
                     <td>
                       <svg className="w-16 ml-auto" viewBox="0 0 68 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect opacity="0.4" width={17} height={21} rx={1} fill="#e4e4f2" />
@@ -91,7 +91,7 @@ export default function InicioAdmin() {
                   </tr>
                   <tr>
                     <td className="py-2">Otros</td>
-                    <td className="text-gray-500">15</td>
+                    <td className="text-gray-500">1</td>
                     <td>
                       <svg className="w-16 ml-auto" viewBox="0 0 68 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect opacity="0.4" width={17} height={21} rx={1} fill="#e4e4f2" />
@@ -139,7 +139,7 @@ export default function InicioAdmin() {
                 <tbody>
                   <tr>
                     <td className="py-2">Asociados nuevos</td>
-                    <td className="text-gray-500">53</td>
+                    <td className="text-gray-500">5</td>
                     <td>
                       <svg className="w-16 ml-auto" viewBox="0 0 68 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect opacity="0.4" width={17} height={21} rx={1} fill="#e4e4f2" />
@@ -158,7 +158,7 @@ export default function InicioAdmin() {
                   </tr>
                   <tr>
                     <td className="py-2">Clientes nuevos</td>
-                    <td className="text-gray-500">23</td>
+                    <td className="text-gray-500">4</td>
                     <td>
                       <svg className="w-16 ml-auto" viewBox="0 0 68 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect opacity="0.4" width={17} height={21} rx={1} fill="#e4e4f2" />
@@ -185,7 +185,7 @@ export default function InicioAdmin() {
               <div className="mt-6">
                 <h5 className="text-xl text-gray-700 text-center">Reuniones planeadas para esta semana</h5>
                 <div className="mt-2 flex justify-center gap-4">
-                  <h3 className="text-3xl font-bold text-gray-700">10</h3>
+                  <h3 className="text-3xl font-bold text-gray-700">5</h3>
                 </div>
                 <span className="block text-center text-gray-500">Comparadas a la semana pasada 7</span>
               </div>
@@ -193,7 +193,7 @@ export default function InicioAdmin() {
                 <tbody>
                   <tr>
                     <td className="py-2">Reuniones virtuales</td>
-                    <td className="text-gray-500">6</td>
+                    <td className="text-gray-500">4</td>
                     <td>
                       <svg className="w-16 ml-auto" viewBox="0 0 68 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect opacity="0.4" width={17} height={21} rx={1} fill="#e4e4f2" />
@@ -212,7 +212,7 @@ export default function InicioAdmin() {
                   </tr>
                   <tr>
                     <td className="py-2">Reuniones presenciales</td>
-                    <td className="text-gray-500">4</td>
+                    <td className="text-gray-500">1</td>
                     <td>
                       <svg className="w-16 ml-auto" viewBox="0 0 68 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect opacity="0.4" width={17} height={21} rx={1} fill="#e4e4f2" />
