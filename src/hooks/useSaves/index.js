@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react'
+import { useCallback } from 'react'
 
 import { validarDatosSolicitud } from '/src/utils/validations/withdrawals'
 
@@ -137,6 +137,54 @@ export default function useSaves() {
 
   }, [])
 
+  const getCuotaMensual = useCallback((documento, setDatos) => {
+    const url = '/api/saves/cuotaMensual/getCuotaMensual'
+
+    fetch(
+      url,
+      {
+        method: 'POST',
+        data: JSON.stringify({ documento: documento })
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, datos }) => {
+        if (estado === 201) {
+          setDatos(datos)
+        }
+        console.log(mensaje)
+      })
+      .catch(error => {
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
+  const setCuotaMensual = useCallback((data, setEstado) => {
+    const url = '/api/saves/cuotaMensual/getCuotaMensual'
+
+    fetch(
+      url,
+      {
+        method: 'POST',
+        data: JSON.stringify(data)
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, datos }) => {
+        if (estado === 201) {
+          setEstado(1)
+        }
+        else {
+          setEstado(-1)
+        }
+
+        console.log(mensaje)
+      })
+      .catch(error => {
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
   const pagoMensual = useCallback(
     /**
      * Función para crear una nueva transacción 
@@ -188,5 +236,13 @@ export default function useSaves() {
 
     }, [])
 
-  return { cargarDatosSolicitud, solicitarRetiro, cargarDatosRetiro, realizarRetiro, pagoMensual }
+  return {
+    cargarDatosSolicitud,
+    solicitarRetiro,
+    cargarDatosRetiro,
+    realizarRetiro,
+    getCuotaMensual,
+    setCuotaMensual,
+    pagoMensual
+  }
 }

@@ -27,13 +27,15 @@ export default async (req, res) => {
           documento_asociado_transacciones,
           fecha_transacciones,
           descripcion_transacciones,
-          monto_transacciones
+          monto_transacciones,
+          tipo_transacciones
         )
         VALUES (
           '${userData.documento}',
-          '${new Date().getUTCMonth() + 1}-${new Date().getUTCDate()}-${new Date().getUTCFullYear()}',
+          NOW(),
           'cuota mensual.',
-          ${monto}
+          ${monto},
+          'Ahorro'
         )
         RETURNING *;`
 

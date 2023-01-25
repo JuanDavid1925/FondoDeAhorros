@@ -26,7 +26,6 @@ const Panel_reuniones_admin = ({ router }) => {
 
     const isTabOne = tab === "1" || tab == null
     const isTabTwo = tab === "2"
-
     return (
         <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
             <Header_asociado nombre_seccion="Reuniones" />
@@ -51,7 +50,6 @@ const Panel_reuniones_admin = ({ router }) => {
                                     initialValues=
                                     {{
                                         multa: "",
-
                                     }}
 
                                     onSubmit={fields => {

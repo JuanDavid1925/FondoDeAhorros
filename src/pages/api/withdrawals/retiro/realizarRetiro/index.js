@@ -31,21 +31,21 @@ export default async (req, res) => {
           documento_asociado_transacciones,
           fecha_transacciones,
           descripcion_transacciones,
-          monto_transacciones
+          monto_transacciones,
+          tipo_transacciones
         )
         VALUES (
           '${documento}',
-          '${new Date().getUTCMonth() + 1}-${new Date().getUTCDate()}-${new Date().getUTCFullYear()}',
+          NOW(),
           'retiro-${idSolicitud}.',
-          -${saldo}
+          -${saldo},
+          'Retiro'
         )
         RETURNING *;
 
         COMMIT;`
 
         const resp = await conn.query(query1)
-
-        console.log(resp)
 
         if (!resp[0].rowCount || !resp[1].rowCount)
           return res.status(400).json({ estado: 400, mensaje: 'Error al realizar el retiro.' })
