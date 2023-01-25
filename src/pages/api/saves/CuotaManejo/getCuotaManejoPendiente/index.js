@@ -23,11 +23,12 @@ export default async (req, res) => {
 
         const query1 = `
         SELECT 
-          cuota_fija_mensual_asociado
+          cuota_manejo_pendiente_asociado
         FROM 
           asociados
         WHERE 
           documento_asociado = '${userData.documento}';`
+
 
         const res1 = await conn.query(query1)
 
@@ -37,8 +38,8 @@ export default async (req, res) => {
 
         return res.status(201).json({
           estado: 201,
-          mensaje: 'Cuota obtenida exitosamente.',
-          datos: res1.rows[0].cuota_fija_mensual_asociado
+          mensaje: 'Cuota de manejo obtenida exitosamente.',
+          datos: res1.rows[0].cuota_manejo_pendiente_asociado
         })
 
       } catch (error) {

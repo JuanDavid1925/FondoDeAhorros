@@ -1,3 +1,4 @@
+import { verify } from 'jsonwebtoken'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { conn } from '/src/utils/database'
@@ -8,27 +9,36 @@ import { conn } from '/src/utils/database'
 */
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-  const { method } = req
+  const { method, body } = req
+  const { id } = body
 
   switch (method) {
     case 'POST':
       try {
+        if (jwt === undefined) {
+          return res.status(404).json({ estado: 404, mensaje: 'No está logueado.' })
+        }
+
+        const userData = verify(jwt, 'DSII')
+
         const query1 = `
         SELECT 
-          cuota_manejo
+          id_prestamo
         FROM 
-          datos_generales;`
+          prestamos
+        WHERE 
+          documento_usuario_solicitante_prestamo = '${userData.documento}';`
 
         const res1 = await conn.query(query1)
 
         if (!res1.rowCount) {
-          return res.status(404).json({ estado: 404, mensaje: `Cuota no encontrada.` })
+          return res.status(404).json({ estado: 404, mensaje: `Sin prestamos.` })
         }
 
         return res.status(201).json({
           estado: 201,
-          mensaje: 'Cuota obtenida exitosamente.',
-          reunion: res1.rows[0]
+          mensaje: 'Prestamos obtenidos exitosamente.',
+          datos: res1.rows
         })
 
       } catch (error) {

@@ -8,25 +8,34 @@ import { conn } from '/src/utils/database'
 */
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-  const { method, query } = req
-
-  const {
-    documento
-  } = query
+  const { method, body } = req
+  const { id } = body
 
   switch (method) {
-    case 'GET':
+    case 'POST':
       try {
-        const query1 = `SELECT * FROM solicitudes WHERE documento_asociado_retiro = '${documento}';`
+        const query1 = `
+        SELECT 
+          id_prestamo,
+          monto_prestamo,
+          cancelado_prestamo,
+          interes_prestamo
+        FROM 
+          prestamos
+        WHERE 
+          id_prestamo = ${id};`
 
         const res1 = await conn.query(query1)
 
-        if (res1.rows.length === 0) {
-          res.status(404).json(`No se encontraron solicitudes.`)
+        if (!res1.rowCount) {
+          return res.status(404).json({ estado: 404, mensaje: `Sin prestamos.` })
         }
-        else {
-          res.status(200).json({ estado: 200, solicitudes: res1.rows })
-        }
+
+        return res.status(201).json({
+          estado: 201,
+          mensaje: 'Prestamo obtenido exitosamente.',
+          reunion: res1.rows[0]
+        })
 
       } catch (error) {
         console.error(error.message)

@@ -13,27 +13,58 @@ export default async (req, res) => {
   switch (method) {
     case 'POST':
       try {
-        const query1 = `
+        const query1 = `BEGIN;
+
         SELECT 
           id_reunion,
           fecha_reunion,
           hora_reunion,
-          tipo_reunion
+          tipo_reunion,
+          enlace_virtual
         FROM 
-          reunion
+          reunion JOIN virtual
+        ON 
+          reunion.id_reunion = virtual.id_reunion_virtual
         ORDER BY 
           fecha_reunion ASC, 
           hora_reunion ASC, 
           tipo_reunion ASC,
-          id_reunion ASC;`
+          id_reunion ASC;
+
+        SELECT 
+          id_reunion,
+          fecha_reunion,
+          hora_reunion,
+          tipo_reunion,
+          lugar_presencial
+        FROM 
+          reunion JOIN presencial
+        ON 
+          reunion.id_reunion = presencial.id_reunion_presencial
+        ORDER BY 
+          fecha_reunion ASC, 
+          hora_reunion ASC, 
+          tipo_reunion ASC,
+          id_reunion ASC;
+
+        COMMIT;`
 
         const res1 = await conn.query(query1)
 
-        if (!res1.rowCount) {
-          res.status(404).json({ estado: 404, mensaje: `Sin reuniones.` })
+        console.log(res1[0])
+        //console.log(res1[1])
+
+        if (!res1[1].rowCount && !res1[2].rowCount) {
+          return res.status(404).json({ estado: 404, mensaje: `Sin reuniones.` })
+        }
+        else if (!res1[1].rowCount) {
+          return res.status(201).json({ estado: 201, mensaje: 'Reuniones encontradas.', datos: res1[2].rows })
+        }
+        if (!res1[2].rowCount) {
+          return res.status(201).json({ estado: 201, mensaje: 'Reuniones encontradas.', datos: res1[1].rows })
         }
         else {
-          res.status(201).json({ estado: 200, mensaje: 'Reuniones encontradas.', usuarios: res1.rows })
+          return res.status(201).json({ estado: 201, mensaje: 'Reuniones encontradas.', datos: res1[1].rows.concat(res1[2].rows) })
         }
 
       } catch (error) {

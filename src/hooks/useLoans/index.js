@@ -1,10 +1,10 @@
 import { useCallback } from 'react'
 
-export default function useMeetings() {
-  const crearReunion = useCallback((data, setEstado) => {
-    const url = (data.tipo == 1)
-      ? '/api/meetings/crearReunion/presencial'
-      : '/api/meetings/crearReunion/virtual'
+export default function useLoans() {
+  const solicitarPrestamo = useCallback((data, setEstado) => {
+    const url = '/api/loans/solicitarPrestamo'
+
+    data.interes = 0.25
 
     setEstado(2)
 
@@ -41,8 +41,30 @@ export default function useMeetings() {
 
   }, [])
 
-  const getAllMeetings = useCallback(setDatos => {
-    const url = '/api/meetings/getMeetings/todas'
+  const getPrestamoXID = useCallback((id, setDatos) => {
+    const url = '/api/loans/getPrestamo/porID'
+
+    fetch(
+      url,
+      {
+        method: 'POST',
+        body: JSON.stringify({ id: id })
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, datos }) => {
+        if (estado === 201) {
+          setDatos(datos)
+        }
+        console.log(mensaje)
+      })
+      .catch(error => {
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
+  const getPrestamoXUsuario = useCallback(setDatos => {
+    const url = '/api/loans/getPrestamo/porUsuario'
 
     fetch(
       url,
@@ -62,52 +84,5 @@ export default function useMeetings() {
       })
   }, [])
 
-  const getPresencial = useCallback(setDatos => {
-    const url = '/api/meetings/getMeetings/presencial'
-
-    fetch(
-      url,
-      {
-        method: 'POST'
-      }
-    )
-      .then(response => response.json())
-      .then(({ estado, mensaje, datos }) => {
-        if (estado === 201) {
-          setDatos(datos)
-        }
-        console.log(mensaje)
-      })
-      .catch(error => {
-        console.error(`Error: ${error}`)
-      })
-  }, [])
-
-  const getVirtual = useCallback(setDatos => {
-    const url = '/api/meetings/getMeetings/virtual'
-
-    fetch(
-      url,
-      {
-        method: 'POST'
-      }
-    )
-      .then(response => response.json())
-      .then(({ estado, mensaje, datos }) => {
-        if (estado === 201) {
-          setDatos(datos)
-        }
-        console.log(mensaje)
-      })
-      .catch(error => {
-        console.error(`Error: ${error}`)
-      })
-  }, [])
-
-  return {
-    crearReunion,
-    getAllMeetings,
-    getPresencial,
-    getVirtual
-  }
+  return { solicitarPrestamo, getPrestamoXID, getPrestamoXUsuario }
 }
