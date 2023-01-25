@@ -107,7 +107,7 @@ export default function Modificacion_reuniones({ children, onClose }) {
                                             <button
                                                 type="submit"
 
-                                                className="inline-flex w-full justify-center rounded-md border border-transparent bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                                                className="inline-flex w-full justify-center rounded-md border-transparent bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                                             >
                                                 Modificar datos
                                             </button>
