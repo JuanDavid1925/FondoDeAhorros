@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Footer from '../componentes/Footer'
+import Footer from '../componentes/footer'
 import Seccion_prestamos from '../componentes/seccion_prestamos'
 import Seccion_ahorros from '../componentes/seccion_ahorros'
 import Seccion_clientes from '../componentes/Seccion_clientes'
