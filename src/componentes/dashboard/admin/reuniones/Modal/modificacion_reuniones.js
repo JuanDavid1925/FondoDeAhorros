@@ -1,8 +1,5 @@
 import { Fragment, useRef, useState, useCallback, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { Formik } from 'formik'
-import $ from "jquery"
-import useUser from "/src/hooks/useUser"
 
 export default function Modificacion_reuniones({ children, onClose }) {
 

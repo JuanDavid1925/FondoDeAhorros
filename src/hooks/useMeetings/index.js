@@ -6,14 +6,6 @@ export default function useMeetings() {
       ? '/api/meetings/crearReunion/presencial'
       : '/api/meetings/crearReunion/virtual'
 
-    const validacion = validarDatosSolicitud(data)
-
-    if (validacion !== 1) {
-      setEstado(validacion)
-      console.log(validacion)
-      return
-    }
-
     setEstado(2)
 
     fetch(
