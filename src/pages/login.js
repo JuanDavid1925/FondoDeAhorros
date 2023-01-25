@@ -1,6 +1,6 @@
 import { Formik } from "formik"
 import Head from "next/head";
-import { useRouter } from "next/Router"
+import { useRouter } from "next/router"
 import { useCallback, useEffect, useState } from "react"
 import Aviso_registro from "../componentes/aviso_registro"
 import useUser from "/src/hooks/useUser"

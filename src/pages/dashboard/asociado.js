@@ -1,4 +1,4 @@
-import { useRouter } from "next/Router"
+import { useRouter } from "next/router"
 import { useCallback, useContext, useEffect, useState } from "react"
 import useUser from "/src/hooks/useUser"
 import Context from "/src/context/userContext"
