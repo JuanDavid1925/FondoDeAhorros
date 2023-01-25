@@ -39,7 +39,6 @@ const Panel_reuniones_admin = ({ router }) => {
     useEffect(() => {
         if (!reuniones)
             getAllMeetings(setReuniones)
-        console.log(reuniones)
     }, [getAllMeetings, reuniones])
 
     const {
@@ -326,7 +325,9 @@ const Panel_reuniones_admin = ({ router }) => {
                                                                 </div>
                                                             </td>
                                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                                <p className="text-gray-900 whitespace-no-wrap">Calle 25 # 34-79</p>
+                                                                <p className="text-gray-900 whitespace-no-wrap">
+                                                                    {(!reunion.lugar_presencial) ? reunion.enlace_virtual : reunion.lugar_presencial}
+                                                                </p>
                                                             </td>
                                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                                 <p className="text-gray-900 whitespace-no-wrap">
