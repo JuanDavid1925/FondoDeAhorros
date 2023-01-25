@@ -1,3 +1,4 @@
+import { verify } from 'jsonwebtoken'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { conn } from '/src/utils/database'
@@ -8,19 +9,25 @@ import { conn } from '/src/utils/database'
 */
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-  const { method, body } = req
-  const { documento } = body
+  const { method } = req
+  const { jwt } = req.cookies
 
   switch (method) {
     case 'POST':
       try {
+        if (jwt === undefined) {
+          return res.status(404).json({ estado: 404, mensaje: 'No está logueado.' })
+        }
+
+        const userData = verify(jwt, 'DSII')
+
         const query1 = `
         SELECT 
           cuota_fija_mensual_asociado
         FROM 
           asociados
         WHERE 
-          documento_asociado = ${documento};`
+          documento_asociado = '${userData.documento}';`
 
         const res1 = await conn.query(query1)
 
@@ -31,7 +38,7 @@ export default async (req, res) => {
         return res.status(201).json({
           estado: 201,
           mensaje: 'Cuota obtenida exitosamente.',
-          reunion: res1.rows[0]
+          datos: res1.rows[0].cuota_fija_mensual_asociado
         })
 
       } catch (error) {

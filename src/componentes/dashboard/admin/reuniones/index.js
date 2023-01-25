@@ -25,7 +25,8 @@ const Panel_reuniones_admin = ({ router }) => {
 
     const handleSubmit = useCallback(data => {
         data.tipo = tipo_reunion
-        console.log(data)
+        data.costo = 0
+
         crearReunion(data, setEstadoCrearReunion)
     }, [crearReunion, tipo_reunion])
 
@@ -38,6 +39,7 @@ const Panel_reuniones_admin = ({ router }) => {
     useEffect(() => {
         if (!reuniones)
             getAllMeetings(setReuniones)
+        console.log(reuniones)
     }, [getAllMeetings, reuniones])
 
     const {
@@ -311,38 +313,42 @@ const Panel_reuniones_admin = ({ router }) => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                        <div className="flex items-center">
-                                                            <div className="ml-3">
+                                                {!!reuniones && reuniones.map(reunion => (
+                                                    <>
+                                                        <tr>
+                                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                                <div className="flex items-center">
+                                                                    <div className="ml-3">
+                                                                        <p className="text-gray-900 whitespace-no-wrap">
+                                                                            {reunion.tipo_reunion}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                                <p className="text-gray-900 whitespace-no-wrap">Calle 25 # 34-79</p>
+                                                            </td>
+                                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                                 <p className="text-gray-900 whitespace-no-wrap">
-                                                                    Presencial
+                                                                    {reunion.fecha_reunion.substring(0, 10)}
                                                                 </p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                        <p className="text-gray-900 whitespace-no-wrap">Calle 25 # 34-79</p>
-                                                    </td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                        <p className="text-gray-900 whitespace-no-wrap">
-                                                            29/01/2023
-                                                        </p>
-                                                    </td>
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                        <p className="text-gray-900 whitespace-no-wrap">
-                                                            09:55 am
-                                                        </p>
-                                                    </td>
+                                                            </td>
+                                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                                <p className="text-gray-900 whitespace-no-wrap">
+                                                                    {reunion.hora_reunion.substring(0, 5)} am
+                                                                </p>
+                                                            </td>
 
-                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                        <a
-                                                            onClick={() => { setShowModal(true) }
-                                                            }
-                                                            className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline cursor-pointer">Editar
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                                <a
+                                                                    onClick={() => { setShowModal(true) }
+                                                                    }
+                                                                    className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline cursor-pointer">Editar
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </>
+                                                ))}
                                             </tbody>
                                         </table>
                                     </div>

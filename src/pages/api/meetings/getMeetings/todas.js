@@ -33,7 +33,7 @@ export default async (req, res) => {
           res.status(404).json({ estado: 404, mensaje: `Sin reuniones.` })
         }
         else {
-          res.status(201).json({ estado: 200, mensaje: 'Reuniones encontradas.', usuarios: res1.rows })
+          res.status(201).json({ estado: 201, mensaje: 'Reuniones encontradas.', datos: res1.rows })
         }
 
       } catch (error) {
