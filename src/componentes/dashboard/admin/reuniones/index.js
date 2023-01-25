@@ -6,7 +6,8 @@ import Link from "next/link"
 import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/dashboard/menuTabs"
 import Header_asociado from "/src/componentes/dashboard/compartido/header_asociado"
 import { withRouter } from "next/router"
-import Modificacion_reuniones from "./Modal/modificacion_reuniones";
+import Modificacion_reuniones_virtuales from "./Modal/modificacion_reuniones_virtuales";
+import Modificacion_reuniones_presenciales from "./Modal/modificacion_reuniones_presenciales";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -16,6 +17,7 @@ const Panel_reuniones_admin = ({ router }) => {
 
     const [tipo_reunion, setEstadoReunion] = useState(0)
     const [showModal, setShowModal] = useState(false)
+    const [showModal1, setShowModal1] = useState(false)  //Corresponde a la modificación de reuniones virtuales
     const handleClose = () => { setShowModal(false) }
 
     const {
@@ -309,7 +311,7 @@ const Panel_reuniones_admin = ({ router }) => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    {showModal && <Modificacion_reuniones onClose={() => handleClose()}></Modificacion_reuniones>}
+                                    {showModal && <Modificacion_reuniones_presenciales onClose={() => handleClose()}></Modificacion_reuniones_presenciales>}
                                 </div>
                             </div>
                         </div>
