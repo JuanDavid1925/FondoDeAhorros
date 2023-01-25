@@ -59,7 +59,8 @@ function validarFecha(fecha) {
 
 
 /**
- * Función para validar si el dato entregado puede ser un nombre.
+ * Función para validar si los datos entregados para crear una solicitud de retiro
+ * son correctos.
  * @param { String } nombre Dato a evaluar.
  * @param { String } fecha Dato a evaluar.
  */

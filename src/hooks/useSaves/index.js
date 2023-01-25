@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react'
+import { useCallback } from 'react'
 
 import { validarDatosSolicitud } from '/src/utils/validations/withdrawals'
 
@@ -137,6 +137,53 @@ export default function useSaves() {
 
   }, [])
 
+  const getCuotaMensual = useCallback((setDatos) => {
+    const url = '/api/saves/cuotaMensual/getCuotaMensual'
+
+    fetch(
+      url,
+      {
+        method: 'POST'
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, datos }) => {
+        if (estado === 201) {
+          setDatos(datos)
+        }
+        console.log(mensaje)
+      })
+      .catch(error => {
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
+  const setCuotaMensual = useCallback((cuota, setEstado) => {
+    const url = '/api/saves/cuotaMensual/getCuotaMensual'
+
+    fetch(
+      url,
+      {
+        method: 'POST',
+        data: JSON.stringify({ cuota: cuota })
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, datos }) => {
+        if (estado === 201) {
+          setEstado(1)
+        }
+        else {
+          setEstado(-1)
+        }
+
+        console.log(mensaje)
+      })
+      .catch(error => {
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
   const pagoMensual = useCallback(
     /**
      * Función para crear una nueva transacción 
@@ -188,5 +235,143 @@ export default function useSaves() {
 
     }, [])
 
-  return { cargarDatosSolicitud, solicitarRetiro, cargarDatosRetiro, realizarRetiro, pagoMensual }
+  const setCuotaManejo = useCallback((cuota, setEstado) => {
+    return
+    const url = '/api/saves/cuotaMensual/getCuotaMensual'
+
+    fetch(
+      url,
+      {
+        method: 'POST',
+        data: JSON.stringify({ cuota: cuota })
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, datos }) => {
+        if (estado === 201) {
+          setEstado(1)
+        }
+        else {
+          setEstado(-1)
+        }
+
+        console.log(mensaje)
+      })
+      .catch(error => {
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
+  const getCuotaManejoPendiente = useCallback((setDatos) => {
+    const url = '/api/saves/cuotaManejo/getCuotaManejoPendiente'
+
+    fetch(
+      url,
+      {
+        method: 'POST'
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, datos }) => {
+        if (estado === 201) {
+          setDatos(datos)
+        }
+        console.log(mensaje)
+      })
+      .catch(error => {
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
+  const pagoManejo = useCallback(
+    /**
+     * Función para crear una nueva transacción 
+     * abonando el valor de la cuota mensual.
+     * @param {String} valor 
+     * @param {Function} setEstado 
+     */
+    (valor, setEstado) => {
+      const url = '/api/saves/cuotaManejo/pagar'
+
+      setEstado(2)
+
+      fetch(
+        url,
+        {
+          method: 'POST',
+          body: JSON.stringify({ monto: valor })
+        }
+      )
+        .then(response => response.json())
+        .then(({ estado, mensaje }) => {
+          switch (estado) {
+            case 201:
+              setEstado(1)
+              break
+            case 400:
+              setEstado(-1)
+              break
+            case 404:
+              setEstado(-404)
+              break
+            case 408:
+              setEstado(-408)
+              break
+            case 409:
+              setEstado(-2)
+              break
+            default:
+              setEstado(-500)
+              console.log('No se ha podido conectar con la base de datos.')
+              break
+          }
+
+          console.log(mensaje)
+        })
+        .catch(error => {
+          console.error(`Error: ${error}`)
+        })
+
+    }, [])
+
+  const setTasaInteres = useCallback((cuota, setEstado) => {
+    return
+    const url = '/api/saves/cuotaMensual/getCuotaMensual'
+
+    fetch(
+      url,
+      {
+        method: 'POST',
+        data: JSON.stringify({ cuota: cuota })
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, datos }) => {
+        if (estado === 201) {
+          setEstado(1)
+        }
+        else {
+          setEstado(-1)
+        }
+
+        console.log(mensaje)
+      })
+      .catch(error => {
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
+  return {
+    cargarDatosSolicitud,
+    solicitarRetiro,
+    cargarDatosRetiro,
+    realizarRetiro,
+    getCuotaMensual,
+    setCuotaMensual,
+    pagoMensual,
+    setCuotaManejo,
+    getCuotaManejoPendiente,
+    pagoManejo,
+    setTasaInteres
+  }
 }

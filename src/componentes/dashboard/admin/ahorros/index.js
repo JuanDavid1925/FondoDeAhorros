@@ -1,11 +1,11 @@
+import React, { useCallback, useEffect, useState } from "react"
 import { withRouter } from "next/router"
-import { useEffect } from "react"
 import { Formik } from "formik"
 import Link from "next/link"
-import React from "react"
 
 import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/dashboard/menuTabs"
 import Header_asociado from "/src/componentes/dashboard/compartido/header_asociado"
+import useSaves from "/src/hooks/useSaves"
 
 const PanelAhorros = ({ router }) => {
   const {
@@ -14,6 +14,22 @@ const PanelAhorros = ({ router }) => {
 
   const isTabOne = tab === "1" || tab == null
   const isTabTwo = tab === "2"
+
+  const [estadoMensual, setEstadoMensual] = useState()
+  const [estadoManejo, setEstadoManejo] = useState()
+  const [estadoTasa, setEstadoTasa] = useState()
+
+  const { setCuotaMensual, setCuotaManejo, setTasaInteres } = useSaves
+
+  const handleSubmit = useCallback(data => {
+    if (data.cuotaMin !== "")
+      setCuotaMensual(data.cuotaMin, setEstadoMensual)
+    if (data.cuotaManejo !== "")
+      setCuotaManejo(data.cuotaManejo, setEstadoManejo)
+    if (data.tasaInteres !== "")
+      setTasaInteres(data.tasaInteres, setEstadoTasa)
+  }, [setCuotaMensual, setCuotaManejo, setTasaInteres])
+
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
       <Header_asociado nombre_seccion="Ahorros" />
@@ -42,9 +58,7 @@ const PanelAhorros = ({ router }) => {
                     tasaInteres: ""
                   }}
 
-                  onSubmit={fields => {
-                    handleSubmit(fields)
-                  }}
+                  onSubmit={handleSubmit}
 
                 >
                   {

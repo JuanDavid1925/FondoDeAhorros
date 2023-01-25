@@ -2,7 +2,7 @@
  * Funciones para validar las diferentes entradas esperadas en los registros de usuarios.
  */
 
-import { isInteger } from "formik"
+const { isInteger } = require("formik")
 
 /**
  * Función para validar si el dato entregado puede ser un nombre.
@@ -178,7 +178,6 @@ function validarEntero(numero) {
   }
 }
 
-
 /**
  * Función para validar si los dato entregados son parte de un logueo válido.
  * @param { String } documento Número de documento a evaluar.
@@ -227,7 +226,7 @@ function validarDatosRegistroAsociado({ nombres, apellidos, documento, telefono,
   if (!validarContrasena(contrasena)) {
     return -110
   }
-  if (!confirContrasena) {
+  if (confirContrasena !== contrasena) {
     return -10
   }
   if (!validarEntero(cuota_fija_mensual)) {
@@ -341,4 +340,4 @@ function validarDatosModificacionCliente({ nombres, apellidos, documento, telefo
   return 1
 }
 
-export { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente, validarDatosModificacionAsociado, validarDatosModificacionCliente }
+module.exports = { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente, validarDatosModificacionAsociado, validarDatosModificacionCliente }
