@@ -6,7 +6,8 @@ import Link from "next/link"
 import { TabHead, TabContainer, TabBody, Tab } from "/src/componentes/dashboard/menuTabs"
 import Header_asociado from "/src/componentes/dashboard/compartido/header_asociado"
 import { withRouter } from "next/router"
-import Modificacion_reuniones from "./Modal/modificacion_reuniones";
+import Modificacion_reuniones_virtuales from "./Modal/modificacion_reuniones_virtuales";
+import Modificacion_reuniones_presenciales from "./Modal/modificacion_reuniones_presenciales";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -16,6 +17,7 @@ const Panel_reuniones_admin = ({ router }) => {
 
     const [tipo_reunion, setEstadoReunion] = useState(0)
     const [showModal, setShowModal] = useState(false)
+    const [showModal1, setShowModal1] = useState(false)  //Corresponde a la modificación de reuniones virtuales
     const handleClose = () => { setShowModal(false) }
 
     const {
@@ -176,6 +178,15 @@ const Panel_reuniones_admin = ({ router }) => {
                                                                             </svg>
                                                                         </div>
                                                                     </div>
+                                                                    <div className="relative">
+                                                                        <label htmlFor="card-holder" className="mt-4 mb-2 block text-sm font-medium">Costo</label>
+                                                                        <input type="number" id="costo_reunion" name="costo_reunion" className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500" placeholder="Ingrese el costo de la reunión" />
+                                                                        <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mt-7 h-5 w-5 text-gray-400">
+                                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
                                                                     <button
                                                                         className="mt-4 mb-8 w-full rounded-md bg-gradient-to-r from-sky-600 to-cyan-400 px-6 py-3 font-medium text-white">Crear reunión</button>
                                                                 </div>
@@ -250,6 +261,9 @@ const Panel_reuniones_admin = ({ router }) => {
                                                         Hora
                                                     </th>
                                                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                        Costo
+                                                    </th>
+                                                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                         Modificar
                                                     </th>
                                                 </tr>
@@ -278,6 +292,11 @@ const Panel_reuniones_admin = ({ router }) => {
                                                             09:55 am
                                                         </p>
                                                     </td>
+                                                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                        <p className="text-gray-900 whitespace-no-wrap">
+                                                            100000
+                                                        </p>
+                                                    </td>
 
                                                     <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                         <a
@@ -290,7 +309,7 @@ const Panel_reuniones_admin = ({ router }) => {
                                             </tbody>
                                         </table>
                                     </div>
-                                    {showModal && <Modificacion_reuniones onClose={() => handleClose()}></Modificacion_reuniones>}
+                                    {showModal && <Modificacion_reuniones_presenciales onClose={() => handleClose()}></Modificacion_reuniones_presenciales>}
                                 </div>
                             </div>
                         </div>

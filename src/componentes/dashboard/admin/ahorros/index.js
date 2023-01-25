@@ -134,7 +134,128 @@ const PanelAhorros = ({ router }) => {
             </React.Fragment>}
           {isTabTwo && <React.Fragment>
             <div >
-
+              <div className="container mx-auto px-4 sm:px-8">
+                <div className="py-8">
+                  <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                    <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                      <table className="min-w-full leading-normal">
+                        <thead>
+                          <tr>
+                            <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                              Documento
+                            </th>
+                            <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                              Fecha
+                            </th>
+                            <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                              Monto
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <>
+                            <tr>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <div className="flex items-center">
+                                  <div className="ml-3">
+                                    <p className="text-gray-900 whitespace-no-wrap">
+                                      1234567890
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p className="text-gray-900 whitespace-no-wrap">2023-01-01</p>
+                              </td>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  500000
+                                </p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <div className="flex items-center">
+                                  <div className="ml-3">
+                                    <p className="text-gray-900 whitespace-no-wrap">
+                                      1006071857
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p className="text-gray-900 whitespace-no-wrap">2022-12-04</p>
+                              </td>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  200000
+                                </p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <div className="flex items-center">
+                                  <div className="ml-3">
+                                    <p className="text-gray-900 whitespace-no-wrap">
+                                      1006228012
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p className="text-gray-900 whitespace-no-wrap">2022-11-23</p>
+                              </td>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  155000
+                                </p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <div className="flex items-center">
+                                  <div className="ml-3">
+                                    <p className="text-gray-900 whitespace-no-wrap">
+                                      1005726182
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p className="text-gray-900 whitespace-no-wrap">2023-01-04</p>
+                              </td>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  324000
+                                </p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <div className="flex items-center">
+                                  <div className="ml-3">
+                                    <p className="text-gray-900 whitespace-no-wrap">
+                                      1006782594
+                                    </p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p className="text-gray-900 whitespace-no-wrap">2023-01-11</p>
+                              </td>
+                              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  612039
+                                </p>
+                              </td>
+                            </tr>
+                          </>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             </div >
 
