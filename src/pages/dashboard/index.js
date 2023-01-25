@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import useUser from "../../hooks/useUser"
 import Context from "/src/context/userContext"
-import { useRouter } from "next/Router"
+import { useRouter } from "next/router"
 
 export default function Dashboard() {
   const router = useRouter()
