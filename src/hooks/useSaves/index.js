@@ -262,6 +262,27 @@ export default function useSaves() {
       })
   }, [])
 
+  const getCuotaManejoPendiente = useCallback((setDatos) => {
+    const url = '/api/saves/cuotaManejo/getCuotaManejoPendiente'
+
+    fetch(
+      url,
+      {
+        method: 'POST'
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, datos }) => {
+        if (estado === 201) {
+          setDatos(datos)
+        }
+        console.log(mensaje)
+      })
+      .catch(error => {
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
   const pagoManejo = useCallback(
     /**
      * Función para crear una nueva transacción 
@@ -270,7 +291,7 @@ export default function useSaves() {
      * @param {Function} setEstado 
      */
     (valor, setEstado) => {
-      const url = '/api/saves/CuotaManejo/pagar'
+      const url = '/api/saves/cuotaManejo/pagar'
 
       setEstado(2)
 
@@ -349,6 +370,7 @@ export default function useSaves() {
     setCuotaMensual,
     pagoMensual,
     setCuotaManejo,
+    getCuotaManejoPendiente,
     pagoManejo,
     setTasaInteres
   }
