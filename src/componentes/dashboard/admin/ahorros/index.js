@@ -12,8 +12,8 @@ const PanelAhorros = ({ router }) => {
     query: { tab }
   } = router
 
-  const isTabOne = tab === "1" || tab == null
-  const isTabTwo = tab === "2"
+  const isTabTwo = tab === "1" || tab == null || tab == "2"
+  const isTabOne = false
 
   const [estadoMensual, setEstadoMensual] = useState()
   const [estadoManejo, setEstadoManejo] = useState()
@@ -35,11 +35,11 @@ const PanelAhorros = ({ router }) => {
       <Header_asociado nombre_seccion="Ahorros" />
       <TabContainer>
         <TabHead>
-          <Tab selected={isTabOne}>
+          {/*<Tab selected={isTabOne}>
             <Link href={{ query: { tab: "1" } }}>
               <a>Configurar Ahorros</a>
             </Link>
-          </Tab>
+  </Tab>*/}
           <Tab selected={isTabTwo}>
             <Link href={{ query: { tab: "2" } }}>
               <a>Ahorros activos</a>

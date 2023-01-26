@@ -35,6 +35,7 @@ export default function Reuniones_asociado() {
                       Hora
                     </th>
 
+
                   </tr>
                 </thead>
                 <tbody>
@@ -62,17 +63,11 @@ export default function Reuniones_asociado() {
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
-                            {reunion.hora_reunion.substring(0, 5)} am
+                            {reunion.hora_reunion.substring(0, 5)}
                           </p>
                         </td>
 
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <a
-                            onClick={() => { setShowModal(true) }
-                            }
-                            className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline cursor-pointer">Editar
-                          </a>
-                        </td>
+
                       </tr>
                     </>
                   ))}

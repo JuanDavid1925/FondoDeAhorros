@@ -47,7 +47,9 @@ export default async (req, res) => {
 
         const resp = await conn.query(query1)
 
-        if (!resp[0].rowCount || !resp[1].rowCount)
+        console.log(resp)
+
+        if (!resp[1].rowCount || !resp[2].rowCount)
           return res.status(400).json({ estado: 400, mensaje: 'Error al realizar el retiro.' })
 
         return res.status(201).json({ estado: 201, mensaje: 'Retiro realizado con éxito.' })

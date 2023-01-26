@@ -336,7 +336,7 @@ const Panel_reuniones_admin = ({ router }) => {
                                                             </td>
                                                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                                 <p className="text-gray-900 whitespace-no-wrap">
-                                                                    {reunion.hora_reunion.substring(0, 5)} am
+                                                                    {reunion.hora_reunion.substring(0, 5)}
                                                                 </p>
                                                             </td>
 

@@ -52,8 +52,7 @@ export default async (req, res) => {
         )
         VALUES (
           '${documento}',
-          '${documento_asociado}',
-          true
+          '${documento_asociado}'
         )
         RETURNING *;
 

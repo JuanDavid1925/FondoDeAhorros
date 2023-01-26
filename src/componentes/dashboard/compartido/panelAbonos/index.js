@@ -10,9 +10,9 @@ import useSaves from "/src/hooks/useSaves"
 import PagoAbonoExitoso from "./modalCuota"
 
 const PanelAbonos = ({ router }) => {
-  const { pagoMensual } = useSaves()
+  const { getAbono } = useSaves()
   const [showModal, setShowModal] = useState(false)
-  const [estado, setEstado] = useState()
+  const [abono, setAbono] = useState()
 
   const handleClose = useCallback(() => { setShowModal(false) }, [])
 
@@ -24,9 +24,14 @@ const PanelAbonos = ({ router }) => {
   const isTabOne = tab === "1" || tab == null
   const isTabTwo = tab === "2"
 
-  const handleSubmit = useCallback(() => {
-    pagoMensual($("#cantidadPagar").val(), setEstado)
-  }, [pagoMensual])
+  useEffect(() => {
+    if (!abono) {
+      getAbono(setAbono)
+    }
+    else {
+      $("#cantidadPagar").val(abono)
+    }
+  }, [abono, getAbono])
 
   return (
     <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">

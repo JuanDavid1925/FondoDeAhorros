@@ -138,7 +138,7 @@ export default function useSaves() {
   }, [])
 
   const getCuotaMensual = useCallback((setDatos) => {
-    const url = '/api/saves/cuotaMensual/getCuotaMensual'
+    const url = '/api/saves/CuotaMensual/getCuotaMensual'
 
     fetch(
       url,
@@ -177,6 +177,27 @@ export default function useSaves() {
           setEstado(-1)
         }
 
+        console.log(mensaje)
+      })
+      .catch(error => {
+        console.error(`Error: ${error}`)
+      })
+  }, [])
+
+  const getAbono = useCallback((setDatos) => {
+    const url = '/api/saves/Abonos/getValorCuota'
+
+    fetch(
+      url,
+      {
+        method: 'POST'
+      }
+    )
+      .then(response => response.json())
+      .then(({ estado, mensaje, datos }) => {
+        if (estado === 201) {
+          setDatos((datos / 12).toFixed(2))
+        }
         console.log(mensaje)
       })
       .catch(error => {
@@ -372,6 +393,7 @@ export default function useSaves() {
     setCuotaManejo,
     getCuotaManejoPendiente,
     pagoManejo,
-    setTasaInteres
+    setTasaInteres,
+    getAbono
   }
 }
