@@ -3,6 +3,9 @@ import { Formik, ErrorMessage, Field } from "formik"
 import { useRouter } from "next/router"
 import Head from "next/head"
 import * as Yup from "yup"
+import $ from "jquery"
+import useSaves from '/src/hooks/useSaves'
+
 
 import Registro_exitoso from "/src/componentes/inicio/modales/registro_exitoso"
 import Terminos from "/src/componentes/inicio/modales/terminos_condiciones"
@@ -12,6 +15,7 @@ export default function Registro() {
   const router = useRouter()
   const { registroAsociado } = useUser()
   const [estado, setEstado] = useState()
+  const [estadoArchivo, setEstadoArchivo] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const handleClose = () => { setShowModal(false) }
   const [showModal1, setShowModal1] = useState(false)
@@ -26,6 +30,12 @@ export default function Registro() {
   const handleSubmit = useCallback(data => {
     registroAsociado(data, setEstado)
   }, [registroAsociado])
+
+  const mostrarArchivo = useCallback(() => {
+    const input = $("#firma").prop('files')[0].name
+    return input
+
+  }, [])
 
   return (
     <section className="bg-white dark:bg-gray-900">
@@ -71,7 +81,8 @@ export default function Registro() {
                   ciudad: "",
                   direccion: "",
                   cuota_fija_mensual: "",
-                  aceptarTerminos: false
+                  aceptarTerminos: false,
+                  firma: ""
                 }}
 
                 validationSchema={Yup.object().shape({
@@ -219,7 +230,18 @@ export default function Registro() {
                           className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                         {(estado === -111) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> La cuota debe ser mayor o igual a la estipulada </span> : <></>}
                       </div>
-                      <div className="form-group form-check">
+                      <div>
+                        <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Subir firma</label>
+                        <label className="w-40 flex flex-col items-center px-4 py-6 bg-cyan-200 text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
+                          <svg className="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          <span className="mt-2 text-base leading-normal">Subir archivo</span>
+                          <input onChange={evt => { handleChange(evt); console.log(evt); setEstadoArchivo(!evt.cancelable) }} id="firma" accept="image/png" type="file" className="hidden" />
+                        </label>
+                      </div>
+
+                      <div className=" mt-20 form-group form-check">
                         <Field type="checkbox" name="aceptarTerminos" className={'form-check-input ' + (errors.aceptarTerminos && touched.aceptarTerminos ? ' Inválido' : '')} />
                         <label htmlFor="aceptarTerminos" className="form-check-label mb-2 text-sm text-gray-600 dark:text-gray-200"> Aceptar </label>
                         <a
@@ -230,6 +252,7 @@ export default function Registro() {
                         {showModal1 && <Registro_exitoso onClose={() => handleClose1()}></Registro_exitoso>}
                         <ErrorMessage name="aceptarTerminos" component="div" className="t-2 text-sm text-red-600 dark:text-red-500" />
                       </div>
+                      <label className="block mt-0 text-sm text-gray-600 dark:text-gray-200">{(estadoArchivo) ? mostrarArchivo() : ""}</label>
                       <br></br>
                       <div style={{ paddingTop: 10 }} className="flex items-center justify-end">
                         {

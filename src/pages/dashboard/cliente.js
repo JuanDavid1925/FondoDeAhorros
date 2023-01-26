@@ -91,6 +91,7 @@ export default function Dashboard() {
 									className={"group-hover:text-cyan-600" + ((mostrar_pagina === 3) ? "text-white group-hover:text-white" : "")}>Préstamos</span>
 							</a>
 						</li>
+						{/* DESCOMENTAR EN CASO DE TENER LOS REPORTES DE LOS CLIENTES
 						<li>
 							<a href="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
 								<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -99,7 +100,8 @@ export default function Dashboard() {
 								</svg>
 								<span className="group-hover:text-cyan-600">Reportes</span>
 							</a>
-						</li>
+						</li>*/
+						}
 					</ul>
 				</div>
 				<div className="px-6 -mx-6 pt-4 flex justify-between items-center border-t">

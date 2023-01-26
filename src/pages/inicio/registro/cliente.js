@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { Formik } from "formik"
 import Head from "next/head"
+import $ from "jquery"
 
 import Registro_exitoso from "/src/componentes/inicio/modales/registro_exitoso"
 import useUser from "/src/hooks/useUser"
@@ -10,6 +11,7 @@ export default function Registro_cliente() {
   const router = useRouter()
   const { registroCliente } = useUser()
   const [estado, setEstado] = useState()
+  const [estadoArchivo, setEstadoArchivo] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const handleClose = () => { setShowModal(false) }
 
@@ -22,6 +24,12 @@ export default function Registro_cliente() {
   const handleSubmit = useCallback(data => {
     registroCliente(data, setEstado)
   }, [registroCliente])
+
+  const mostrarArchivo = useCallback(() => {
+    const input = $("#firma").prop('files')[0].name
+    return input
+
+  }, [])
 
   return (
 
@@ -147,7 +155,19 @@ export default function Registro_cliente() {
                         {(estado === -6) ? <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1"> Las contraseñas no coinciden </span> : <></>}
                       </div>
                       {showModal && <Registro_exitoso onClose={() => handleClose()}></Registro_exitoso>}
-                      <div></div>
+
+                      <div>
+                        <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Subir firma</label>
+                        <label className="w-50 h-30 flex flex-col items-center px-4 py-6 bg-cyan-100 text-blue rounded-lg shadow-lg tracking-wide border border-blue cursor-pointer hover:bg-blue hover:text-white">
+                          <svg className="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                          </svg>
+                          <span className="mt-2 text-sm leading-normal">Subir archivo</span>
+                          <input onChange={evt => { handleChange(evt); console.log(evt); setEstadoArchivo(!evt.cancelable) }} id="firma" accept="image/png" type="file" className="hidden" />
+                        </label>
+                      </div>
+                      <br></br>
+                      <label className="block mt-0 text-sm text-gray-600 dark:text-gray-200">{(estadoArchivo) ? mostrarArchivo() : ""}</label>
                       <div style={{ paddingTop: 10 }} className="flex items-center justify-end">
                         {
                           (estado === 2)
@@ -155,7 +175,7 @@ export default function Registro_cliente() {
                             : <></>
                         }
                       </div>
-                      <button type="submit" className="flex items-center justify-between w-full  px-6 py-6 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
+                      <button type="submit" className="mt-20 flex items-center justify-between w-full  px-6 py-6 text-sm tracking-wide bg-blue-400 capitalize rounded-md border-blue-400 border-2 text-white hover:text-white font-semibold hover:shadow-[inset_20rem_0_0_0] hover:shadow-blue-600 duration-[400ms,800ms] transition-[color,box-shadow]">
                         <span><label className="mt-4 text-white-500 white:text-white-400 cursor-pointer">Registrarse</label></span>
                       </button>
                     </form>

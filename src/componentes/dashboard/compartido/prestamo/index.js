@@ -26,11 +26,11 @@ const Formulario_prestamo = ({ router }) => {
                             <a>Solicitar un préstamo</a>
                         </Link>
                     </Tab>
-                    <Tab selected={isTabTwo}>
+                    {/*<Tab selected={isTabTwo}>
                         <Link href={{ query: { tab: "2" } }}>
                             <a>Mis préstamos</a>
                         </Link>
-                    </Tab>
+    </Tab>*/}
                 </TabHead>
                 <TabBody>
                     {isTabOne &&
