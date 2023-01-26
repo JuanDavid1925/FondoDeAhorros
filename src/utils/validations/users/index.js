@@ -340,4 +340,11 @@ function validarDatosModificacionCliente({ nombres, apellidos, documento, telefo
   return 1
 }
 
-module.exports = { validarDatosLogin, validarDatosRegistroAsociado, validarDatosRegistroCliente, validarDatosModificacionAsociado, validarDatosModificacionCliente }
+module.exports = {
+  validarDatosLogin,
+  validarDatosRegistroAsociado,
+  validarDatosRegistroCliente,
+  validarDatosModificacionAsociado,
+  validarDatosModificacionCliente,
+  validarContrasena
+}
