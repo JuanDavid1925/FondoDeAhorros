@@ -84,12 +84,12 @@ export default function Login() {
                       <div className="mt-6">
                         <div className="flex justify-between mb-2">
                           <label htmlFor="contrasena" className="text-sm text-gray-600 dark:text-gray-200">Contraseña</label>
-                          {/*<a
+                          <a
                             onClick={() => {
                               router.push('/inicio/contrasena/olvido_contra')
                             }}
                             className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline"
-                          >¿Olvidó su contraseña?</a>*/}
+                          >¿Olvidó su contraseña?</a>
                         </div>
                         <input
                           onChange={handleChange}
