@@ -42,14 +42,14 @@ export default function Registro() {
             </div>
             <div className="mb-4">
               <label className="block mb-2 font-bold text-gray-700" htmlFor="text">
-                Correo electrónico
+                Número de identificación
               </label>
               <input
                 className="w-full px-3 py-2 text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
                 id="email"
                 name="email"
                 type="email"
-                placeholder="Ingrese su correo electrónico"
+                placeholder="Ingrese su número de identificación"
               />
             </div>
             <div className="mb-6 text-center">
