@@ -50,8 +50,24 @@ export default function CambioContraseña() {
   }, [router])
 
   useEffect(() => {
-    if (estadoContra == 1) {
+    if (estadoCodigo === -400) {
+      $('#first').val('')
+      $('#second').val('')
+      $('#third').val('')
+      $('#fourth').val('')
+    }
+  }, [estadoCodigo])
+
+  useEffect(() => {
+    if (estadoContra === 1) {
       setShowModal(true)
+    }
+    else if (estadoContra === -1) {
+      $('#contrasena').val('')
+      $('#confirContra').val('')
+    }
+    else if (estadoContra === -2) {
+      $('#confirContra').val('')
     }
   }, [estadoContra])
 

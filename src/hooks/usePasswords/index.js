@@ -1,5 +1,7 @@
-import { useCallback } from 'react'
 import emailjs from '@emailjs/browser'
+import { useCallback } from 'react'
+
+import { validarContrasena } from '/src/utils/validations/users'
 
 export default function useUser() {
   const olvidoContra = useCallback((documento, setUrl) => {
@@ -93,9 +95,15 @@ export default function useUser() {
   const cambiarContrasena = useCallback((data, setEstado) => {
     const URL = '/api/passwords/cambiarContrasena'
 
+    if (!validarContrasena(data.contrasena)) {
+      console.log("La contraseña no es válida.")
+      setEstado(-1)
+      return
+    }
+
     if (!(data.contrasena === data.confirmacion)) {
+      console.log("Las contraseñas no son iguales.")
       setEstado(-2)
-      delete data.confirmacion
       return
     }
 
