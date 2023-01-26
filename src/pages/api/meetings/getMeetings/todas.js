@@ -51,9 +51,6 @@ export default async (req, res) => {
 
         const res1 = await conn.query(query1)
 
-        console.log(res1[0])
-        //console.log(res1[1])
-
         if (!res1[1].rowCount && !res1[2].rowCount) {
           return res.status(404).json({ estado: 404, mensaje: `Sin reuniones.` })
         }

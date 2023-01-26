@@ -32,7 +32,7 @@ export default async (req, res) => {
       FROM solicitudes
       WHERE 
         documento_asociado_retiro = '${userData.documento}'
-        AND estado_retiro = 1;`
+        AND (estado_retiro = 1 OR (estado_retiro = 2 AND fecha_solicitada_retiro < NOW()));`
 
     const resp = await conn.query(query1)
 
